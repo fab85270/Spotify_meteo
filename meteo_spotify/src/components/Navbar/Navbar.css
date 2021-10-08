@@ -1,0 +1,22 @@
+nav {
+    height:50px;
+    background: linear-gradient(45deg,rgb(156,14,156),green);
+}
+
+.fonction {
+    list-style-type: none;
+    background: linear-gradient(45deg,rgb(156,14,156),green);
+    height: 100%;
+    display: flex;
+    justify-content:  center;
+    align-items: center;
+    position: relative;
+}
+
+.btn {
+    margin-right: 10px;
+    color: #f1f1f1;
+    cursor: pointer;
+
+}
+
