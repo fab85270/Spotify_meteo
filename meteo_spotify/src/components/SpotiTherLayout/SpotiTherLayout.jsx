@@ -16,8 +16,8 @@ import NavBar from '../Navbar/Navbar';
 function SpotiTherLayout({}){ 
 
 
-    return ( 
-         
+
+    return (     
         <NavBar></NavBar>
     )
 }
