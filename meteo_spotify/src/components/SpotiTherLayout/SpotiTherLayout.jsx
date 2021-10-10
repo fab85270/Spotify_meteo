@@ -9,14 +9,12 @@ la fonction "https://catfact.ninja/fact " permettra de générer des textes alé
 
 
 import './style.css';
-import {Link} from "react-router-dom";
+
 import {useState,useEffect} from 'react'; // pour utiliser useState, il faut faire un import de la sorte
 import NavBar from '../Navbar/Navbar';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Ajouter le boostrap au sein de l'application
 
 function SpotiTherLayout({}){ 
-
-
-
     return (     
         <NavBar></NavBar>
     )
