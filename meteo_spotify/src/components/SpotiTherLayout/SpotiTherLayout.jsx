@@ -15,8 +15,11 @@ import NavBar from '../Navbar/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ajouter le boostrap au sein de l'application
 
 function SpotiTherLayout({}){ 
-    return (     
-        <NavBar></NavBar>
+    return (
+        <>     
+            <NavBar></NavBar>
+
+        </>
     )
 }
 export default SpotiTherLayout;
