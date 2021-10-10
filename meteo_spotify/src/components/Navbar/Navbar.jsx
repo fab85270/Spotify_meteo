@@ -16,13 +16,13 @@ function NavBar(){
     return (
         <nav>
             <ul className="fonction">
-                <li className="btn">Home</li>
-                <li className="btn">Service</li>
-                <li className="btn">Contact</li>
+                <a href="/"  className="btn">Home</a>
+                <a href="/service"  className="btn">Service</a> 
+                <a href="/about"  className="btn">Contact</a>
                 <li><button onClick={handleLogin} className="ApiSpotify">S'identifier</button></li>
             </ul>
-           
         </nav>
+        //Créer un composant lien ? 
     );
 };
 
