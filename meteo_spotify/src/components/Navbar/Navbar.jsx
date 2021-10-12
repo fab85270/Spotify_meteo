@@ -16,14 +16,13 @@ function NavBar(){
     }
     return (
         <div className="divNav">
-            <nav>
-                <ul className="fonction">
-                    <a href="/"  className="btn">Home</a>
-                    <a href="/service"  className="btn">Service</a> 
-                    <a href="/about"  className="btn">Contact</a>
-                    <li><button onClick={handleLogin} className="ApiSpotify">S'identifier</button></li>
-                </ul>
-            </nav>
+            <ul>
+                <li><a class="active" href="/">Home</a></li>
+                <li><a href="/service">Service</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="#about"><button onClick={handleLogin} className="ApiSpotify">S'identifier</button></a></li>
+            </ul>
+
         </div>
         //Créer un composant lien : voir avec le prof si c'est nécéssaire ? 
     );

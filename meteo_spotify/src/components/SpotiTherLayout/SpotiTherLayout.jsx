@@ -15,6 +15,7 @@ import NavBar from '../Navbar/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ajouter le boostrap au sein de l'application
 
 function SpotiTherLayout({}){ 
+    const Token = document.location.href.substr(45).split('&');
     return (
         <>     
             <NavBar></NavBar>

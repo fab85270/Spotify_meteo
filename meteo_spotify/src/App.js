@@ -4,7 +4,7 @@ import React from "react";
 import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import SpotiTherLayout from './components/SpotiTherLayout/SpotiTherLayout';
 import About from './pages/About';
-
+import Service from './pages/Service';
 function App() {
   return (
     <Router>
@@ -14,6 +14,9 @@ function App() {
         </Route>
         <Route path="/about">
           <About/>
+        </Route>
+        <Route path="/Service">
+          <Service/>
         </Route>
       </Switch>
     </Router>
