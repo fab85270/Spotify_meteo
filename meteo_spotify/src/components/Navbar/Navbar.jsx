@@ -16,9 +16,8 @@ const NavBar = () => {
       },
       body: `grant_type=client_credentials`,
     }).then(res => res.json())
-
+    console.log(access_token);
     }
-
     return (
         <div className="divNav">
             <nav>
