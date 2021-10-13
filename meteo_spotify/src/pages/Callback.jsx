@@ -2,7 +2,7 @@ import LayoutGlobal from '../Layout/LayoutGlobal';
 const Callback = () =>{
     return(
         <LayoutGlobal children={
-            <h1><strong>Bienvenu dans le callback de l'application</strong></h1>   
+            <h1><strong>Bienvenue dans le callback de l'application</strong></h1>   
         }>         
         </LayoutGlobal>
                
