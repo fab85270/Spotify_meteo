@@ -2,7 +2,6 @@
 import React from 'react';
 import './Navbar.css';
 
-
 const NavBar = () => {
 
     const  handleLogin = async () => {
@@ -43,11 +42,10 @@ const NavBar = () => {
 export default NavBar;
 
 /*
-export const constante = {
 
-} 
-voir la doc reactRouter avec history pour les redirections notamment 
-
-Avec context, sauvegarder le token utilisé généré dans l'application
+Avec context, sauvegarder le access token utilisé généré dans l'application :
+    - Le Contexte offre un moyen de faire passer des données à travers l’arborescence du composant 
+    sans avoir à passer manuellement les props à chaque niveau
+    - 
 
 */
