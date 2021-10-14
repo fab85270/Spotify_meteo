@@ -10,8 +10,8 @@ import AccessTokenContextProvider from './pages/Context/AccessTokenContext';
 function App() {
   return (
     <Router>
-    <AccessTokenContextProvider>
       <Switch>
+        <AccessTokenContextProvider> 
         <Route exact path="/">
           <SpotiTherLayout/>
         </Route>
@@ -21,8 +21,9 @@ function App() {
         <Route path="/callback">
           <Callback/>
         </Route>
+        </AccessTokenContextProvider>
       </Switch>
-    </AccessTokenContextProvider>
+   
     </Router>
   );
 }

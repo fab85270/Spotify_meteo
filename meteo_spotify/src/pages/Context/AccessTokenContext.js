@@ -10,13 +10,16 @@ export const AccessTokenContext = createContext({
 const AccessTokenContextProvider = ({children}) => {
     const AccessTokenState = {
         accessToken: "",
-        setAccessToken: info => ( {
+        setAccessToken: info => 
+            setAccessToken(prevState => ({
+            ...prevState,
+            accessToken: info.accessToken
 
-    })
+    }))
     }
-    const [AcessToken,setAccessToken] = useState(AccessTokenState) //La mise a jour de l'état va mettre a jour le contenu du context
+    const [AccessToken,setAccessToken] = useState(AccessTokenState) //La mise a jour de l'état va mettre a jour le contenu du context
 
-    return (<AccessTokenContextProvider value={userProfile}> {children} </AccessTokenContextProvider>)
+    return (<AccessTokenContext.Provider value={AccessToken}> {children} </AccessTokenContext.Provider>)
 }
 
 export default AccessTokenContextProvider;
