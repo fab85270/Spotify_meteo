@@ -1,11 +1,13 @@
 
-import React from 'react';
+import React, { useContext } from 'react';
+import { AccessTokenContext } from '../../pages/Context/AccessTokenContext';
 import './Navbar.css';
 
 const NavBar = () => {
 
     const  handleLogin = async () => {
         
+    
     const { access_token } = await fetch('https://accounts.spotify.com/api/token', {
       method: 'POST',
       headers: {
@@ -16,7 +18,18 @@ const NavBar = () => {
       body: `grant_type=client_credentials`,
     }).then(res => res.json())
 
-    console.log(access_token);
+    /* création d'un context qui permettra la consumation du message lors du click sur le bouton */
+    const value = useContext(AccessTokenContext);
+    const{
+        accessToken,
+        setAccessToken
+    } = value
+
+
+    
+    //console.log(access_token);
+
+
     /*https://www.youtube.com/watch?v=_l-zybV0ark */
     }
     return (
