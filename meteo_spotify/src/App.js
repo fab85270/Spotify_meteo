@@ -5,10 +5,12 @@ import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import SpotiTherLayout from './components/SpotiTherLayout/SpotiTherLayout';
 import About from './pages/About';
 import Callback from './pages/Callback';
+import AccessTokenContextProvider from './pages/Context/AccessTokenContext';
 
 function App() {
   return (
     <Router>
+    <AccessTokenContextProvider>
       <Switch>
         <Route exact path="/">
           <SpotiTherLayout/>
@@ -20,6 +22,7 @@ function App() {
           <Callback/>
         </Route>
       </Switch>
+    </AccessTokenContextProvider>
     </Router>
   );
 }

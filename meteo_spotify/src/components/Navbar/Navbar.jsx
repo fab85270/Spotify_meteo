@@ -15,7 +15,9 @@ const NavBar = () => {
       },
       body: `grant_type=client_credentials`,
     }).then(res => res.json())
+
     console.log(access_token);
+    /*https://www.youtube.com/watch?v=_l-zybV0ark */
     }
     return (
         <div className="divNav">
