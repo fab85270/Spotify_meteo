@@ -3,7 +3,8 @@ import React,{createContext, useState} from 'react'
 /* Definition du format de notre contexte */
  const AccessTokenContext = createContext({
     accessToken: "",
-    setAccessToken: info => {}
+    setAccessToken: () => {},
+    getAccessToken: () => {}
 })
 
 /* On va créer le context provider */
@@ -27,7 +28,7 @@ const AccessTokenContextProvider = async ({children}) => {
     console.log(accessToken);
     setAccessToken(access_token);
 
-    return (<AccessTokenContext.Provider value={accessToken}> {children} </AccessTokenContext.Provider>)
+    return (<AccessTokenContext.Provider value={accessToken,getAccessToken}> {children} </AccessTokenContext.Provider>)
 }
 
 
