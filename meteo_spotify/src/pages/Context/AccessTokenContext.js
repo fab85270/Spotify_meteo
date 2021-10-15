@@ -1,25 +1,35 @@
 import React,{createContext, useState} from 'react'
 
-export const AccessTokenContext = createContext({
+/* Definition du format de notre contexte */
+ const AccessTokenContext = createContext({
     accessToken: "",
     setAccessToken: info => {}
 })
 
 /* On va créer le context provider */
 
-const AccessTokenContextProvider = ({children}) => {
-    const AccessTokenState = {
-        accessToken: "",
-        setAccessToken: info => 
-            setAccessToken(prevState => ({
-            ...prevState,
-            accessToken: info.accessToken
+const AccessTokenContextProvider = async ({children}) => {
+    console.log("coucou");
+    const [accessToken,setAccessToken] = useState("")
+    
+    //Récupération du token de l'API spotify  : 
 
-    }))
-    }
-    const [AccessToken,setAccessToken] = useState(AccessTokenState) //La mise a jour de l'état va mettre a jour le contenu du context
+    const { access_token } = await fetch('https://accounts.spotify.com/api/token', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Basic ' + Buffer.from(process.env.REACT_APP_CLIENT_ID + ':' + process.env.REACT_APP_CLIENT_SECRET).toString('base64'),
+        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+      },
+      body: `grant_type=client_credentials`,
+    }).then(res => res.json())
 
-    return (<AccessTokenContext.Provider value={AccessToken}> {children} </AccessTokenContext.Provider>)
+    console.log(accessToken);
+    setAccessToken(access_token);
+
+    return (<AccessTokenContext.Provider value={accessToken}> {children} </AccessTokenContext.Provider>)
 }
+
+
 
 export default AccessTokenContextProvider;

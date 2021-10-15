@@ -1,37 +1,19 @@
 
-import React, { useContext } from 'react';
-import { AccessTokenContext } from '../../pages/Context/AccessTokenContext';
+import React from 'react';
+import AccessTokenContextProvider from '../../pages/Context/AccessTokenContext';
+
+
 import './Navbar.css';
 
 const NavBar = () => {
 
-    const  handleLogin = async () => {
+    //const  handleLogin = async () => {
         
     
-    const { access_token } = await fetch('https://accounts.spotify.com/api/token', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Basic ' + Buffer.from(process.env.REACT_APP_CLIENT_ID + ':' + process.env.REACT_APP_CLIENT_SECRET).toString('base64'),
-        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
-      },
-      body: `grant_type=client_credentials`,
-    }).then(res => res.json())
-
-    /* création d'un context qui permettra la consumation du message lors du click sur le bouton */
-    const value = useContext(AccessTokenContext);
-    const{
-        accessToken,
-        setAccessToken
-    } = value
-
-
-    
-    //console.log(access_token);
 
 
     /*https://www.youtube.com/watch?v=_l-zybV0ark */
-    }
+    //}
     return (
         <div className="divNav">
             <nav>
@@ -39,7 +21,7 @@ const NavBar = () => {
                     <a href="/"  className="btn">Home</a>
                     <a href="/service"  className="btn">Service</a> 
                     <a href="/about"  className="btn">Contact</a>
-                    <li><button onClick={handleLogin} className="ApiSpotify">S'identifier</button></li>
+                    <li><button onClick={AccessTokenContextProvider} className="ApiSpotify">S'identifier</button></li>
                 </ul>
             </nav>
         </div>

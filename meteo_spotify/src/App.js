@@ -11,7 +11,6 @@ function App() {
   return (
     <Router>
       <Switch>
-        <AccessTokenContextProvider> 
         <Route exact path="/">
           <SpotiTherLayout/>
         </Route>
@@ -21,7 +20,6 @@ function App() {
         <Route path="/callback">
           <Callback/>
         </Route>
-        </AccessTokenContextProvider>
       </Switch>
    
     </Router>
