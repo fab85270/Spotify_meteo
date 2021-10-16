@@ -3,16 +3,16 @@ import React,{createContext, useState} from 'react'
 /* Definition du format de notre contexte */
  const AccessTokenContext = createContext({
     accessToken: "",
-    setAccessToken: () => {},
-    getAccessToken: () => {}
+    setAccessToken: () => {}
+   
 })
 
-/* On va créer le context provider */
-
 const AccessTokenContextProvider = async ({children}) => {
+
+  /* Initialisation du context utilisé par une chaine vide */
+   const [accessToken,setAccessToken] = useState("");
     console.log("coucou");
-    const [accessToken,setAccessToken] = useState("")
-    
+
     //Récupération du token de l'API spotify  : 
 
     const { access_token } = await fetch('https://accounts.spotify.com/api/token', {
@@ -25,12 +25,16 @@ const AccessTokenContextProvider = async ({children}) => {
       body: `grant_type=client_credentials`,
     }).then(res => res.json())
 
-    console.log(accessToken);
+    console.log(access_token);
+
+    /* Changement de l'état de accessToken par le token récupéré */
     setAccessToken(access_token);
+    console.log(accessToken);
+return 0;
+   // return (<AccessTokenContext.Provider value={accessToken}> {children} </AccessTokenContext.Provider>)
+};
 
-    return (<AccessTokenContext.Provider value={accessToken,getAccessToken}> {children} </AccessTokenContext.Provider>)
-}
+export default {AccessTokenContextProvider};
 
 
 
-export default AccessTokenContextProvider;

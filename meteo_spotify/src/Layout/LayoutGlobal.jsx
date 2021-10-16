@@ -1,4 +1,4 @@
-import { Children } from "react";
+import { children } from "react";
 import Navbar from '../components/Navbar/Navbar';
 
 const LayoutGlobal= ({children}) =>{
