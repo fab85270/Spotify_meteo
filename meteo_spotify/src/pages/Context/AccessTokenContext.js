@@ -30,8 +30,7 @@ const AccessTokenContextProvider = async ({children}) => {
     /* Changement de l'état de accessToken par le token récupéré */
     setAccessToken(access_token);
     console.log(accessToken);
-return 0;
-   // return (<AccessTokenContext.Provider value={accessToken}> {children} </AccessTokenContext.Provider>)
+    return (<AccessTokenContext.Provider value={accessToken}> {children} </AccessTokenContext.Provider>)
 };
 
 export default {AccessTokenContextProvider};
