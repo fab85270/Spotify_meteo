@@ -1,6 +1,7 @@
 
-import React, {useState } from 'react';
-import AccessTokenContextProvider from '../../pages/Context/AccessTokenContext';
+import React, {useContext, useState } from 'react';
+import {AccessTokenContext} from '../../Context/AccessTokenContext';
+import {AccessTokenContextProvider} from '../../Context/AccessTokenContext';
 import './Navbar.css';
 
 const NavBar = () => {
@@ -9,7 +10,8 @@ const NavBar = () => {
 
     /* Utilisation d'un hook initialisé a truc */
     const[clicked, setClicked] = useState(false);
-
+    
+    const {accessToken,Authenticate} = useContext(AccessTokenContext);
     return (
         <div className="divNav">
             <nav>
@@ -17,7 +19,7 @@ const NavBar = () => {
                     <a href="/"  className="btn">Home</a>
                     <a href="/service"  className="btn">Service</a> 
                     <a href="/about"  className="btn">Contact</a>
-                    <li><button onClick={AccessTokenContextProvider,()=> setClicked(!clicked)} className="ApiSpotify">
+                    <li><button onClick={Authenticate(),() => setClicked(!clicked)} className="ApiSpotify">
                         {!clicked && "Se connecter"}
                         {clicked && "Se deconnecter"}  
                         </button>
@@ -25,7 +27,10 @@ const NavBar = () => {
                 </ul>
             </nav>
         </div>
-
+/**
+ * Interessant de créer une fonction dans ce composant navbar qui regroupe toutes les actions qu'on veut réaliser lorsque on clique sur le 
+ * bouton "se connecter" 
+ */
         /* 
         Choses à faire : 
             - créer un composant bouton qui permet donc de déterminer une redirection vers une page spécifique selon le type du bouton.
