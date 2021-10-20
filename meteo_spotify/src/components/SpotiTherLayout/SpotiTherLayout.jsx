@@ -18,7 +18,6 @@ function SpotiTherLayout({}){
     return (
         <>     
             <NavBar></NavBar>
-
         </>
     )
 }
