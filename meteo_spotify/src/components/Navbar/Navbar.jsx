@@ -1,12 +1,16 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import AccessTokenContextProvider from '../../pages/Context/AccessTokenContext';
-
-
 import './Navbar.css';
 
 const NavBar = () => {
-    /* Rendre le bouton indisponible quuand on a cliqué dessus ou le rendre "deconnecter" pour se deconnecter  */
+    /* Rendre le bouton indisponible quuand on a cliqué dessus ou le rendre "deconnecter" pour se deconnecter : comment se deconnecter ? 
+    Retour vers la page principale Avec de nouveau le bouton "seConnecter qui se présente a nous"  */
+
+    /* Utilisation d'un hook initialisé a truc */
+    const[clicked, setClicked] = useState(false);
+
+
     return (
         <div className="divNav">
             <nav>
@@ -14,11 +18,15 @@ const NavBar = () => {
                     <a href="/"  className="btn">Home</a>
                     <a href="/service"  className="btn">Service</a> 
                     <a href="/about"  className="btn">Contact</a>
-                    <li><button onClick={AccessTokenContextProvider} className="ApiSpotify">S'identifier</button></li>
+                    <li><button onClick={AccessTokenContextProvider,()=> setClicked(!clicked)} className="ApiSpotify">
+                        {!clicked && "Se connecter"}
+                        {clicked && "Se deconnecter"}  
+                        </button>
+                    </li>
                 </ul>
             </nav>
         </div>
-        //Créer un composant lien : voir avec le prof si c'est nécéssaire ? 
+
 
         /* Notes sur lesquelles réflechir :
             - Suite au callback, un acces token qui dure 60 minutes est renvoyé afin de permettre a l'application d'interragir avec l'API.

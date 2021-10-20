@@ -10,5 +10,4 @@ const LayoutGlobal= ({children}) =>{
         /* Ajouter un footer (bas de page) */ 
     );
 }
-
 export default LayoutGlobal;
