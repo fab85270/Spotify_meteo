@@ -1,6 +1,7 @@
 
 import React, {useContext, useState } from 'react';
 import {AccessTokenContext} from '../../Context/AccessTokenContext';
+
 import './Navbar.css';
 
 const NavBar = () => {
@@ -9,13 +10,14 @@ const NavBar = () => {
 
     /* Utilisation des hooks */
     const[clicked, setClicked] = useState(false);
-    const {accessToken,Authenticate} = useContext(AccessTokenContext);
+    const {accessToken,authenticate} = useContext(AccessTokenContext);
 
-    /* Fonction des actions réalisées suite au clique du bonton connexion/déconnection  */
+    /* Fonction des actions réalisées suite au click du bonton connexion/déconnection  */
 
-    const Click = async() => { //C'est bien de ne mettre que une fonction dans un "OnClick d'un boutton"
-        await Authenticate();
+    const click = async() => { //C'est bien de ne mettre que une fonction dans un "OnClick d'un boutton"
+        await authenticate();
         setClicked(!clicked);
+        console.log(accessToken); //Afin de vérifier qu'on a bien accessToken
     }
 
     return (
@@ -25,7 +27,7 @@ const NavBar = () => {
                     <a href="/"  className="btn">Home</a>
                     <a href="/service"  className="btn">Service</a> 
                     <a href="/about"  className="btn">Contact</a>
-                    <li><button onClick={Click()} className="ApiSpotify">
+                    <li><button onClick={() => click()} className="ApiSpotify">
                         {!clicked && "Se connecter"}
                         {clicked && "Se deconnecter"}  
                         </button>
