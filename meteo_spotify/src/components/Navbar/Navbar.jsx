@@ -19,9 +19,10 @@ const NavBar = () => {
                     <a href="/"  className="btn">Home</a>
                     <a href="/service"  className="btn">Service</a> 
                     <a href="/about"  className="btn">Contact</a>
-                    <li><button onClick={Authenticate(),() => setClicked(!clicked)} className="ApiSpotify">
-                        {!clicked && "Se connecter"}
-                        {clicked && "Se deconnecter"}  
+                    <li>
+                        <button onClick={Authenticate(),() => setClicked(!clicked)} className="ApiSpotify">
+                            {!clicked && "Se connecter"}
+                            {clicked && "Se deconnecter"}  
                         </button>
                     </li>
                 </ul>
