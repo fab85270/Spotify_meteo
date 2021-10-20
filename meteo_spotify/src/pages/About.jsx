@@ -10,9 +10,9 @@ const About = () =>{
             <div style={{textAlign:'center'}}>
                 <p>Bienvenu dans notre projet de M1 en Architecture Logiciel et web</p>
                 <p>Ce projet consiste à utiliser deux API, celles de spotify et d'une plateforme de météo</p>
-                <div>Ce projet a été réalisé en commun par 
-                        Coutanceau Fabien
-                        Losego Abel 
+                <div>Ce projet a été réalisé en commun par <br />
+                        Coutanceau Fabien /
+                        Losego Abel /
                         Bodo Maxence
                 </div>
             </div>
