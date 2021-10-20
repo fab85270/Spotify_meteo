@@ -1,31 +1,39 @@
 
-import React from 'react';
+import React, {useState } from 'react';
+import AccessTokenContextProvider from '../../pages/Context/AccessTokenContext';
 import './Navbar.css';
 
-/* Mettre la définition de connexion ici ou autre part : App.js ou SpotiTheirLayout ?  */
-const CLIENT_ID = "59a94d450e3847148c1416d81d8baac2";
-const SPOTIFY_AUTHORIZE_ENDPOINT = "https://accounts.spotify.com/authorize";
-const REDIRECT_URL_AFTER_LOGIN = 'http://localhost:3000/Callback/';
-const SPACE_DELIMITER = "%20";
-const SCOPES = ["user-read-currently-playing","user-read-playback-state"];
-const SCOPES_URL_PARAM = SCOPES.join(SPACE_DELIMITER);
+const NavBar = () => {
+    /* Rendre le bouton indisponible quuand on a cliqué dessus ou le rendre "deconnecter" pour se deconnecter : comment se deconnecter ? 
+    Retour vers la page principale Avec de nouveau le bouton "seConnecter qui se présente a nous"  */
 
-function NavBar(){
-    const handleLogin = () => {
-        window.location = `${SPOTIFY_AUTHORIZE_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL_AFTER_LOGIN}&scope=${SCOPES_URL_PARAM}&response_type=token&show_dialog=true`;
-    }
+    /* Utilisation d'un hook initialisé a truc */
+    const[clicked, setClicked] = useState(false);
+
     return (
         <div className="divNav">
-            <ul>
-                <li><a class="active" href="/">Home</a></li>
-                <li><a href="/service">Service</a></li>
-                <li><a href="/about">About</a></li>
-                <li><button onClick={handleLogin} className="ApiSpotify">S'identifier</button></li>
-            </ul>
-
+            <nav>
+                <ul className="fonction">
+                    <a href="/"  className="btn">Home</a>
+                    <a href="/service"  className="btn">Service</a> 
+                    <a href="/about"  className="btn">Contact</a>
+                    <li><button onClick={AccessTokenContextProvider,()=> setClicked(!clicked)} className="ApiSpotify">
+                        {!clicked && "Se connecter"}
+                        {clicked && "Se deconnecter"}  
+                        </button>
+                    </li>
+                </ul>
+            </nav>
         </div>
-        //Créer un composant lien : voir avec le prof si c'est nécéssaire ? 
+
+        /* 
+        Choses à faire : 
+            - créer un composant bouton qui permet donc de déterminer une redirection vers une page spécifique selon le type du bouton.
+        On aura ainsi un bouton "clicked" => On se connecte et donc on va être redirigé vers une page avec les différentes utilisations 
+        Et l'inverse du bouton "clicked"*/
+
     );
 };
 
 export default NavBar;
+

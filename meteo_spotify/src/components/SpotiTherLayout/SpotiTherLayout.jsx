@@ -13,14 +13,26 @@ import './style.css';
 import {useState,useEffect} from 'react'; // pour utiliser useState, il faut faire un import de la sorte
 import NavBar from '../Navbar/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ajouter le boostrap au sein de l'application
+import LayoutGlobal from '../../Layout/LayoutGlobal';
 
 function SpotiTherLayout({}){ 
+<<<<<<< HEAD
     //const Token = document.location.href.substr(45).split('&');
     return (
         <>     
             <NavBar></NavBar>
 
         </>
+=======
+    return (      
+            <LayoutGlobal children={
+                <>
+                    <h1>Welcome to the web site</h1>
+                    <p1>Ici mettre des images.. photos et tout..informations are coming...</p1>
+                   
+                </>       
+            }></LayoutGlobal>
+>>>>>>> 4714902b3fcc0864a971951913874e31d27c6579
     )
 }
 export default SpotiTherLayout;
