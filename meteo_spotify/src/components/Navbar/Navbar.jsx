@@ -1,5 +1,6 @@
 
 import React, {useContext, useState } from 'react';
+import { useHistory } from "react-router-dom";
 import {AccessTokenContext} from '../../Context/AccessTokenContext';
 
 import './Navbar.css';
@@ -12,18 +13,20 @@ const NavBar = () => {
     const[clicked, setClicked] = useState(false);
     const {accessToken,authenticate} = useContext(AccessTokenContext);
 
+    let history = useHistory();
+
     /* Fonction des actions réalisées suite au click du bonton connexion/déconnection  */
 
     const click = async() => { //C'est bien de ne mettre que une fonction dans un "OnClick d'un boutton"
         if(!clicked){
             /* On récupère le AccessToken de l'API spotify */
             await authenticate(); 
-
+            history.push("/about");
             /* On redirige vers la page avec l'ensemble des fonctionalités de notre application pour interragir avec l'API spotify */
-            
+
         } else{
             /* On redirige vers le home de connexion et on "annule" le token de connexion en le crypant ? modifiant? */
-
+            history.push("/");
         }
         setClicked(!clicked);
     }

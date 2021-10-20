@@ -12,7 +12,10 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
 
   /* Initialisation du context utilisé par une chaine vide */
    const [accessToken,setAccessToken] = useState("");
-    console.log("coucou");
+  /* Rajouiter un état booleen avec isConnected pour eviter d'utiliser l'accessToken sans être connecté. Et pour le remettre a false, on peut
+  utiliser de nouveau ce state et le AccessToken sera initialisé à chaine vide 
+
+  Notes : localstorage à utiliser si possible a la place un state pour stocker le AccessToken car c une donnée sensible => voir si g le temps.*/
 
     //Récupération du token de l'API spotify  : 
 
