@@ -15,9 +15,10 @@ const NavBar = () => {
     /* Fonction des actions réalisées suite au click du bonton connexion/déconnection  */
 
     const click = async() => { //C'est bien de ne mettre que une fonction dans un "OnClick d'un boutton"
-        await authenticate();
+        if(!clicked){
+            await authenticate(); 
+        }
         setClicked(!clicked);
-        console.log(accessToken); //Afin de vérifier qu'on a bien accessToken
     }
 
     return (
