@@ -6,7 +6,7 @@ import AccessTokenContextProvider from '../../pages/Context/AccessTokenContext';
 import './Navbar.css';
 
 const NavBar = () => {
-
+    /* Rendre le bouton indisponible quuand on a cliqué dessus ou le rendre "deconnecter" pour se deconnecter  */
     return (
         <div className="divNav">
             <nav>
