@@ -2,16 +2,19 @@
 import React, {useContext, useState } from 'react';
 import { useHistory } from "react-router-dom";
 import {AccessTokenContext} from '../../Context/AccessTokenContext';
+import { BoutonContext } from '../../Context/BoutonContext';
 
 import './Navbar.css';
 
 const NavBar = () => {
+    
     /* Rendre le bouton indisponible quuand on a cliqué dessus ou le rendre "deconnecter" pour se deconnecter : comment se deconnecter ? 
     Retour vers la page principale Avec de nouveau le bouton "seConnecter qui se présente a nous"  */
 
     /* Utilisation des hooks */
     const[clicked, setClicked] = useState(false);
     const {accessToken,authenticate} = useContext(AccessTokenContext);
+    const {bouton,changeContexte} = useContext(BoutonContext);
 
     let history = useHistory();
 

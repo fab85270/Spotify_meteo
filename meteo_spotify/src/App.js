@@ -6,12 +6,14 @@ import SpotiTherLayout from './components/SpotiTherLayout/SpotiTherLayout';
 import About from './pages/About';
 import Callback from './pages/Callback';
 import {AccessTokenContextProvider} from './Context/AccessTokenContext';
+import {BoutonContextProvider} from './Context/BoutonContext';
 
 
 
 function App() {
   return (
     <AccessTokenContextProvider>
+      <BoutonContextProvider>
         <Router>
           <Switch>
             <Route exact path="/">
@@ -25,6 +27,7 @@ function App() {
             </Route>
           </Switch>
         </Router>
+      </BoutonContextProvider>
     </AccessTokenContextProvider>
   );
 }
