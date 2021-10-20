@@ -16,7 +16,14 @@ const NavBar = () => {
 
     const click = async() => { //C'est bien de ne mettre que une fonction dans un "OnClick d'un boutton"
         if(!clicked){
+            /* On récupère le AccessToken de l'API spotify */
             await authenticate(); 
+
+            /* On redirige vers la page avec l'ensemble des fonctionalités de notre application pour interragir avec l'API spotify */
+            
+        } else{
+            /* On redirige vers le home de connexion et on "annule" le token de connexion en le crypant ? modifiant? */
+
         }
         setClicked(!clicked);
     }
