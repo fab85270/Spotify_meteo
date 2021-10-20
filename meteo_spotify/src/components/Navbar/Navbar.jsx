@@ -39,7 +39,7 @@ export default NavBar;
 
 /*
 
-Avec context, sauvegarder le access token utilisé généré dans l'application :
+Avec context, sauvegarder le access token utilisé généré dans l'application : reprendre les boutons fait dans le passé.
     - Le Contexte offre un moyen de faire passer des données à travers l’arborescence du composant 
     sans avoir à passer manuellement les props à chaque niveau
     - 
