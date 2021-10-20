@@ -25,7 +25,7 @@ const NavBar = () => {
             /* On récupère le AccessToken de l'API spotify */
             await authenticate(); 
             changeContexte(); //Afin de changer la valeur du contexte
-            history.push("/");
+            history.push("/spotiTherMe");
             
             /* On redirige vers la page avec l'ensemble des fonctionalités de notre application pour interragir avec l'API spotify */
 

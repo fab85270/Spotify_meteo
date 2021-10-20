@@ -4,7 +4,7 @@ import React from "react";
 import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import SpotiTherLayout from './components/SpotiTherLayout/SpotiTherLayout';
 import About from './pages/About';
-import Callback from './pages/Callback';
+import SpotiTherMe from './pages/SpotiTheirMe';
 import {AccessTokenContextProvider} from './Context/AccessTokenContext';
 import {BoutonContextProvider} from './Context/BoutonContext';
 
@@ -22,8 +22,8 @@ function App() {
             <Route path="/about">
               <About/>
             </Route>
-            <Route path="/callback">
-              <Callback/>
+            <Route path="/spotiTherMe">
+              <SpotiTherMe/>
             </Route>
           </Switch>
         </Router>
