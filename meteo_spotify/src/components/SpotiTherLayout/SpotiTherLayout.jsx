@@ -20,7 +20,7 @@ function SpotiTherLayout({}){
             <LayoutGlobal children={
                 <>
                     <h1>Welcome to the web site</h1>
-                    <p1>Ici mettre des images.. photos et tout..informations are coming...</p1>
+                    <p>Ici mettre des images.. photos et tout..informations are coming...</p>
                    
                 </>       
             }></LayoutGlobal>

@@ -1,13 +1,13 @@
 import React,{createContext, useState} from 'react'
 
 /* Definition du format de notre contexte */
- const AccessTokenContext = createContext({
+ export const AccessTokenContext = createContext({
     accessToken: "",
     setAccessToken: () => {}
    
 })
 
-const AccessTokenContextProvider = async ({children}) => {
+export const AccessTokenContextProvider = ({children}) => {
 
   /* Initialisation du context utilisé par une chaine vide */
    const [accessToken,setAccessToken] = useState("");
@@ -15,7 +15,8 @@ const AccessTokenContextProvider = async ({children}) => {
 
     //Récupération du token de l'API spotify  : 
 
-    const { access_token } = await fetch('https://accounts.spotify.com/api/token', {
+    const Authenticate = async() => {
+      const { access_token } = await fetch('https://accounts.spotify.com/api/token', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -29,11 +30,12 @@ const AccessTokenContextProvider = async ({children}) => {
 
     /* Changement de l'état de accessToken par le token récupéré */
     setAccessToken(access_token);
+   }
     console.log(accessToken);
-    return (<AccessTokenContext.Provider value={accessToken}> {children} </AccessTokenContext.Provider>)
+    return (<AccessTokenContext.Provider value={accessToken,Authenticate}> {children} </AccessTokenContext.Provider>)
 };
 
-export default {AccessTokenContextProvider};
+/** */
 
 
 
