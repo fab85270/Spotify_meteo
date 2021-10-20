@@ -1,7 +1,6 @@
 
 import React, {useContext, useState } from 'react';
 import {AccessTokenContext} from '../../Context/AccessTokenContext';
-import {AccessTokenContextProvider} from '../../Context/AccessTokenContext';
 import './Navbar.css';
 
 const NavBar = () => {
@@ -14,7 +13,7 @@ const NavBar = () => {
 
     /* Fonction des actions réalisées suite au clique du bonton connexion/déconnection  */
 
-    const Click = async() => {
+    const Click = async() => { //C'est bien de ne mettre que une fonction dans un "OnClick d'un boutton"
         await Authenticate();
         setClicked(!clicked);
     }
