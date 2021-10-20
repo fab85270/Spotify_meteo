@@ -16,14 +16,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'; // Ajouter le boostrap au sein de
 import LayoutGlobal from '../../Layout/LayoutGlobal';
 
 function SpotiTherLayout({}){ 
-<<<<<<< HEAD
-    //const Token = document.location.href.substr(45).split('&');
-    return (
-        <>     
-            <NavBar></NavBar>
-
-        </>
-=======
     return (      
             <LayoutGlobal children={
                 <>
@@ -32,7 +24,6 @@ function SpotiTherLayout({}){
                    
                 </>       
             }></LayoutGlobal>
->>>>>>> 4714902b3fcc0864a971951913874e31d27c6579
     )
 }
 export default SpotiTherLayout;
