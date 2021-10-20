@@ -10,7 +10,6 @@ const NavBar = () => {
     /* Utilisation d'un hook initialisé a truc */
     const[clicked, setClicked] = useState(false);
 
-
     return (
         <div className="divNav">
             <nav>
@@ -27,12 +26,11 @@ const NavBar = () => {
             </nav>
         </div>
 
-
-        /* Notes sur lesquelles réflechir :
-            - Suite au callback, un acces token qui dure 60 minutes est renvoyé afin de permettre a l'application d'interragir avec l'API.
-            - Comment récupérer ce token ? comment l'utiliser ??
-        
-        */
+        /* 
+        Choses à faire : 
+            - créer un composant bouton qui permet donc de déterminer une redirection vers une page spécifique selon le type du bouton.
+        On aura ainsi un bouton "clicked" => On se connecte et donc on va être redirigé vers une page avec les différentes utilisations 
+        Et l'inverse du bouton "clicked"*/
 
     );
 };

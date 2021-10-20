@@ -10,8 +10,6 @@ import Callback from './pages/Callback';
 
 function App() {
   return (
-    <AccessTokenContextProvider>
-      <AccessTokenContext.Provider>
         <Router>
           <Switch>
             <Route exact path="/">
@@ -25,8 +23,6 @@ function App() {
             </Route>
           </Switch>
         </Router>
-      </AccessTokenContext.Provider>
-    </AccessTokenContextProvider>
   );
 }
 
