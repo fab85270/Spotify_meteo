@@ -12,9 +12,9 @@ const NavBar = () => {
     Retour vers la page principale Avec de nouveau le bouton "seConnecter qui se présente a nous"  */
 
     /* Utilisation des hooks */
-    const[clicked, setClicked] = useState(false);
+    //const[clicked, setClicked] = useState(false);
     const {accessToken,authenticate} = useContext(AccessTokenContext);
-    const {bouton,changeContexte} = useContext(BoutonContext);
+    const {clicked,setClicked} = useContext(BoutonContext);
 
     let history = useHistory();
 
@@ -31,7 +31,7 @@ const NavBar = () => {
             /* On redirige vers le home de connexion et on "annule" le token de connexion en le crypant ? modifiant? */
             history.push("/");
         }
-        setClicked(!clicked);
+        //setClicked(!clicked);
     }
 
     return (
