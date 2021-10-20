@@ -1,6 +1,6 @@
 
 import React, {useContext, useState } from 'react';
-import { useHistory } from "react-router-dom";
+import { useHistory,Link } from "react-router-dom";
 import {AccessTokenContext} from '../../Context/AccessTokenContext';
 import { BoutonContext } from '../../Context/BoutonContext';
 
@@ -14,7 +14,7 @@ const NavBar = () => {
     /* Utilisation des hooks */
     //const[clicked, setClicked] = useState(false);
     const {accessToken,authenticate} = useContext(AccessTokenContext);
-    const {clicked,setClicked} = useContext(BoutonContext);
+    const {clicked,changeContexte} = useContext(BoutonContext);
 
     let history = useHistory();
 
@@ -24,23 +24,25 @@ const NavBar = () => {
         if(!clicked){
             /* On récupère le AccessToken de l'API spotify */
             await authenticate(); 
-            history.push("/about");
+            changeContexte(); //Afin de changer la valeur du contexte
+            history.push("/");
+            
             /* On redirige vers la page avec l'ensemble des fonctionalités de notre application pour interragir avec l'API spotify */
 
         } else{
             /* On redirige vers le home de connexion et on "annule" le token de connexion en le crypant ? modifiant? */
+            changeContexte(); //Afin de changer la valeur du context
             history.push("/");
         }
-        //setClicked(!clicked);
     }
 
     return (
         <div className="divNav">
             <nav>
                 <ul className="fonction">
-                    <a href="/"  className="btn">Home</a>
-                    <a href="/service"  className="btn">Service</a> 
-                    <a href="/about"  className="btn">Contact</a>
+                    <Link to="/"  className="btn">Home</Link>
+                    <Link to="/service"  className="btn">Service</Link> 
+                    <Link to="/about"  className="btn">Contact</Link>
                     <li><button onClick={() => click()} className="ApiSpotify">
                         {!clicked && "Se connecter"}
                         {clicked && "Se deconnecter"}  

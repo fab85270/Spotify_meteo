@@ -16,6 +16,7 @@ export const BoutonContextProvider = ({children}) => { //Ici le children va repr
     
     const changeContexte = () => {
         setClicked(!clicked);
+        console.log("coucou Fabien");
     }
            console.log(clicked);
       return (<BoutonContext.Provider value={{clicked,changeContexte}}> {children} </BoutonContext.Provider>)
