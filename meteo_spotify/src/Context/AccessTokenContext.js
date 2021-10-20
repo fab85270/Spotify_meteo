@@ -7,7 +7,8 @@ import React,{createContext, useState} from 'react'
    
 })
 
-export const AccessTokenContextProvider = ({children}) => {
+export const AccessTokenContextProvider = ({children}) => { //Ici le children va représenter tous les composants/fichiers/routes impactées par 
+  //Ce context => il correspond a tous les enfants, ce qu'il y a entre les balises de AccessTokenContextProvider de App.js
 
   /* Initialisation du context utilisé par une chaine vide */
    const [accessToken,setAccessToken] = useState("");
