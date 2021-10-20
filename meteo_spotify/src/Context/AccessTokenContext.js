@@ -16,7 +16,7 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
 
     //Récupération du token de l'API spotify  : 
 
-    const Authenticate = async() => {
+    const authenticate = async() => {
       const { access_token } = await fetch('https://accounts.spotify.com/api/token', {
       method: 'POST',
       headers: {
@@ -33,7 +33,7 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
     setAccessToken(access_token);
    }
     console.log(accessToken);
-    return (<AccessTokenContext.Provider value={accessToken,Authenticate}> {children} </AccessTokenContext.Provider>)
+    return (<AccessTokenContext.Provider value={{accessToken,authenticate}}> {children} </AccessTokenContext.Provider>)
 };
 
 /** */
