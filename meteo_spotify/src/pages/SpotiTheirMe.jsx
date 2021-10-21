@@ -8,6 +8,7 @@ const SpotiTherLayout = () =>{
     const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
     let history = useHistory();
 
+
     if(!isConnected){ //Ne pas acceder a cette page si non connecté
         history.push("/");
     }
