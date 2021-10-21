@@ -13,7 +13,7 @@ const NavBar = () => {
 
     /* Utilisation des hooks */
     //const[clicked, setClicked] = useState(false);
-    const {accessToken,authenticate} = useContext(AccessTokenContext);
+    const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
     const {clicked,changeContexte} = useContext(BoutonContext);
 
     let history = useHistory();
@@ -32,6 +32,7 @@ const NavBar = () => {
         } else{
             /* On redirige vers le home de connexion et on "annule" le token de connexion en le crypant ? modifiant? */
             changeContexte(); //Afin de changer la valeur du context
+            disconect();
             history.push("/");
         }
     }

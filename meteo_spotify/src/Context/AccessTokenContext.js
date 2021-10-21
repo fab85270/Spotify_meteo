@@ -3,7 +3,10 @@ import React,{createContext, useState} from 'react'
 /* Definition du format de notre contexte */
  export const AccessTokenContext = createContext({
     accessToken: "",
-    setAccessToken: () => {}
+    isConnected: false,
+    setAccessToken: () => {},
+    setIsConnected: () => {}
+   
    
 })
 
@@ -12,6 +15,7 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
 
   /* Initialisation du context utilisé par une chaine vide */
    const [accessToken,setAccessToken] = useState("");
+   const [isConnected,setIsConnected] = useState(false);
   /* Rajouter un état booleen avec isConnected pour eviter d'utiliser l'accessToken sans être connecté. Et pour le remettre a false, on peut
   utiliser de nouveau ce state et le AccessToken sera initialisé à chaine vide 
 
@@ -30,13 +34,18 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
       body: `grant_type=client_credentials`,
     }).then(res => res.json())
 
-    console.log(access_token);
 
-    /* Changement de l'état de accessToken par le token récupéré */
+    /* Changement de l'état de accessToken et de isConneted par le token récupéré */
     setAccessToken(access_token);
+    setIsConnected(true); 
+
+   }
+   const disconect = () => {
+      setAccessToken("");
+      setIsConnected(false);
    }
     console.log(accessToken);
-    return (<AccessTokenContext.Provider value={{accessToken,authenticate}}> {children} </AccessTokenContext.Provider>)
+    return (<AccessTokenContext.Provider value={{accessToken,isConnected,authenticate,disconect}}> {children} </AccessTokenContext.Provider>)
 };
 
 /** */
