@@ -3,6 +3,7 @@ import React, {useContext, useState } from 'react';
 import { useHistory,Link } from "react-router-dom";
 import {AccessTokenContext} from '../../Context/AccessTokenContext';
 import { BoutonContext } from '../../Context/BoutonContext';
+import { TraductionContext } from '../../Context/TraductionContext';
 
 import './Navbar.css';
 
@@ -15,6 +16,7 @@ const NavBar = () => {
     //const[clicked, setClicked] = useState(false);
     const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
     const {clicked,changeContexte} = useContext(BoutonContext);
+    const {traduction,traductionApp} = useContext(TraductionContext);
 
     let history = useHistory();
 
@@ -41,12 +43,28 @@ const NavBar = () => {
         <div className="divNav">
             <nav>
                 <ul className="fonction">
-                    <Link to="/"  className="btn">Home</Link>
-                    <Link to="/service"  className="btn">Service</Link> 
-                    <Link to="/about"  className="btn">Contact</Link>
+                    <Link to="/"  className="btn">
+                        {traduction && "Home"}
+                        {!traduction && "Acceuil"}
+                    </Link>
+                    <Link to="/service"  className="btn">
+                        Service
+                    </Link> 
+                    <Link to="/about"  className="btn">
+                        {traduction && "About us"}
+                        {!traduction && "Nous concernant"}
+                    </Link>
                     <li><button onClick={() => click()} className="ApiSpotify">
-                        {!clicked && "Se connecter"}
-                        {clicked && "Se deconnecter"}  
+                        {!clicked && !traduction && "Se connecter"}
+                        {clicked && !traduction && "Se deconnecter"}  
+                        {!clicked && traduction && "Connect"}
+                        {clicked && traduction && "Disconnect"} 
+                        </button>
+                    </li>
+                    <li>
+                        <button onClick={() => traductionApp()} className="ApiSpotify">
+                            {traduction && "Translate"}
+                            {!traduction && "Traduire"}
                         </button>
                     </li>
                 </ul>
