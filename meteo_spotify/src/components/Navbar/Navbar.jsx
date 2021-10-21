@@ -45,7 +45,7 @@ const NavBar = () => {
                 <ul className="fonction">
                     <Link to="/"  className="btn">
                         {traduction && "Home"}
-                        {!traduction && "Acceuil"}
+                        {!traduction && "Accueil"}
                     </Link>
                     <Link to="/service"  className="btn">
                         Service
