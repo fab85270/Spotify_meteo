@@ -1,12 +1,19 @@
 
 import LayoutGlobal from '../Layout/LayoutGlobal';
+import {AccessTokenContext} from '../Context/AccessTokenContext';
+import {Link } from "react-router-dom";
+import React, {useContext} from 'react';
+import { TraductionContext } from '../Context/TraductionContext';
 
 const About = () =>{
+    const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
+    const {traduction,traductionApp} = useContext(TraductionContext);
 
+  
+    return(   
+    <LayoutGlobal children={   
 
-    return(
-    <LayoutGlobal children={
-        <>
+        <>  
             <h1>About</h1> 
         </>
     }>         

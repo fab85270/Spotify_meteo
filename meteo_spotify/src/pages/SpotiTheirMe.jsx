@@ -12,6 +12,9 @@ const SpotiTherLayout = () =>{
     if(!isConnected){ //Ne pas acceder a cette page si non connecté
         history.push("/");
     }
+
+    /* Dans ce return, sera intégré le formulaire d'Abdel qui permet donc de saisir un code postal. */
+    /*Ici on ne pourra insérer que des composants (lecture musique? création de playlist ? ) */
     return(
     <LayoutGlobal children={
         <>
