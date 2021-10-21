@@ -32,7 +32,7 @@ const NavBar = () => {
         } else{
             /* On redirige vers le home de connexion et on "annule" le token de connexion en le crypant ? modifiant? */
             changeContexte(); //Afin de changer la valeur du context
-            disconect();
+            disconect(); 
             history.push("/");
         }
     }
