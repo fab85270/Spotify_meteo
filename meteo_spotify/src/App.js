@@ -7,25 +7,28 @@ import About from './pages/About';
 import SpotiTherMe from './pages/SpotiTheirMe';
 import {AccessTokenContextProvider} from './Context/AccessTokenContext';
 import {BoutonContextProvider} from './Context/BoutonContext';
+import { TraductionContextProvider } from './Context/TraductionContext';
 
 
 function App() {
   return (
     <AccessTokenContextProvider>
       <BoutonContextProvider>
-        <Router>
-          <Switch>
-            <Route exact path="/">
-              <SpotiTherLayout/>
-            </Route>
-            <Route path="/about">
-              <About/>
-            </Route>
-            <Route path="/spotiTherMe">
-              <SpotiTherMe/>
-            </Route>
-          </Switch>
-        </Router>
+        <TraductionContextProvider>
+          <Router>
+            <Switch>
+              <Route exact path="/">
+                <SpotiTherLayout/>
+              </Route>
+              <Route path="/about">
+                <About/>
+              </Route>
+              <Route path="/spotiTherMe">
+                <SpotiTherMe/>
+              </Route>
+            </Switch>
+          </Router>
+        </TraductionContextProvider>
       </BoutonContextProvider>
     </AccessTokenContextProvider>
   );
