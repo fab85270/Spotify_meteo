@@ -74,11 +74,10 @@ const NavBar = () => {
                 
                     <div>
                 
-                    <DropdownButton id="dropdown-basic-button" title="Dropdown button">
+                    <DropdownButton id="dropdown-basic-button" title="coucou">
                         <li>
                             <button>coucou</button>
                             <button>ca va </button>
-  
                         </li>
                     </DropdownButton>
                      </div>
