@@ -4,6 +4,7 @@ import { useHistory,Link } from "react-router-dom";
 import {AccessTokenContext} from '../../Context/AccessTokenContext';
 import { BoutonContext } from '../../Context/BoutonContext';
 import { TraductionContext } from '../../Context/TraductionContext';
+import Dropdown from 'react-dropdown';
 
 import './Navbar.css';
 
@@ -62,10 +63,23 @@ const NavBar = () => {
                         </button>
                     </li>
                     <li>
-                        <button onClick={() => traductionApp()} className="ApiSpotify">
-                            {traduction && "Translate"}
-                            {!traduction && "Traduire"}
-                        </button>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default">Menu déroulant</button>
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">    
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" title="Lien 1">Lien 1</a></li>
+                                <li><a href="#" title="Lien 2">Lien 2</a></li>
+                                <li><a href="#" title="Lien 3">Lien 3</a></li>
+
+                            </ul>
+                                <button onClick={() => traductionApp()} className="ApiSpotify">
+                                    {traduction && "Translate"}
+                                    {!traduction && "Traduire"}
+                                </button>
+                        </div>
                     </li>
                 </ul>
             </nav>
