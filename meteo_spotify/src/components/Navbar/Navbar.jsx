@@ -43,6 +43,10 @@ const NavBar = () => {
         }
     }
 
+    const connect = () =>{
+        history.push("/connectPage"); //Redirection vers le formulaire
+    }
+
     return (
         <div className="divNav">
             <nav>
@@ -58,7 +62,7 @@ const NavBar = () => {
                         {traduction && "About us"}
                         {!traduction && "Nous concernant"}
                     </Link>
-                    <li><button onClick={() => click()} className="ApiSpotify">
+                    <li><button onClick={() => connect()} className="ApiSpotify">
                         {!clicked && !traduction && "Se connecter"}
                         {clicked && !traduction && "Se deconnecter"}  
                         {!clicked && traduction && "Connect"}

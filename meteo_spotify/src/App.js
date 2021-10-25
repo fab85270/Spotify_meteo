@@ -5,6 +5,7 @@ import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import SpotiTherLayout from './components/SpotiTherLayout/SpotiTherLayout';
 import About from './pages/About';
 import SpotiTherMe from './pages/SpotiTheirMe';
+import FormulaireConnection from './pages/FormulaireConnection';
 import {AccessTokenContextProvider} from './Context/AccessTokenContext';
 import {BoutonContextProvider} from './Context/BoutonContext';
 import { TraductionContextProvider } from './Context/TraductionContext';
@@ -25,6 +26,9 @@ function App() {
               </Route>
               <Route path="/spotiTherMe">
                 <SpotiTherMe/>
+              </Route>
+              <Route path="/connectPage">
+                <FormulaireConnection/>
               </Route>
             </Switch>
           </Router>
