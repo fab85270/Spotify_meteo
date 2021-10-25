@@ -66,22 +66,11 @@ const NavBar = () => {
                         </button>
                     </li>
                     <li>
-                                <button onClick={() => traductionApp()} className="ApiSpotify">
-                                    {traduction && "Translate"}
-                                    {!traduction && "Traduire"}
-                                </button>
+                        <button onClick={() => traductionApp()} className="ApiSpotify">
+                            {traduction && "Translate"}
+                            {!traduction && "Traduire"}
+                        </button>
                     </li>
-                
-                    <div>
-                
-                    <DropdownButton id="dropdown-basic-button" title="coucou">
-                        <li>
-                            <button>coucou</button>
-                            <button>ca va </button>
-                        </li>
-                    </DropdownButton>
-                     </div>
-                  
                 </ul>
             </nav>
         </div>
