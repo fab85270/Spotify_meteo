@@ -8,6 +8,8 @@ import SpotiTherMe from './pages/SpotiTheirMe';
 import {AccessTokenContextProvider} from './Context/AccessTokenContext';
 import {BoutonContextProvider} from './Context/BoutonContext';
 import { TraductionContextProvider } from './Context/TraductionContext';
+import PageMeteo from './components/PageMeteo/PageMeteo';
+
 
 
 function App() {
@@ -25,6 +27,9 @@ function App() {
               </Route>
               <Route path="/spotiTherMe">
                 <SpotiTherMe/>
+              </Route>
+              <Route path="/meteo">
+                <PageMeteo/>
               </Route>
             </Switch>
           </Router>
