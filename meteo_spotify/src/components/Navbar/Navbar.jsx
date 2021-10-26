@@ -42,56 +42,91 @@ const NavBar = () => {
             history.push("/");
         }
     }
-
-    return (
-        <div className="divNav">
-            <nav>
-                <ul className="fonction">
-                    <Link to="/"  className="btn">
-                        {traduction && "Home"}
-                        {!traduction && "Accueil"}
-                    </Link>
-                    <Link to="/meteo" className="btn">
-                        {clicked && "Meteo"}
-                    </Link>
-                    <Link to="/service"  className="btn">
-                        Service
-                    </Link> 
-                    <Link to="/about"  className="btn">
-                        {traduction && "About us"}
-                        {!traduction && "Nous concernant"}
-                    </Link>
-                    <li><button onClick={() => click()} className="ApiSpotify">
-                        {!clicked && !traduction && "Se connecter"}
-                        {clicked && !traduction && "Se deconnecter"}  
-                        {!clicked && traduction && "Connect"}
-                        {clicked && traduction && "Disconnect"} 
-                        </button>
-                    </li>
-                    <li>
-                                <button onClick={() => traductionApp()} className="ApiSpotify">
-                                    {traduction && "Translate"}
-                                    {!traduction && "Traduire"}
-                                </button>
-                    </li>
-                
-                    <div>
-                     </div>
-                  
-                </ul>
-            </nav>
-        </div>
-/**
- * Interessant de créer une fonction dans ce composant navbar qui regroupe toutes les actions qu'on veut réaliser lorsque on clique sur le 
- * bouton "se connecter" 
- */
-        /* 
-        Choses à faire : 
-            - créer un composant bouton qui permet donc de déterminer une redirection vers une page spécifique selon le type du bouton.
-        On aura ainsi un bouton "clicked" => On se connecte et donc on va être redirigé vers une page avec les différentes utilisations 
-        Et l'inverse du bouton "clicked"*/
-
-    );
+    if(clicked){
+        return (
+            <div className="divNav">
+                <nav>
+                    <ul className="fonction">
+                        <Link to="/"  className="btn">
+                            {traduction && "Home"}
+                            {!traduction && "Accueil"}
+                        </Link>
+                        <Link to="/meteo" className="btn">
+                            Meteo
+                        </Link>
+                        <Link to="/service"  className="btn">
+                            Service
+                        </Link> 
+                        <Link to="/about"  className="btn">
+                            {traduction && "About us"}
+                            {!traduction && "Nous concernant"}
+                        </Link>
+                        <li><button onClick={() => click()} className="ApiSpotify">
+                                {!traduction && "Se deconnecter"}  
+                                {traduction && "Disconnect"} 
+                            </button>
+                        </li>
+                        <li>
+                                    <button onClick={() => traductionApp()} className="ApiSpotify">
+                                        {traduction && "Translate"}
+                                        {!traduction && "Traduire"}
+                                    </button>
+                        </li>
+                    
+                        <div>
+                         </div>
+                      
+                    </ul>
+                </nav>
+            </div>
+    /**
+     * Interessant de créer une fonction dans ce composant navbar qui regroupe toutes les actions qu'on veut réaliser lorsque on clique sur le 
+     * bouton "se connecter" 
+     */
+            /* 
+            Choses à faire : 
+                - créer un composant bouton qui permet donc de déterminer une redirection vers une page spécifique selon le type du bouton.
+            On aura ainsi un bouton "clicked" => On se connecte et donc on va être redirigé vers une page avec les différentes utilisations 
+            Et l'inverse du bouton "clicked"*/
+    
+        );
+    }else{
+        return (
+            <div className="divNav">
+                <nav>
+                    <ul className="fonction">
+                        <Link to="/"  className="btn">
+                            {traduction && "Home"}
+                            {!traduction && "Accueil"}
+                        </Link>
+                        <Link to="/service"  className="btn">
+                            Service
+                        </Link> 
+                        <Link to="/about"  className="btn">
+                            {traduction && "About us"}
+                            {!traduction && "Nous concernant"}
+                        </Link>
+                        <li><button onClick={() => click()} className="ApiSpotify">
+                            {!traduction && "Se connecter"}
+                            {traduction && "Connect"}
+                            </button>
+                        </li>
+                        <li>
+                                    <button onClick={() => traductionApp()} className="ApiSpotify">
+                                        {traduction && "Translate"}
+                                        {!traduction && "Traduire"}
+                                    </button>
+                        </li>
+                    
+                        <div>
+                         </div>
+                      
+                    </ul>
+                </nav>
+            </div>    
+        );
+    }
+    
 };
 
 export default NavBar;
