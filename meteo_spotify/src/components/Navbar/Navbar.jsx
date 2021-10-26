@@ -51,6 +51,9 @@ const NavBar = () => {
                         {traduction && "Home"}
                         {!traduction && "Accueil"}
                     </Link>
+                    <Link to="/meteo" className="btn">
+                        {clicked && "Meteo"}
+                    </Link>
                     <Link to="/service"  className="btn">
                         Service
                     </Link> 
@@ -73,13 +76,6 @@ const NavBar = () => {
                     </li>
                 
                     <div>
-                
-                    <DropdownButton id="dropdown-basic-button" title="coucou">
-                        <li>
-                            <button>coucou</button>
-                            <button>ca va </button>
-                        </li>
-                    </DropdownButton>
                      </div>
                   
                 </ul>

@@ -1,5 +1,7 @@
 import React from 'react';
 import Form_CP from '../Form_CP/Form_CP';
+import LayoutGlobal from '../../Layout/LayoutGlobal';
+
 
 import { useState } from 'react';
 
@@ -131,6 +133,8 @@ const PageMeteo = () => {
     }
 
     return ( 
+        <LayoutGlobal children={   
+
             <div className='layout'>
                 
                 <h1>Table</h1>
@@ -145,8 +149,8 @@ const PageMeteo = () => {
 
                 <p>{message}</p>
             </div>
-            
-        
+        }>         
+        </LayoutGlobal>       
           
     )
 
