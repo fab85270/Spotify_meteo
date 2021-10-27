@@ -3,7 +3,7 @@ import DropDown from '../DropDown/DropDown';
 import { TraductionContext } from '../../Context/TraductionContext';
 import { useHistory,Link } from "react-router-dom";
 
-const Form_Connect = ({checkSub}) =>{
+const Form_Connect = ({value,checkSub,checkChange}) =>{
 
   /* Définition des valeurs dans le dropdown */
     const data = [
@@ -14,12 +14,17 @@ const Form_Connect = ({checkSub}) =>{
 
     /* Utilisation du context traduction */
     const {traduction,traductionApp} = useContext(TraductionContext);
-    const[selectedValue,setSelectedValue] = useState("1");
+
+
+    /* Afin de rediriger vers de nouvelles pages */
     let history = useHistory();
 
+    /* Méthode gestion annulation saisie formulaire */
     const annuler = () =>{
       history.push("/");
     }
+
+    /** onChange={e => setSelectedValue(e.target.value) */
 
     return (
         <form onSubmit={(event)=> checkSub(event)}>
@@ -27,10 +32,9 @@ const Form_Connect = ({checkSub}) =>{
                 {!traduction && "Merci de choisir votre compte de connexion"}
                 {traduction && "Please choose your login account"}
                 <div>
-                    <select value={selectedValue} onChange={e => setSelectedValue(e.target.value)}>
+                    <select value={value} onChange={(event)=> checkChange(event)}>
                       {data.map((item,idx) => <option key ={idx} value={item.value}>{item.name}</option>)}
                     </select>
-                    <p>{selectedValue}</p>
                 </div>
                 <br/>
             </label>
