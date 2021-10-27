@@ -34,20 +34,12 @@ const NavBar = () => {
             history.push("/connectAPI");
 
 
-        /*if(!clicked){
-            /* On récupère le AccessToken de l'API spotify */
-        /*    await authenticate(); 
-            changeContexte(); //Afin de changer la valeur du contexte
-            history.push("/spotiTherMe");
-            
-            /* On redirige vers la page avec l'ensemble des fonctionalités de notre application pour interragir avec l'API spotify */
-
-       /* } else{
+        if(clicked){
             /* On redirige vers le home de connexion et on "annule" le token de connexion en le crypant ? modifiant? */
-       /*     changeContexte(); //Afin de changer la valeur du context
+            changeContexte(); //Afin de changer la valeur du context
             disconect(); 
             history.push("/");
-        }*/
+        }
     }
     if(clicked){
         return (
