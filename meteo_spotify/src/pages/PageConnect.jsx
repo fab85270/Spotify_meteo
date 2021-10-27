@@ -33,7 +33,6 @@ const PageConnect = () => {
             await authenticate(selectedValue); 
             changeContexte(); //Afin de changer la valeur du contexte
             history.push("/spotiTherMe");
-
     }
     return(   
             <Form_Connect
