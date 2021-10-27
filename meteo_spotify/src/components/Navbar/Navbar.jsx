@@ -29,20 +29,25 @@ const NavBar = () => {
     /* Fonction des actions réalisées suite au click du bonton connexion/déconnection  */
 
     const click = async() => { //C'est bien de ne mettre que une fonction dans un "OnClick d'un boutton"
-        if(!clicked){
+
+        //test:
+            history.push("/connectAPI");
+
+
+        /*if(!clicked){
             /* On récupère le AccessToken de l'API spotify */
-            await authenticate(); 
+        /*    await authenticate(); 
             changeContexte(); //Afin de changer la valeur du contexte
             history.push("/spotiTherMe");
             
             /* On redirige vers la page avec l'ensemble des fonctionalités de notre application pour interragir avec l'API spotify */
 
-        } else{
+       /* } else{
             /* On redirige vers le home de connexion et on "annule" le token de connexion en le crypant ? modifiant? */
-            changeContexte(); //Afin de changer la valeur du context
+       /*     changeContexte(); //Afin de changer la valeur du context
             disconect(); 
             history.push("/");
-        }
+        }*/
     }
     if(clicked){
         return (
@@ -112,9 +117,6 @@ const NavBar = () => {
                             {!traduction && "Se connecter"}
                             {traduction && "Connect"}
                             </button>
-                        </li>
-                        <li>
-                            <Form_Connect></Form_Connect>
                         </li>
                         <li>
                             <button onClick={() => traductionApp()} className="ApiSpotify">
