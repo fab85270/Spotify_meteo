@@ -52,22 +52,27 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
           throw new Error("Le compte choisit ne figure pas parmis ceux listés"); //Déclaration d'une erreur.
       }
       
-      const { access_token } = await fetch('https://accounts.spotify.com/api/token', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Basic ' + Buffer.from(clientID + ':' + clientSecret).toString('base64'),
-        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
-      },
-      body: `grant_type=client_credentials`,
-    }).then(res => res.json())
+      try{
+          const { access_token } = await fetch('https://accounts.spotify.com/api/token', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Basic ' + Buffer.from(clientID + ':' + clientSecret).toString('base64'),
+            'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+          },
+          body: `grant_type=client_credentials`,
+          }).then(res => res.json())
 
+           /* Changement de l'état de accessToken et de isConneted par le token récupéré */
 
-    /* Changement de l'état de accessToken et de isConneted par le token récupéré */
-    setAccessToken(access_token);
-    setIsConnected(true); 
+            setAccessToken(access_token);
+            setIsConnected(true); 
 
+      } catch(error){
+        throw new Error("La connexion à l'API a échoué"); //Déclaration d'une erreur.
+      }
    }
+
    const disconect = () => {
       setAccessToken("");
       setIsConnected(false);
