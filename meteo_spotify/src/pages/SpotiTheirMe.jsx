@@ -2,6 +2,7 @@ import LayoutGlobal from '../Layout/LayoutGlobal';
 import React, {useContext, useState } from 'react';
 import {AccessTokenContext} from '../Context/AccessTokenContext';
 import { useHistory,Link } from "react-router-dom";
+import PageMeteo from '../components/PageMeteo/PageMeteo';
 
 const SpotiTherLayout = () =>{
 
@@ -19,6 +20,7 @@ const SpotiTherLayout = () =>{
     <LayoutGlobal children={
         <>
             <h1>Les fonctionalités du site sont a venir</h1> 
+            <PageMeteo></PageMeteo>
         </>
     }>         
     </LayoutGlobal>
