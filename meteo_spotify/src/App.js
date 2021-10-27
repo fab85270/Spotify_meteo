@@ -9,6 +9,8 @@ import FormulaireConnection from './pages/FormulaireConnection';
 import {AccessTokenContextProvider} from './Context/AccessTokenContext';
 import {BoutonContextProvider} from './Context/BoutonContext';
 import { TraductionContextProvider } from './Context/TraductionContext';
+import PageMeteo from './components/PageMeteo/PageMeteo';
+
 
 
 function App() {
@@ -27,8 +29,8 @@ function App() {
               <Route path="/spotiTherMe">
                 <SpotiTherMe/>
               </Route>
-              <Route path="/connectPage">
-                <FormulaireConnection/>
+              <Route path="/meteo">
+                <PageMeteo/>
               </Route>
             </Switch>
           </Router>
