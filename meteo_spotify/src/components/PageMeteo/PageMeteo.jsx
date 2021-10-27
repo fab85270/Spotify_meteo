@@ -132,26 +132,20 @@ const PageMeteo = () => {
 
     }
 
-    return ( 
-        <LayoutGlobal children={   
-
+    return (  
             <div className='layout'>
                 
                 <h1>Table</h1>
                 <Form_CP
-                value={cp}
-                checkSubmit={recupererMeteo}
-                checkChange={recupererCP}
+                    value={cp}
+                    checkSubmit={recupererMeteo}
+                    checkChange={recupererCP}
                 >
-
-                </Form_CP>
+            </Form_CP>
                 
 
                 <p>{message}</p>
             </div>
-        }>         
-        </LayoutGlobal>       
-          
     )
 
 }
