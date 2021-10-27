@@ -4,6 +4,7 @@ import { TraductionContext } from '../../Context/TraductionContext';
 
 
 
+
 const Form_CP = ({value,checkSubmit,checkChange}) => {
 
   /* Utilisation du context traduction */

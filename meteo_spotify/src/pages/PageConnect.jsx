@@ -5,9 +5,11 @@ import Form_Connect from "../components/Form_Connect/Form_Connect";
 
 
 const PageConnect = () => {
-
+    
+ 
     const recupererCompte = (event) => {
-        //console.log(event.target.value);
+        console.log("coucuo");
+        console.log("coucou"+ event.target.value);
 
     }
     return(   
