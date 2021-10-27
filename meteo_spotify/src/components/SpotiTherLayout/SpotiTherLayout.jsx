@@ -9,14 +9,20 @@ la fonction "https://catfact.ninja/fact " permettra de générer des textes alé
 
 
 import './style.css';
-
-import {useState,useEffect} from 'react'; // pour utiliser useState, il faut faire un import de la sorte
-import NavBar from '../Navbar/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ajouter le boostrap au sein de l'application
 import LayoutGlobal from '../../Layout/LayoutGlobal';
+import ButtonRedirection from '../Button/ButtonRedirection';
+import React, {useContext} from 'react';
+import {AccessTokenContext} from '../../Context/AccessTokenContext';
 
 function SpotiTherLayout({}){ 
-    return (      
+    
+     /* Utilisation des hooks */
+     const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
+
+
+    if(!isConnected){
+        return (      
             <LayoutGlobal children={
                 <>
                     <h1>Welcome to the web site</h1>
@@ -24,7 +30,18 @@ function SpotiTherLayout({}){
                    
                 </>       
             }></LayoutGlobal>
+        ) 
+    } else {
+        return (      
+            <LayoutGlobal children={
+                <>
+                    <h1>Welcome to the web site</h1>
+                    <p>Ici mettre des images.. photos et tout..informations are coming...</p>
+                    <ButtonRedirection/>
+                </>       
+            }></LayoutGlobal>
     )
+    }
 }
 export default SpotiTherLayout;
 

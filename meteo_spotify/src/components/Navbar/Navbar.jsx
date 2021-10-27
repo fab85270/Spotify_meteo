@@ -19,7 +19,6 @@ const NavBar = () => {
     Retour vers la page principale Avec de nouveau le bouton "seConnecter qui se présente a nous"  */
 
     /* Utilisation des hooks */
-    //const[clicked, setClicked] = useState(false);
     const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
     const {clicked,changeContexte} = useContext(BoutonContext);
     const {traduction,traductionApp} = useContext(TraductionContext);
