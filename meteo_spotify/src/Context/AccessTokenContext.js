@@ -39,7 +39,8 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
           console.log("clientSecret :"+clientSecret);
           break;
         case '2': //Cas Abel
-          /* A définir */
+          clientID=process.env.REACT_APP_CLIENT_ID_ABEL;
+          clientSecret=process.env.REACT_APP_CLIENT_SECRET_ABEL;
           break;
         case '3': //Cas Fabien
           clientID=process.env.REACT_APP_CLIENT_ID_FAB;
