@@ -4,8 +4,10 @@ import { useHistory,Link } from "react-router-dom";
 import {AccessTokenContext} from '../../Context/AccessTokenContext';
 import { BoutonContext } from '../../Context/BoutonContext';
 import { TraductionContext } from '../../Context/TraductionContext';
-import {Dropdown} from 'react-dropdown';
-import { Button,  ButtonGroup, DropdownButton, MenuItem } from 'react-bootstrap';
+import Form_Connect from '../Form_Connect/Form_Connect';
+
+
+
 
 
 
@@ -112,15 +114,14 @@ const NavBar = () => {
                             </button>
                         </li>
                         <li>
-                                    <button onClick={() => traductionApp()} className="ApiSpotify">
-                                        {traduction && "Translate"}
-                                        {!traduction && "Traduire"}
-                                    </button>
+                            <Form_Connect></Form_Connect>
                         </li>
-                    
-                        <div>
-                         </div>
-                      
+                        <li>
+                            <button onClick={() => traductionApp()} className="ApiSpotify">
+                                {traduction && "Translate"}
+                                {!traduction && "Traduire"}
+                            </button>
+                        </li>
                     </ul>
                 </nav>
             </div>    
