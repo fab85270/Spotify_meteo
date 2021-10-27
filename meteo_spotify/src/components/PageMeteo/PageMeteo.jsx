@@ -130,7 +130,7 @@ const PageMeteo = () => {
         
     }
     return (  
-        
+            <LayoutGlobal children ={
             <div className='layout'>
             
                 <Form_CP
@@ -142,8 +142,9 @@ const PageMeteo = () => {
 
                 <p>{message}</p>
             </div>     
-          
-       
+            
+        }>
+        </LayoutGlobal>
     )
 
 }
