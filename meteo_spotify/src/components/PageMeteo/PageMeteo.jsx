@@ -128,14 +128,10 @@ const PageMeteo = () => {
         console.log(WEATHER[donneesMeteo.forecast[0].weather]);
         //console.log(donneesMeteo);
         
-        
-
     }
-
     return (  
             <div className='layout'>
-                
-                <h1>Table</h1>
+            
                 <Form_CP
                     value={cp}
                     checkSubmit={recupererMeteo}
@@ -145,7 +141,8 @@ const PageMeteo = () => {
                 
 
                 <p>{message}</p>
-            </div>
+            </div>     
+          
     )
 
 }
