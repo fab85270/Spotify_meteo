@@ -1,12 +1,23 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import Form_CP from '../Form_CP/Form_CP';
 import LayoutGlobal from '../../Layout/LayoutGlobal';
-
-
+import ButtonRedirection from '../Button/ButtonRedirection';
+import {AccessTokenContext} from '../../Context/AccessTokenContext';
+import { useHistory,Link } from "react-router-dom";
 import { useState } from 'react';
 
 
 const PageMeteo = () => {
+
+    /* Utilisation du context */
+
+    const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
+    let history = useHistory();
+
+    /* On doit être connecté pour accéder a la méteo */
+    if(!isConnected){ 
+        history.push("/");
+    }
 
     const WEATHER = {
         0 : "Soleil",
@@ -132,15 +143,13 @@ const PageMeteo = () => {
     return (  
             <LayoutGlobal children ={
             <div className='layout'>
-            
                 <Form_CP
                     value={cp}
                     checkSubmit={recupererMeteo}
                     checkChange={recupererCP}
                 >
             </Form_CP>
-
-                <p>{message}</p>
+            <ButtonRedirection/>
             </div>     
             
         }>
