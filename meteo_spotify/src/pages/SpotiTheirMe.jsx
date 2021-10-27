@@ -28,8 +28,6 @@ const SpotiTherLayout = () =>{
                 </h1>
             </strong>
             <br></br>
-            <PageMeteo></PageMeteo>
-
         </>
     }>         
     </LayoutGlobal>
