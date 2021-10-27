@@ -10,7 +10,6 @@ import { useState } from 'react';
 const PageMeteo = () => {
 
     /* Utilisation du context */
-
     const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
     let history = useHistory();
 
