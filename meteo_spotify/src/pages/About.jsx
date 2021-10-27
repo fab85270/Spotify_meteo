@@ -1,9 +1,11 @@
 
 import LayoutGlobal from '../Layout/LayoutGlobal';
 import {AccessTokenContext} from '../Context/AccessTokenContext';
-import {Link } from "react-router-dom";
+
 import React, {useContext} from 'react';
 import { TraductionContext } from '../Context/TraductionContext';
+import ButtonRedirection from '../components/Button/ButtonRedirection';
+import { useHistory,Link } from "react-router-dom";
 
 const About = () =>{
     const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
@@ -15,6 +17,7 @@ const About = () =>{
 
         <>  
             <h1>About</h1> 
+            <ButtonRedirection/>
         </>
     }>         
     </LayoutGlobal>
