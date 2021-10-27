@@ -26,6 +26,7 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
     const authenticate = async(selectedValue) => {
       
       /* Obtention des informations de connexion selon le compte choisit */
+
       var clientID="";
       var clientSecret="";
 
@@ -33,11 +34,22 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
         case '1': //Cas de Maxence
           clientID=process.env.REACT_APP_CLIENT_ID_MAX;
           clientSecret=process.env.REACT_APP_CLIENT_SECRET_MAX;
+
+          console.log("client ID :"+clientID);
+          console.log("clientSecret :"+clientSecret);
+          break;
         case '2': //Cas Abel
           /* A définir */
+          break;
         case '3': //Cas Fabien
           clientID=process.env.REACT_APP_CLIENT_ID_FAB;
           clientSecret=process.env.REACT_APP_CLIENT_SECRET_FAB;
+
+          console.log("client ID :"+clientID );
+          console.log("clientSecret :"+clientSecret);
+        break;
+        default:
+          throw new Error("Le compte choisit ne figure pas parmis ceux listés"); //Déclaration d'une erreur.
       }
       
       const { access_token } = await fetch('https://accounts.spotify.com/api/token', {
