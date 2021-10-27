@@ -3,10 +3,12 @@ import React, {useContext, useState } from 'react';
 import {AccessTokenContext} from '../Context/AccessTokenContext';
 import { useHistory,Link } from "react-router-dom";
 import PageMeteo from '../components/PageMeteo/PageMeteo';
+import { TraductionContext } from '../Context/TraductionContext';
 
 const SpotiTherLayout = () =>{
 
     const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
+    const {traduction,traductionApp} = useContext(TraductionContext);
     let history = useHistory();
 
 
@@ -19,7 +21,15 @@ const SpotiTherLayout = () =>{
     return(
     <LayoutGlobal children={
         <>
+            <strong>
+                <h1>
+                    {!traduction && "Bienvenue dans l'application SpotiTheirMe"}
+                    {traduction && "Welcome to the SpotiTheirMe Application"}
+                </h1>
+            </strong>
+            <br></br>
             <PageMeteo></PageMeteo>
+
         </>
     }>         
     </LayoutGlobal>
