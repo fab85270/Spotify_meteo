@@ -30,7 +30,7 @@ const PageConnect = () => {
 
          /* On récupère le AccessToken de l'API spotify  du compte désiré */
 
-            await authenticate(); 
+            await authenticate(selectedValue); 
             changeContexte(); //Afin de changer la valeur du contexte
             history.push("/spotiTherMe");
 

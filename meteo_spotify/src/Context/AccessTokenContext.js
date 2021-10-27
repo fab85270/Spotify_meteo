@@ -23,12 +23,28 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
 
     //Récupération du token de l'API spotify  : 
 
-    const authenticate = async() => {
+    const authenticate = async(selectedValue) => {
+      
+      /* Obtention des informations de connexion selon le compte choisit */
+      var clientID="";
+      var clientSecret="";
+
+      switch(selectedValue){
+        case '1': //Cas de Maxence
+          
+        case '2': //Cas Abel
+        case '3': //Cas Fabien
+          clientID=process.env.REACT_APP_CLIENT_ID;
+          clientSecret=process.env.REACT_APP_CLIENT_SECRET;
+          console.log("Client ID : "+clientID);
+          console.log("Client secret : "+clientSecret);
+      }
+      
       const { access_token } = await fetch('https://accounts.spotify.com/api/token', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
-        'Authorization': 'Basic ' + Buffer.from(process.env.REACT_APP_CLIENT_ID + ':' + process.env.REACT_APP_CLIENT_SECRET).toString('base64'),
+        'Authorization': 'Basic ' + Buffer.from( {clientID} + ':' + {clientSecret}).toString('base64'),
         'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
       },
       body: `grant_type=client_credentials`,
