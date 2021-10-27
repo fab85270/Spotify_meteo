@@ -14,7 +14,6 @@ const PageConnect = () => {
     const[selectedValue,setSelectedValue] = useState("1");
     let history = useHistory();
  
-
     /* Méthode pour récupérer le compte de la personne selectionnée */
 
     const recupererPersonne = (event) => {
