@@ -11,8 +11,9 @@ const PageConnect = () => {
 
     }
     return(   
-            <Form_Connect>
-                checkSubmit={recupererCompte}
+            <Form_Connect
+                checkSub={recupererCompte}
+            >
             </Form_Connect>
         );
 }
