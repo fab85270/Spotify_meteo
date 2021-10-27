@@ -5,6 +5,8 @@ import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import SpotiTherLayout from './components/SpotiTherLayout/SpotiTherLayout';
 import About from './pages/About';
 import SpotiTherMe from './pages/SpotiTheirMe';
+import PageConnect from './pages/PageConnect';
+
 import {AccessTokenContextProvider} from './Context/AccessTokenContext';
 import {BoutonContextProvider} from './Context/BoutonContext';
 import { TraductionContextProvider } from './Context/TraductionContext';
@@ -30,6 +32,9 @@ function App() {
               </Route>
               <Route path="/meteo">
                 <PageMeteo/>
+              </Route>
+              <Route path='/connectAPI'>
+                  <PageConnect/>
               </Route>
             </Switch>
           </Router>
