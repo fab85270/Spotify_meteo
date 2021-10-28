@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import { TraductionContext } from '../../Context/TraductionContext';
-
+import './style.css'
 
 
 
@@ -11,13 +11,18 @@ const Form_CP = ({value,checkSubmit,checkChange}) => {
     const {traduction,traductionApp} = useContext(TraductionContext);
 
     return (
-      <form onSubmit={(event)=> checkSubmit(event)}>
+      
+      <form class="meteo" onSubmit={(event)=> checkSubmit(event)}>
+        <div>
         <label>
           {!traduction && "Code postale"}
           {traduction && "PostCode"}
           <input type="text" value={value} onChange={(event)=> checkChange(event)} />
         </label>
+        </div> 
+        <div>
         <input type="submit" value={!traduction && "Envoyer" || traduction && "Submit"} />
+        </div>
       </form>
     );
   }
