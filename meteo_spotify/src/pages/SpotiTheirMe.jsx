@@ -1,9 +1,11 @@
 import LayoutGlobal from '../Layout/LayoutGlobal';
-import React, {useContext, useState } from 'react';
+import React, {useContext, useState,Component  } from 'react';
 import {AccessTokenContext} from '../Context/AccessTokenContext';
 import { useHistory,Link } from "react-router-dom";
 import PageMeteo from '../components/PageMeteo/PageMeteo';
 import { TraductionContext } from '../Context/TraductionContext';
+import { SpotifyApiContext, Artist } from 'react-spotify-api';
+
 
 const SpotiTherLayout = () =>{
 
@@ -28,6 +30,22 @@ const SpotiTherLayout = () =>{
                 </h1>
             </strong>
             <br></br>
+            <SpotifyApiContext.Provider value={props.token}>
+      <Artist id={props.id}>
+        {({ data, loading, error }) =>
+          data ? (
+            <div>
+              <h1>{data.name}</h1>
+              <ul>
+                {data.genres.map(genre => (
+                  <li key={genre}>{genre}</li>
+                ))}
+              </ul>
+            </div>
+          ) : null
+        }
+      </Artist>
+    </SpotifyApiContext.Provider>
         </>
     }>         
     </LayoutGlobal>
