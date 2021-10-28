@@ -1,6 +1,7 @@
 import React, {useContext,useState} from 'react';
 import { TraductionContext } from '../../Context/TraductionContext';
 import { useHistory,Link } from "react-router-dom";
+import './style.css';
 
 const Form_Connect = ({value,checkSub,checkChange}) =>{
 
@@ -27,6 +28,7 @@ const Form_Connect = ({value,checkSub,checkChange}) =>{
 
     return (
         <form onSubmit={(event)=> checkSub(event)}>
+          <div>
             <label>
                 {!traduction && "Merci de choisir votre compte de connexion"}
                 {traduction && "Please choose your login account"}
@@ -37,11 +39,14 @@ const Form_Connect = ({value,checkSub,checkChange}) =>{
                 </div>
                 <br/>
             </label>
-          <input type="submit" value={!traduction && "Envoyer" || traduction && "Submit"} />
-          <button onClick={() => annuler()} className="AnnulerConnection"> 
-              {!traduction && "Annuler"}
-              {traduction && "Cancel"}
-          </button>        
+          </div>
+          <div>
+            <input type="submit" value={!traduction && "Envoyer" || traduction && "Submit"} />
+            <button onClick={() => annuler()} className="AnnulerConnection"> 
+                {!traduction && "Annuler"}
+                {traduction && "Cancel"}
+            </button>   
+        </div>     
         </form>
       );
 }
