@@ -1,17 +1,17 @@
-form{
+.connect{
     padding-top: 10%;
     text-align: center;
 }
 
-form label{
+.connect label{
     font-size: xx-large;
 }
 
-form label div{
+.connect label div{
     font-size: medium;
 }
 
-form button{
+.connect button{
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
@@ -24,19 +24,17 @@ form button{
     transition-duration: 0.4s;
     cursor: pointer;
 }
-form button {
+.connect button {
     background-color: white;
     color: black;
     border: 2px solid #e7e7e7;
   }
   
-form button:hover {
+.connect button:hover {
     background-color: #e7e7e7;
 }
   
-
-
-form input{
+.connect input{
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
@@ -50,13 +48,13 @@ form input{
     cursor: pointer;
 }
 
-form input{
+.connect input{
     background-color: white;
     color: black;
     border: 2px solid #555555;
 }
   
-form input:hover {
+.connect input:hover {
     background-color: #555555;
     color: white;
 }

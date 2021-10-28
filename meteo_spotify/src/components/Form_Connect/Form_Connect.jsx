@@ -27,7 +27,7 @@ const Form_Connect = ({value,checkSub,checkChange}) =>{
     /** onChange={e => setSelectedValue(e.target.value) */
 
     return (
-        <form onSubmit={(event)=> checkSub(event)}>
+        <form class="connect" onSubmit={(event)=> checkSub(event)}>
           <div>
             <label>
                 {!traduction && "Merci de choisir votre compte de connexion"}
@@ -46,7 +46,7 @@ const Form_Connect = ({value,checkSub,checkChange}) =>{
                 {!traduction && "Annuler"}
                 {traduction && "Cancel"}
             </button>   
-        </div>     
+          </div>     
         </form>
       );
 }
