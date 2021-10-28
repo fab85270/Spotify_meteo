@@ -1,6 +1,10 @@
 
-
 import LayoutGlobal from '../Layout/LayoutGlobal';
+import {AccessTokenContext} from '../Context/AccessTokenContext';
+import React, {useContext} from 'react';
+import { TraductionContext } from '../Context/TraductionContext';
+import ButtonRedirection from '../components/Button/ButtonRedirection';
+import { useHistory,Link } from "react-router-dom";
 
 const About = () =>{
     return(
