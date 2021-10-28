@@ -5,12 +5,6 @@ import {AccessTokenContext} from '../../Context/AccessTokenContext';
 import { BoutonContext } from '../../Context/BoutonContext';
 import { TraductionContext } from '../../Context/TraductionContext';
 import Form_Connect from '../Form_Connect/Form_Connect';
-
-
-
-
-
-
 import './Navbar.css';
 
 const NavBar = () => {
