@@ -1,10 +1,17 @@
 import React from 'react';
 import Form_CP from '../Form_CP/Form_CP';
+import Image_meteo from '../Image_meteo/Image_meteo';
 import LayoutGlobal from '../../Layout/LayoutGlobal';
 
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
+import neige from './img_meteo/Neige.svg';
+import pluvieux from './img_meteo/Pluvieux.svg';
+import nuageux from './img_meteo/Nuageux.svg';
+import soleil from './img_meteo/Sun.svg';
+import orageux from './img_meteo/Eclair.svg';
+import couvert from './img_meteo/Couvert.svg';
 
 const PageMeteo = () => {
 
@@ -98,10 +105,51 @@ const PageMeteo = () => {
         232 : "Pluie et neige mêlées",
         235 : "Averses de grêle",
     }
-    const [message, setMessage] = useState("Veuillez patienter");
+    const [message, setMessage] = useState();
 
-    const [cp, setCP] = useState("Entrer un code postal");
+    
+    const [cp, setCP] = useState("");
     const [insee, setInsee] = useState("");
+    const [city, setCity] = useState("");
+    const [weatherNow, setWeatherNow] = useState();
+    const [weatherH3, setWeatherH3] = useState();
+    const [weatherH6, setWeatherH6] = useState();
+    const [degNow, setDegNow] = useState();
+    const [degH3, setDegH3] = useState();
+    const [degH6, setDegH6] = useState();
+
+    const weatherInImage = (numero) =>
+        {
+            console.log("hi");
+            
+            if((20<=numero && 32>=numero) || (60<=numero && 68>=numero) || (220<=numero && 222>=numero)){
+                console.log("neige");
+                return neige;
+                
+            }else if(16==numero || (3==numero && 4==numero)){
+                console.log("nuageux");
+                return nuageux;
+
+            }else if((100<=numero && 142>=numero)){
+                console.log("orageux");
+                return orageux;
+
+            }else if(0==numero){
+                console.log("soleil");
+                return soleil;
+
+            }else if((1<=numero && 2>=numero) || (5<=numero && 7>=numero)){
+                console.log("couvert");
+                return couvert;
+
+            }else{
+                console.log("else");
+                return pluvieux;
+            }
+
+
+              
+        }
 
     const recupererCP = (event) => {
         setCP(event.target.value);
@@ -118,6 +166,9 @@ const PageMeteo = () => {
         
         const catFacts = await responseCP.json();
         setInsee(catFacts.cities[0].insee);
+        setCity(catFacts.cities[0].name);
+
+        
         
         console.log(catFacts.cities[0].insee);
 
@@ -125,30 +176,39 @@ const PageMeteo = () => {
         const response = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&insee='+ insee);
         console.log(insee);
         const donneesMeteo = await response.json();
-        console.log(WEATHER[donneesMeteo.forecast[0].weather]);
-        //console.log(donneesMeteo);
-        
-        
 
+        console.log(donneesMeteo);
+        setWeatherNow(donneesMeteo.forecast[0].weather);//donneesMeteo.forecast[0].weather parseInt(donneesMeteo.forecast[0].weather, 10)
+        setWeatherH3(donneesMeteo.forecast[1].weather);
+        setWeatherH6(donneesMeteo.forecast[2].weather);
+
+        setDegNow(donneesMeteo.forecast[0].temp2m);
+        setDegH3(donneesMeteo.forecast[1].temp2m);
+        setDegH6(donneesMeteo.forecast[2].temp2m);
+
+        setMessage(<Image_meteo meteoNow={weatherNow} tempNow={degNow} meteoH3={weatherH3} tempH3={degH3} meteoH6={weatherH6} tempH6={degH6}  ville={city}
+        
+        ></Image_meteo>);
     }
 
     return ( 
         <LayoutGlobal children={   
+            <div className="meteo">
+                <div className='layout'>
+                    
+                    <h1>Table</h1>
+                    <Form_CP
+                    value={cp}
+                    checkSubmit={recupererMeteo}
+                    checkChange={recupererCP}
+                    >
 
-            <div className='layout'>
-                
-                <h1>Table</h1>
-                <Form_CP
-                value={cp}
-                checkSubmit={recupererMeteo}
-                checkChange={recupererCP}
-                >
+                    </Form_CP>
+                    
+                </div>
+                {message}
 
-                </Form_CP>
                 
-                
-
-                <p>{message}</p>
             </div>
         }>         
         </LayoutGlobal>       
