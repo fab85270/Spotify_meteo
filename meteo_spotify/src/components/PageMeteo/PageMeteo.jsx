@@ -186,7 +186,7 @@ const PageMeteo = () => {
         setDegH3(donneesMeteo.forecast[1].temp2m);
         setDegH6(donneesMeteo.forecast[2].temp2m);
 
-        setMessage(<Image_meteo meteoNow={weatherNow} tempNow={degNow} meteoH3={weatherH3} tempH3={degH3} meteoH6={weatherH6} tempH6={degH6}  ville={city}
+        setMessage(<Image_meteo meteoNow={donneesMeteo.forecast[0].weather} tempNow={donneesMeteo.forecast[0].temp2m} meteoH3={donneesMeteo.forecast[1].weather} tempH3={donneesMeteo.forecast[1].temp2m} meteoH6={donneesMeteo.forecast[2].weather} tempH6={donneesMeteo.forecast[2].temp2m}  ville={catFacts.cities[0].name}
         
         ></Image_meteo>);
     }
