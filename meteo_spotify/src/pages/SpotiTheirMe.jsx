@@ -3,6 +3,7 @@ import React, {useContext, useState } from 'react';
 import {AccessTokenContext} from '../Context/AccessTokenContext';
 import { useHistory,Link } from "react-router-dom";
 import PageMeteo from '../components/PageMeteo/PageMeteo';
+import Form_research from '../components/Form_research/Form_research';
 import { TraductionContext } from '../Context/TraductionContext';
 
 const SpotiTherLayout = () =>{
@@ -25,9 +26,11 @@ const SpotiTherLayout = () =>{
                 <h1>
                     {!traduction && "Bienvenue dans l'application SpotiTheirMe"}
                     {traduction && "Welcome to the SpotiTheirMe Application"}
+
                 </h1>
             </strong>
             <br></br>
+            <Form_research/>
         </>
     }>         
     </LayoutGlobal>
