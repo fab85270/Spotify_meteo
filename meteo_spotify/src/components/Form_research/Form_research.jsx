@@ -14,7 +14,7 @@ const SearchForm = () => {
     setSearchTerm(searchTerm);
   };
 
-  const handleSearch = (event) => {
+  const handleSearch = async (event) => {
     event.preventDefault();
 
     /* Connexion à l'API Spotify selon l'AccessToken */
@@ -31,8 +31,11 @@ const SearchForm = () => {
       )}&type=album,playlist,artist`;
 
       /* On va rechercher les données associées à notre URL à l'API spotify grâce à notre accessToken */
+    console.log("test" + searchTerm);
+    const result = await axios.get(API_URL);
 
-    const result = await axios.get(url, params);
+    console.log(result.data);
+    //const { albums, artists, playlists } = result.data;
 
   };
 
