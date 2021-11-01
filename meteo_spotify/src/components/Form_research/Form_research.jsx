@@ -1,6 +1,7 @@
 import React, { useState, useContext} from 'react';
 import { Form, Button } from 'react-bootstrap';
 import {AccessTokenContext} from '../../Context/AccessTokenContext';
+import { Card } from 'react-bootstrap';
 import axios from 'axios';
 
 const SearchForm = () => {
@@ -52,9 +53,10 @@ const SearchForm = () => {
     const { albums, artists, playlists } = result;
 
     /*Afin de voir combien d'albums/items on a */
-    console.log(albums);
+    console.log(albums.items);
+    
 
-    console.log(artists);
+
 
     //console.log(result);
     //const { albums, artists, playlists } = result.data;
@@ -62,7 +64,7 @@ const SearchForm = () => {
   };
 
   return (
-    <div>
+    <div className="Form_research">
       <Form onSubmit={handleSearch}>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Enter search term</Form.Label>
@@ -79,7 +81,9 @@ const SearchForm = () => {
           Search
         </Button>
       </Form>
+    
     </div>
+
   );
 };
 
