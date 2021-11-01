@@ -14,6 +14,13 @@ const SearchForm = () => {
     setSearchTerm(searchTerm);
   };
 
+  /* Afin de pouvoir effectuer la requête d'obtention de données à l'API spotify */
+
+  const get = async (url, params) => {
+    const result = await axios.get(url, params);
+    return result.data;
+  };
+
   const handleSearch = async (event) => {
     event.preventDefault();
 
@@ -28,8 +35,6 @@ const SearchForm = () => {
     }
 
 
-    console.log("test");
-
     /* Définition de l'url auquelle on désire accéder */
     const API_URL = `https://api.spotify.com/v1/search?query=${encodeURIComponent(
         searchTerm
@@ -40,9 +45,14 @@ const SearchForm = () => {
       /* On va rechercher les données associées à notre URL à l'API spotify grâce à notre accessToken */
     console.log("test" + searchTerm);
     
-    const result = await axios.get(API_URL);
+    const result = await get(API_URL);
 
-    console.log(result.data);
+    console.log(result);
+
+    const { albums, artists, playlists } = result;
+
+    /*Afin de voir combien d'albums/items on a */
+    console.log(albums);
 
     //console.log(result);
     //const { albums, artists, playlists } = result.data;
