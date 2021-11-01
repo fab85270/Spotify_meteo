@@ -5,6 +5,7 @@ import { useHistory,Link } from "react-router-dom";
 import Form_research from '../components/Form_research/Form_research';
 import { TraductionContext } from '../Context/TraductionContext';
 import axios from 'axios';
+import ListAlbums from '../components/ListAlbums/ListAlbums';
 
 const SpotiTherLayout = () =>{
 
@@ -89,6 +90,11 @@ const SpotiTherLayout = () =>{
                 value={searchTerm}
             >
             </Form_research>
+            <ListAlbums
+                albums={albumsState}
+            >
+            </ListAlbums>
+            
             
         </>
     }>         
