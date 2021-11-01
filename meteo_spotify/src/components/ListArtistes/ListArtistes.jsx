@@ -23,7 +23,7 @@ const ListArtistes = ({ artists }) => {
                         src={artist.images[0].url}
                         alt=""
                       />
-                  
+                    
                   </a>
                   <Card.Body>
                     <Card.Title>{artist.name}</Card.Title>
@@ -37,4 +37,4 @@ const ListArtistes = ({ artists }) => {
     </React.Fragment>
   );
 };
-export default ListArtists;
+export default ListArtistes;
