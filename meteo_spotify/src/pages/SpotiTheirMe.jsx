@@ -8,35 +8,39 @@ import axios from 'axios';
 
 const SpotiTherLayout = () =>{
 
+    /* Utilisation des hooks(états/contexts) */
+
     const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
     const {traduction,traductionApp} = useContext(TraductionContext);
     const [searchTerm, setSearchTerm] = useState('');
-    let history = useHistory();
+    const [albumsState, setAlbums] = useState(''); //Objet des albums obtenus suite à une requête sur l'API Spotify.
+    const [artistesState, setArtistes] = useState(''); //Objet des artistes obtenus suite à une requête sur l'API Spotify.
+    const [playlistsState, setPlaylists] = useState(''); //Objet des artistes obtenus suite à une requête sur l'API Spotify.
+    let history = useHistory();//Pour redirection entre pages de
 
 
     if(!isConnected){ //Ne pas acceder a cette page si non connecté
         history.push("/");
     }
 
-    /* Dans ce return, sera intégré le formulaire d'Abdel qui permet donc de saisir un code postal. */
-    /*Ici on ne pourra insérer que des composants (lecture musique? création de playlist ? ) */
-
-    /* Obtention des informations liées  */
+ 
+    /* Saisie dans la barre texte */
 
     const handleInputChange = (event) => {
         const searchTerm = event.target.value;
         setSearchTerm(searchTerm);
     };
 
-  /* Afin de pouvoir effectuer la requête d'obtention de données à l'API spotify */
+  /* Obtention de données de l'API spotify selon l'URL*/
 
-  const get = async (url, params) => {
-    const result = await axios.get(url, params);
-    return result.data;
-  };
+    const get = async (url, params) => {
+        const result = await axios.get(url, params);
+        return result.data;
+    };
 
-  const handleSearch = async (event) => {
-    event.preventDefault();
+
+    const handleSearch = async (event) => {
+        event.preventDefault();
 
     /* Definition du paramètre par defaut pour toutes les connexions : faire celui de deconnection quand on se deco avec delete ?*/
 
@@ -47,7 +51,6 @@ const SpotiTherLayout = () =>{
     } catch(error){
       throw new Error(error);
     }
-
 
     /* Définition de l'url auquelle on désire accéder */
     const API_URL = `https://api.spotify.com/v1/search?query=${encodeURIComponent(
@@ -61,16 +64,16 @@ const SpotiTherLayout = () =>{
     
     const result = await get(API_URL);
 
-    console.log(result);
+
 
     const { albums, artists, playlists } = result;
+   
+    /* Les objets (albums/artistes/playlist) sont placés au sein de hook pour pouvoir être manipulés */
 
-    /*Afin de voir combien d'albums/items on a */
-    console.log(albums.items);
-
-  
+    setAlbums(albums);
+    setArtistes(artists);
+    setPlaylists(playlists);
   };
-
 
     return(
     <LayoutGlobal children={
