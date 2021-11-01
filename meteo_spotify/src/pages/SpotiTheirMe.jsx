@@ -91,14 +91,19 @@ const SpotiTherLayout = () =>{
                 value={searchTerm}
             >
             </Form_research>
-            <ListAlbums
-              albums={albumsState}
-            >
-            </ListAlbums>
-            <ListArtistes
-            artists = {artistesState}>
-
-            </ListArtistes>
+            <table>
+              <td>
+                <ListAlbums
+                  albums={albumsState}
+                >
+                </ListAlbums>
+              </td>
+              <td>
+                <ListArtistes
+                artists = {artistesState}>
+                </ListArtistes>
+              </td>
+             </table>
         </>
     }>         
     </LayoutGlobal>
