@@ -93,9 +93,7 @@ const SpotiTherLayout = () =>{
             <ListAlbums
                 albums={albumsState}
             >
-            </ListAlbums>
-            
-            
+            </ListAlbums>          
         </>
     }>         
     </LayoutGlobal>

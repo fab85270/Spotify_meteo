@@ -16,7 +16,12 @@ const ListAlbums = ({ albums }) => {
                     href={album.external_urls.spotify}
                     rel="noopener noreferrer"
                     className="card-image-link"
-                  >       
+                  >   
+                  <Card.Img
+                        variant="top"
+                        src={album.images[0].url}
+                        alt=""
+                      />    
                   </a>
                   <Card.Body>
                     <Card.Title>{album.name}</Card.Title>
