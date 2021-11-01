@@ -26,7 +26,6 @@ const SpotiTherLayout = () =>{
                 <h1>
                     {!traduction && "Bienvenue dans l'application SpotiTheirMe"}
                     {traduction && "Welcome to the SpotiTheirMe Application"}
-
                 </h1>
             </strong>
             <br></br>
