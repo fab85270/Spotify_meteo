@@ -44,7 +44,7 @@ const SpotiTherLayout = () =>{
 
     /* Definition du paramètre par defaut pour toutes les connexions : faire celui de deconnection quand on se deco avec delete ?*/
 
-    try{//Afin de pouvoir capter une eventuelle erreur de connexion
+    try{
       axios.defaults.headers.common[
         'Authorization'
       ] = `Bearer ${accessToken}`;
@@ -63,8 +63,6 @@ const SpotiTherLayout = () =>{
     console.log("test" + searchTerm);
     
     const result = await get(API_URL);
-
-
 
     const { albums, artists, playlists } = result;
    
