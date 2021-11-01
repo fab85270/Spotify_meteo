@@ -6,6 +6,7 @@ import Form_research from '../components/Form_research/Form_research';
 import { TraductionContext } from '../Context/TraductionContext';
 import axios from 'axios';
 import ListAlbums from '../components/ListAlbums/ListAlbums';
+import ListArtistes from '../components/ListArtiste/ListArtiste';
 
 const SpotiTherLayout = () =>{
 
@@ -91,9 +92,11 @@ const SpotiTherLayout = () =>{
             >
             </Form_research>
             <ListAlbums
-                albums={albumsState}
+              albums={albumsState}
             >
-            </ListAlbums>          
+            </ListAlbums>
+            
+         
         </>
     }>         
     </LayoutGlobal>
