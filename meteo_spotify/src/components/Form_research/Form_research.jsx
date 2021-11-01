@@ -54,14 +54,13 @@ const SearchForm = () => {
 
     /*Afin de voir combien d'albums/items on a */
     console.log(albums.items);
-    
 
-
-
-    //console.log(result);
-    //const { albums, artists, playlists } = result.data;
-
+    setAlbumEssai(albums);
   };
+
+  const coucou = () =>{
+  console.log(albumsEssai);
+  }
 
   return (
     <div className="Form_research">
@@ -81,7 +80,6 @@ const SearchForm = () => {
           Search
         </Button>
       </Form>
-    
     </div>
 
   );
