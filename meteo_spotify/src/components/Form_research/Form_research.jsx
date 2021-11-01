@@ -17,7 +17,7 @@ const SearchForm = () => {
   const handleSearch = async (event) => {
     event.preventDefault();
 
-    /* Definition du paramètre par defaut pour toutes les connexions */
+    /* Definition du paramètre par defaut pour toutes les connexions : faire celui de deconnection quand on se deco avec delete ?*/
 
     axios.defaults.headers.common[
       'Authorization'
