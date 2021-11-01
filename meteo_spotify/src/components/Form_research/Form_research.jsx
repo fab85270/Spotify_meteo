@@ -24,7 +24,7 @@ const SearchForm = () => {
         'Authorization'
       ] = `Bearer ${accessToken}`;
     } catch(error){
-      console.log("erreur authentiication"+error);
+      throw new Error(error);
     }
 
 
