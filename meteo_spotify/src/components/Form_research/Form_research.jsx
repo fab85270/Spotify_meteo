@@ -54,6 +54,8 @@ const SearchForm = () => {
     /*Afin de voir combien d'albums/items on a */
     console.log(albums);
 
+    console.log(artists);
+
     //console.log(result);
     //const { albums, artists, playlists } = result.data;
 
