@@ -118,10 +118,12 @@ const PageMeteo = () => {
         console.log(event.target.value);
 
     }
+
     
     const recupererMeteo = async (event) => {
         event.preventDefault();
         console.log(cp);
+    
         //Recuperer le code insee
         const responseCP = await fetch('https://api.meteo-concept.com/api/location/cities?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&search='+ cp);
         console.log(responseCP);
