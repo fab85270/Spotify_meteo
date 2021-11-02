@@ -6,12 +6,19 @@ import ButtonRedirection from '../components/Button/ButtonRedirection';
 import { useHistory,Link } from "react-router-dom";
 
 const About = () =>{
+
+    /* Utilisation des hooks(états/contexts) */
+    const {traduction,traductionApp} = useContext(TraductionContext);
+
     return(
     <LayoutGlobal children={
         <>
-            <h1 style={{textAlign:'center'}}>Notre projet</h1>
+            <h1 style={{textAlign:'center'}}>
+                {!traduction && "Notre projet"}
+                {traduction && "Our Project"}
+            </h1>
             <div style={{textAlign:'center'}}>
-                <p>Bienvenu dans notre projet de M1 en Architecture Logiciel et web</p>
+                <p>Bienvenue dans notre projet de M1 en Architecture Logiciel et web</p>
                 <p>Ce projet consiste à utiliser deux API, celles de spotify et d'une plateforme de météo</p>
                 <div>Ce projet a été réalisé en commun par <br />
                         Coutanceau Fabien /
