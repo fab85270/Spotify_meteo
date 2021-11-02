@@ -118,8 +118,7 @@ const PageMeteo = () => {
         console.log(event.target.value);
 
     }
-
-    
+ 
     const recupererMeteo = async (event) => {
         event.preventDefault();
         console.log(cp);
