@@ -11,10 +11,15 @@
 }
 .divTableCell, .divTableHead {
 	display: table-cell;
+    height: 35px;
+    margin: auto;
+    text-align: center;
+    background-color: blue;
 }
 .divTableHeading {
 	display: table-header-group;
 	font-weight: bold;
+    
 }
 .divTableFoot {
 	background-color: #EEE;
