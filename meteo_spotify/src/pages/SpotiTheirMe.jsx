@@ -25,18 +25,16 @@ const SpotiTherLayout = () =>{
         history.push("/");
     }
 
- 
-    /* Saisie dans la barre texte */
+    /* Méthode chargée de la saisie dans la barre texte */
 
     const handleInputChange = (event) => {
         const searchTerm = event.target.value;
         setSearchTerm(searchTerm);
     };
 
-  /* Obtention de données de l'API spotify selon l'URL*/
+  /* Méthode chargée de l'obtention de données de l'API spotify selon l'URL/requête et l'accessToken généré*/
 
-    const get = async (url, params) => {
-
+    const get = async (url) => {
       try {
         const response = await fetch(url,{
           method:'GET',
@@ -44,14 +42,12 @@ const SpotiTherLayout = () =>{
             'Authorization': 'Bearer'+accessToken
           }
         });
-        /* On transforme la reponse obtenue en object json*/
+        /* On transforme la reponse obtenue en object comprenant les objets (Artistes/Albums..Playlist) en json*/
         return await response.json();
-        
+
       } catch(Error){
         throw new Error(Error); //Faire un composant qui permet de personaliser les pages d'erreur (404 ou quoi..)
       }
-
-
     };
 
 
@@ -63,15 +59,14 @@ const SpotiTherLayout = () =>{
           searchTerm
         )}&type=album,playlist,artist`;
 
-        console.log("Verification URL" + API_URL);
 
-      /* On va rechercher les données associées à notre URL à l'API spotify grâce à notre accessToken */
+      /* Récupération sous forme d'objet d'objet des données obtenues suite à notre requête */
       
       const response = await get(API_URL);
 
       const { albums, artists, playlists } = response;
     
-      /* Les objets (albums/artistes/playlist) sont placés au sein de hook pour pouvoir être manipulés */
+      /* Les données des objets associés (albums/artistes/playlist) sont placés au sein de hook pour pouvoir être manipulés */
 
       setAlbums(albums);
       setArtistes(artists);
