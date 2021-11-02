@@ -16,14 +16,12 @@ const ListArtistes = ({ artists }) => {
                     href={artist.external_urls.spotify}
                     rel="noopener noreferrer"
                     className="card-image-link"
-                  >
-                   
+                  >                  
                       <Card.Img
                         variant="top"
                         src={artist.images[0].url}
                         alt=""
-                      />
-                    
+                      />      
                   </a>
                   <Card.Body>
                     <Card.Title>{artist.name}</Card.Title>
