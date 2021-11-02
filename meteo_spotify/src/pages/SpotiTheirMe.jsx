@@ -45,7 +45,6 @@ const SpotiTherLayout = () =>{
 
         /* On transforme la reponse obtenue en object comprenant les objets (Artistes/Albums..Playlist) en json*/
 
-        console.log(response);
         return await response.json();
 
       } catch(Error){
