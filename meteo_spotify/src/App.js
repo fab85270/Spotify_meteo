@@ -4,6 +4,7 @@ import React from "react";
 import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import SpotiTherLayout from './components/SpotiTherLayout/SpotiTherLayout';
 import About from './pages/About';
+import Service from './pages/Service'
 import SpotiTherMe from './pages/SpotiTheirMe';
 import PageConnect from './pages/PageConnect';
 
@@ -35,6 +36,9 @@ function App() {
               </Route>
               <Route path='/connectAPI'>
                   <PageConnect/>
+              </Route>
+              <Route path="/service">
+                <Service/>
               </Route>
             </Switch>
           </Router>
