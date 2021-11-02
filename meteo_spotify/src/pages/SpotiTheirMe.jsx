@@ -36,8 +36,15 @@ const SpotiTherLayout = () =>{
   /* Obtention de données de l'API spotify selon l'URL*/
 
     const get = async (url, params) => {
-        const result = await axios.get(url, params);
-        return result.data;
+      console.log("essai");
+        const response = await fetch(url,{
+          method:'GET',
+          headers:{
+            'Authorization': 'Bearer'+accessToken
+          }
+        });
+        /* On transforme la reponse obtenue en object json*/
+        return await response.json();
     };
 
 
@@ -45,14 +52,14 @@ const SpotiTherLayout = () =>{
         event.preventDefault();
 
     /* Definition du paramètre par defaut pour toutes les connexions : faire celui de deconnection quand on se deco avec delete ?*/
-
+/*
     try{
       axios.defaults.headers.common[
         'Authorization'
       ] = `Bearer ${accessToken}`;
     } catch(error){
       throw new Error(error);
-    }
+    }*/
 
     /* Définition de l'url auquelle on désire accéder */
     const API_URL = `https://api.spotify.com/v1/search?query=${encodeURIComponent(
@@ -64,9 +71,9 @@ const SpotiTherLayout = () =>{
       /* On va rechercher les données associées à notre URL à l'API spotify grâce à notre accessToken */
     console.log("test" + searchTerm);
     
-    const result = await get(API_URL);
+    const response = await get(API_URL);
 
-    const { albums, artists, playlists } = result;
+    const { albums, artists, playlists } = response;
    
     /* Les objets (albums/artistes/playlist) sont placés au sein de hook pour pouvoir être manipulés */
 
@@ -92,17 +99,17 @@ const SpotiTherLayout = () =>{
             >
             </Form_research>
             <table>
-              <td>
-                <ListAlbums
-                  albums={albumsState}
-                >
-                </ListAlbums>
-              </td>
-              <td>
-                <ListArtistes
-                artists = {artistesState}>
-                </ListArtistes>
-              </td>
+                <td>
+                  <ListAlbums
+                    albums={albumsState}
+                  >
+                  </ListAlbums>
+                </td>
+                <td>
+                  <ListArtistes
+                  artists = {artistesState}>
+                  </ListArtistes>
+                </td>
              </table>
         </>
     }>         
