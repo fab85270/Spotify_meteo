@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import _ from 'lodash';
-//import music from '../images/music.jpeg';
+
+
 const ListArtistes = ({ artists }) => {
   return (
     <React.Fragment>
@@ -12,7 +12,7 @@ const ListArtistes = ({ artists }) => {
               <React.Fragment key={index}>
                 <Card style={{ width: '18rem' }}>
                   <a
-                    target="_blank"
+                    target="blank"
                     href={artist.external_urls.spotify}
                     rel="noopener noreferrer"
                     className="card-image-link"
