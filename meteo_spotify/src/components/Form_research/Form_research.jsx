@@ -16,7 +16,6 @@ const SearchForm = ({value,handleSearch,handleInputChange}) => {
           <Form.Label>
             {traduction && "Enter search term"}
             {!traduction && "Entrer votre mot clé de recherche"}
-
           </Form.Label>
           <Form.Control
             type="search"
