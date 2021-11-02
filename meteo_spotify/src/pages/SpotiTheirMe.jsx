@@ -36,7 +36,8 @@ const SpotiTherLayout = () =>{
   /* Obtention de données de l'API spotify selon l'URL*/
 
     const get = async (url, params) => {
-      console.log("essai");
+
+      try {
         const response = await fetch(url,{
           method:'GET',
           headers:{
@@ -45,41 +46,36 @@ const SpotiTherLayout = () =>{
         });
         /* On transforme la reponse obtenue en object json*/
         return await response.json();
+        
+      } catch(Error){
+        throw new Error(Error); //Faire un composant qui permet de personaliser les pages d'erreur (404 ou quoi..)
+      }
+
+
     };
 
 
     const handleSearch = async (event) => {
         event.preventDefault();
 
-    /* Definition du paramètre par defaut pour toutes les connexions : faire celui de deconnection quand on se deco avec delete ?*/
-/*
-    try{
-      axios.defaults.headers.common[
-        'Authorization'
-      ] = `Bearer ${accessToken}`;
-    } catch(error){
-      throw new Error(error);
-    }*/
+      /* Définition de l'url auquelle on désire accéder */
+      const API_URL = `https://api.spotify.com/v1/search?query=${encodeURIComponent(
+          searchTerm
+        )}&type=album,playlist,artist`;
 
-    /* Définition de l'url auquelle on désire accéder */
-    const API_URL = `https://api.spotify.com/v1/search?query=${encodeURIComponent(
-        searchTerm
-      )}&type=album,playlist,artist`;
-
-      console.log("Verification URL" + API_URL);
+        console.log("Verification URL" + API_URL);
 
       /* On va rechercher les données associées à notre URL à l'API spotify grâce à notre accessToken */
-    console.log("test" + searchTerm);
+      
+      const response = await get(API_URL);
+
+      const { albums, artists, playlists } = response;
     
-    const response = await get(API_URL);
+      /* Les objets (albums/artistes/playlist) sont placés au sein de hook pour pouvoir être manipulés */
 
-    const { albums, artists, playlists } = response;
-   
-    /* Les objets (albums/artistes/playlist) sont placés au sein de hook pour pouvoir être manipulés */
-
-    setAlbums(albums);
-    setArtistes(artists);
-    setPlaylists(playlists);
+      setAlbums(albums);
+      setArtistes(artists);
+      setPlaylists(playlists);
   };
 
     return(
