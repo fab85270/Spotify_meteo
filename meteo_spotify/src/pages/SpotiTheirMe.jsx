@@ -39,10 +39,13 @@ const SpotiTherLayout = () =>{
         const response = await fetch(url,{
           method:'GET',
           headers:{
-            'Authorization': 'Bearer'+accessToken
+            'Authorization': 'Bearer '+accessToken
           }
         });
+
         /* On transforme la reponse obtenue en object comprenant les objets (Artistes/Albums..Playlist) en json*/
+
+        console.log(response);
         return await response.json();
 
       } catch(Error){
@@ -63,7 +66,6 @@ const SpotiTherLayout = () =>{
       /* Récupération sous forme d'objet d'objet des données obtenues suite à notre requête */
       
       const response = await get(API_URL);
-
       const { albums, artists, playlists } = response;
     
       /* Les données des objets associés (albums/artistes/playlist) sont placés au sein de hook pour pouvoir être manipulés */
