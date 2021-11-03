@@ -35,6 +35,10 @@ const NavBar = () => {
             history.push("/");
         }
     }
+
+    const coucou = (event) =>{
+
+    }
     if(clicked){
         return (
             <div className="divNav">
@@ -60,20 +64,21 @@ const NavBar = () => {
                             </Button>
                         </li>
                         <li>
-                        
                             <Form.Select arial-label="Default select example">
-                                <option>
-                                    {traduction && "Translate"}
-                                    {!traduction && "Traduction"}
-                                </option>
-                                <option value = "1">
-                                    {traduction && "English"}
-                                    {!traduction && "Anglais"}
-                                </option>
-                                <option value="2">
-                                    {traduction && "French"}
-                                    {!traduction && "Français"}
-                                </option>
+                                <select onChange={(event)=> coucou(event)}>
+                                    <option>
+                                        {traduction && "Translate"}
+                                        {!traduction && "Traduction"}
+                                    </option>
+                                    <option value = "1">
+                                        {traduction && "English"}
+                                        {!traduction && "Anglais"}
+                                    </option>
+                                    <option value="2">
+                                        {traduction && "French"}
+                                        {!traduction && "Français"}
+                                    </option>
+                                </select>
                             </Form.Select>
                         </li>
                         <li>
