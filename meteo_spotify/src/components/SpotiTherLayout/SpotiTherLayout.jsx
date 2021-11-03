@@ -51,6 +51,17 @@ function SpotiTherLayout({}){
                                 <p>Second diapo</p>
                             </Carousel.Caption>
                         </Carousel.Item>
+                        <Carousel.Item>
+                            <img 
+                                className="d-block w-100"
+                                src=""
+                                alt="e"
+                            />
+                            <Carousel.Caption>
+                                <h3>Hello</h3>
+                                <p>Troisième diapo</p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
                     </Carousel>           
                 </>       
             }></LayoutGlobal>
