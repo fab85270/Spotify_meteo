@@ -108,7 +108,6 @@ const PageMeteo = () => {
         232 : "Pluie et neige mêlées",
         235 : "Averses de grêle",
     }
-    const [message, setMessage] = useState("Veuillez patienter");
 
     const [cp, setCP] = useState("Entrer un code postal");
     const [insee, setInsee] = useState("");
@@ -144,7 +143,6 @@ const PageMeteo = () => {
             <LayoutGlobal children ={
             <div className='layout'>
                 <Form_CP
-                    value={cp}
                     checkSubmit={recupererMeteo}
                     checkChange={recupererCP}
                 >
@@ -157,7 +155,4 @@ const PageMeteo = () => {
     )
 
 }
-
-
-
 export default PageMeteo;
