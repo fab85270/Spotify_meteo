@@ -21,6 +21,7 @@ function SpotiTherLayout({}){
         return (      
             <LayoutGlobal children={
                 <>  
+                <h1>coucou</h1>
                     <Carousel>
                         <Carousel.Item>
                             <img 
