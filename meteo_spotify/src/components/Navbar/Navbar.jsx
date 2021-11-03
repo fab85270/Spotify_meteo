@@ -5,8 +5,6 @@ import { Form, Button } from 'react-bootstrap';
 import {AccessTokenContext} from '../../Context/AccessTokenContext';
 import { BoutonContext } from '../../Context/BoutonContext';
 import { TraductionContext } from '../../Context/TraductionContext';
-
-
 import './Navbar.css';
 
 const NavBar = () => {
@@ -35,8 +33,6 @@ const NavBar = () => {
             history.push("/");
         }
     }
-
-
     if(clicked){
         return (
             <div className="divNav">
