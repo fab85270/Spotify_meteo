@@ -14,6 +14,7 @@ import LayoutGlobal from '../../Layout/LayoutGlobal';
 import ButtonRedirection from '../Button/ButtonRedirection';
 import React, {useContext} from 'react';
 import {AccessTokenContext} from '../../Context/AccessTokenContext';
+import Carousel from 'react-bootstrap/Carousel' 
 
 function SpotiTherLayout({}){ 
     
@@ -26,7 +27,16 @@ function SpotiTherLayout({}){
             <LayoutGlobal children={
                 <>
                     <h1>Welcome to the web site</h1>
-                    <p>Ici mettre des images.. photos et tout..informations are coming...</p>               
+                    <p>Ici mettre des images.. photos et tout..informations are coming...</p>  
+                    <Carousel>
+                        <Carousel.Item Intervalle = {1000}>
+                            <img 
+                                className="d-block w-100"
+                                src="holder.js/800x400?text=First slide&bg=373940"
+                                alt="First slide"
+                            />
+                        </Carousel.Item>
+                    </Carousel>           
                 </>       
             }></LayoutGlobal>
         ) 
