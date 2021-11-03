@@ -6,6 +6,7 @@ import {AccessTokenContext} from '../../Context/AccessTokenContext';
 import { BoutonContext } from '../../Context/BoutonContext';
 import { TraductionContext } from '../../Context/TraductionContext';
 
+
 import './Navbar.css';
 
 const NavBar = () => {
@@ -17,7 +18,6 @@ const NavBar = () => {
     const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
     const {clicked,changeContexte} = useContext(BoutonContext);
     const {traduction,traductionApp} = useContext(TraductionContext);
-
     let history = useHistory();
 
     /* Fonction des actions réalisées suite au click du bonton connexion/déconnection  */
@@ -60,10 +60,27 @@ const NavBar = () => {
                             </Button>
                         </li>
                         <li>
-                                    <Button variant="outline-secondary" onClick={() => traductionApp()} className="ApiSpotify">
-                                        {traduction && "Translate"}
-                                        {!traduction && "Traduire"}
-                                    </Button>
+                        
+                            <Form.Select arial-label="Default select example">
+                                <option>
+                                    {traduction && "Translate"}
+                                    {!traduction && "Traduction"}
+                                </option>
+                                <option value = "1">
+                                    {traduction && "English"}
+                                    {!traduction && "Anglais"}
+                                </option>
+                                <option value="2">
+                                    {traduction && "French"}
+                                    {!traduction && "Français"}
+                                </option>
+                            </Form.Select>
+                        </li>
+                        <li>
+                            <Button variant="outline-secondary" onClick={() => traductionApp()} className="ApiSpotify">
+                                {traduction && "Translate"}
+                                {!traduction && "Traduire"}
+                            </Button>
                         </li>
                     
                         <div>
