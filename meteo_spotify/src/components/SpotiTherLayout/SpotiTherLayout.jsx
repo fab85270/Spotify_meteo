@@ -10,7 +10,7 @@ import imageHome from './ImageHomePage/menu2.jpeg';
 import image2 from './ImageHomePage/imageHome.jpeg';
 import { TraductionContext } from '../../Context/TraductionContext';
 
-function SpotiTherLayout({}){ 
+function SpotiTherLayout(){ 
     
      /* Utilisation des hooks */
      const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
