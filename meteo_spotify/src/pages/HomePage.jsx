@@ -1,14 +1,13 @@
 
-import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ajouter le boostrap au sein de l'application
-import LayoutGlobal from '../../Layout/LayoutGlobal';
-import ButtonRedirection from '../Button/ButtonRedirection';
+import LayoutGlobal from '../Layout/LayoutGlobal';
+import ButtonRedirection from '../components/Button/ButtonRedirection';
 import React, {useContext} from 'react';
-import {AccessTokenContext} from '../../Context/AccessTokenContext';
+import {AccessTokenContext} from '../Context/AccessTokenContext';
 import Carousel from 'react-bootstrap/Carousel'; 
-import imageHome from './ImageHomePage/menu2.jpeg';
-import image2 from './ImageHomePage/imageHome.jpeg';
-import { TraductionContext } from '../../Context/TraductionContext';
+import imageHome from '../Images/menu2.jpeg';
+import image2 from '../Images/imageHome.jpeg';
+import { TraductionContext } from '../Context/TraductionContext';
 
 function SpotiTherLayout(){ 
     

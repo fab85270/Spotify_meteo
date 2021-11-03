@@ -2,7 +2,7 @@
 import './App.css';
 import React from "react";
 import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
-import SpotiTherLayout from './components/SpotiTherLayout/SpotiTherLayout';
+import HomePage from './pages/HomePage';
 import About from './pages/About';
 import Service from './pages/Service'
 import SpotiTherMe from './pages/SpotiTheirMe';
@@ -23,7 +23,7 @@ function App() {
           <Router>
             <Switch>
               <Route exact path="/">
-                <SpotiTherLayout/>
+                <HomePage/>
               </Route>
               <Route path="/about">
                 <About/>
