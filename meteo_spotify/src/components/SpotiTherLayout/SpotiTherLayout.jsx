@@ -15,29 +15,38 @@ import ButtonRedirection from '../Button/ButtonRedirection';
 import React, {useContext} from 'react';
 import {AccessTokenContext} from '../../Context/AccessTokenContext';
 import Carousel from 'react-bootstrap/Carousel' 
+import imageHome from './ImageHomePage/menu1.jpg';
+import { TraductionContext } from '../../Context/TraductionContext';
 
 function SpotiTherLayout({}){ 
     
      /* Utilisation des hooks */
      const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
+     const {traduction,traductionApp} = useContext(TraductionContext);
 
 
     if(!isConnected){
         return (      
             <LayoutGlobal children={
-                <>
-                    <h1>Welcome to the web site</h1>
-                    <p>Ici mettre des images.. photos et tout..informations are coming...</p>  
+                <>  
                     <Carousel>
                         <Carousel.Item>
                             <img 
                                 className="d-block w-100"
-                                src=""
-                                alt="e"
+                                src={imageHome}
+                                alt="imageHome"
+                                height='800px'
+                                width="100px"
                             />
                             <Carousel.Caption>
-                                <h3>coucouuuu</h3>
-                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                <h3>
+                                    {traduction && "Hello"}
+                                    {!traduction && "Coucou"}
+                                </h3>
+                                <p>
+                                    {traduction && "Nulla vitae elit libero, a pharetra augue mollis interdum."}
+                                    {!traduction && "wesh"}
+                                </p>
                             </Carousel.Caption>
                         </Carousel.Item>
                         <Carousel.Item>
