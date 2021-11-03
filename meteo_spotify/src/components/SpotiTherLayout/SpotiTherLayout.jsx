@@ -33,9 +33,13 @@ function SpotiTherLayout({}){
                             <img 
                                 className="d-block w-100"
                                 src="holder.js/800x400?text=First slide&bg=373940"
-                                alt="First slide"
+                                alt="e"
                             />
                         </Carousel.Item>
+                        <Carousel.Caption>
+                            <h3>coucouuuu</h3>
+                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        </Carousel.Caption>
                     </Carousel>           
                 </>       
             }></LayoutGlobal>
