@@ -9,7 +9,7 @@ import imageHome from '../Images/menu2.jpeg';
 import image2 from '../Images/imageHome.jpeg';
 import { TraductionContext } from '../Context/TraductionContext';
 
-function SpotiTherLayout(){ 
+function HomePage(){ 
     
      /* Utilisation des hooks */
      const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
@@ -77,5 +77,5 @@ function SpotiTherLayout(){
     )
     }
 }
-export default SpotiTherLayout;
+export default HomePage;
 
