@@ -63,30 +63,20 @@ const NavBar = () => {
                         </li>
                         <li>
                             <Form.Select arial-label="Default select example" onChange={(event)=>traductionApp(event)}>
-                                    <option>
-                                        {traduction && "Translate"}
-                                        {!traduction && "Traduction"}
-                                    </option>
-                                    <option value = "1">
-                                        {traduction && "English"}
-                                        {!traduction && "Anglais"}
-                                    </option>
-                                    <option value="2">
-                                        {traduction && "French"}
-                                        {!traduction && "Français"}
-                                    </option>
+                                <option>
+                                    {traduction && "Translate"}
+                                    {!traduction && "Traduction"}
+                                </option>
+                                <option value = "1">
+                                    {traduction && "English"}
+                                    {!traduction && "Anglais"}
+                                </option>
+                                <option value="2">
+                                    {traduction && "French"}
+                                    {!traduction && "Français"}
+                                </option>
                             </Form.Select>
                         </li>
-                        <li>
-                            <Button variant="outline-secondary" onClick={() => traductionApp()} className="ApiSpotify">
-                                {traduction && "Translate"}
-                                {!traduction && "Traduire"}
-                            </Button>
-                        </li>
-                    
-                        <div>
-                         </div>
-                      
                     </ul>
                 </nav>
             </div>
@@ -123,10 +113,20 @@ const NavBar = () => {
                             </Button>
                         </li>
                         <li>
-                            <Button variant="outline-secondary" onClick={() => traductionApp()} className="ApiSpotify">
-                                {traduction && "Translate"}
-                                {!traduction && "Traduire"}
-                            </Button>
+                            <Form.Select arial-label="Default select example" onChange={(event)=>traductionApp(event)}>
+                                <option>
+                                    {traduction && "Translate"}
+                                    {!traduction && "Traduction"}
+                                </option>
+                                <option value = "1">
+                                    {traduction && "English"}
+                                    {!traduction && "Anglais"}
+                                </option>
+                                <option value="2">
+                                    {traduction && "French"}
+                                    {!traduction && "Français"}
+                                </option>
+                            </Form.Select>
                         </li>
                     </ul>
                 </nav>
