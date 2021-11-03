@@ -1,10 +1,11 @@
 
 import React, {useContext, useState } from 'react';
 import { useHistory,Link } from "react-router-dom";
+import { Form, Button } from 'react-bootstrap';
 import {AccessTokenContext} from '../../Context/AccessTokenContext';
 import { BoutonContext } from '../../Context/BoutonContext';
 import { TraductionContext } from '../../Context/TraductionContext';
-import Form_Connect from '../Form_Connect/Form_Connect';
+
 import './Navbar.css';
 
 const NavBar = () => {
@@ -53,16 +54,16 @@ const NavBar = () => {
                             {traduction && "About us"}
                             {!traduction && "Nous concernant"}
                         </Link>
-                        <li><button onClick={() => click()} className="ApiSpotify">
+                        <li><Button variant="outline-secondary" onClick={() => click()} className="ApiSpotify">
                                 {!traduction && "Se deconnecter"}  
                                 {traduction && "Disconnect"} 
-                            </button>
+                            </Button>
                         </li>
                         <li>
-                                    <button onClick={() => traductionApp()} className="ApiSpotify">
+                                    <Button variant="outline-secondary" onClick={() => traductionApp()} className="ApiSpotify">
                                         {traduction && "Translate"}
                                         {!traduction && "Traduire"}
-                                    </button>
+                                    </Button>
                         </li>
                     
                         <div>
@@ -98,16 +99,16 @@ const NavBar = () => {
                             {traduction && "About us"}
                             {!traduction && "Nous concernant"}
                         </Link>
-                        <li><button onClick={() => click()} className="ApiSpotify">
+                        <li><Button variant="outline-secondary" onClick={() => click()} className="ApiSpotify">
                             {!traduction && "Se connecter"}
                             {traduction && "Connect"}
-                            </button>
+                            </Button>
                         </li>
                         <li>
-                            <button onClick={() => traductionApp()} className="ApiSpotify">
+                            <Button variant="outline-secondary" onClick={() => traductionApp()} className="ApiSpotify">
                                 {traduction && "Translate"}
                                 {!traduction && "Traduire"}
-                            </button>
+                            </Button>
                         </li>
                     </ul>
                 </nav>
