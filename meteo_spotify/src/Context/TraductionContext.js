@@ -15,7 +15,7 @@ export const TraductionContextProvider = ({children}) => {
     
     const traductionApp = (event) => {
         /* La traduction ne sera possible que si on click sur Anglais ou Français */
-        if(event.target.value == 1 || event.target.value == 2){
+        if(event.target.value == 1 && !traduction || event.target.value == 2 && traduction){
             setTraduction(!traduction);
         }
     }
