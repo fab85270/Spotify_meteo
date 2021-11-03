@@ -36,9 +36,7 @@ const NavBar = () => {
         }
     }
 
-    const coucou = (event) =>{
 
-    }
     if(clicked){
         return (
             <div className="divNav">
@@ -64,8 +62,7 @@ const NavBar = () => {
                             </Button>
                         </li>
                         <li>
-                            <Form.Select arial-label="Default select example">
-                                <select onChange={(event)=> coucou(event)}>
+                            <Form.Select arial-label="Default select example" onChange={(event)=>traductionApp(event)}>
                                     <option>
                                         {traduction && "Translate"}
                                         {!traduction && "Traduction"}
@@ -78,7 +75,6 @@ const NavBar = () => {
                                         {traduction && "French"}
                                         {!traduction && "Français"}
                                     </option>
-                                </select>
                             </Form.Select>
                         </li>
                         <li>
