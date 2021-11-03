@@ -1,4 +1,5 @@
 import React, {useContext} from 'react';
+import { Form, Button } from 'react-bootstrap';
 import { TraductionContext } from '../../Context/TraductionContext';
 import './style.css'
 
@@ -11,19 +12,29 @@ const Form_CP = ({value,checkSubmit,checkChange}) => {
     const {traduction,traductionApp} = useContext(TraductionContext);
 
     return (
-      
-      <form class="meteo" onSubmit={(event)=> checkSubmit(event)}>
-        <div>
-        <label>
-          {!traduction && "Code postale"}
-          {traduction && "PostCode"}
-          <input type="text" value={value} onChange={(event)=> checkChange(event)} />
-        </label>
-        </div> 
-        <div>
-        <input type="submit" value={!traduction && "Envoyer" || traduction && "Submit"} />
-        </div>
-      </form>
+      <div className="Form_CP">
+        <form class="CP_Meteo" onSubmit={(event)=> checkSubmit(event)}>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>
+              {!traduction && "Code postale"}
+              {traduction && "PostCode"}
+            </Form.Label> 
+            <Form.Control
+              type = "search"
+              name = "searchCP"
+              placeHolder={traduction && "Please enter your PostCode" || !traduction && "Veuillez renseigner votre code postal"}
+              onChange={(event)=> checkChange(event)}
+              autocomplete="off"
+            />
+          </Form.Group>
+            <div>
+              <Button variant="info" type="submit">
+                  {traduction && "Submit"}
+                  {!traduction && "Envoyer"}
+              </Button>
+            </div>
+        </form>
+      </div>
     );
   }
 export default Form_CP;
