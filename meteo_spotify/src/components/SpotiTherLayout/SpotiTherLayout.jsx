@@ -28,8 +28,6 @@ function SpotiTherLayout(){
                                 className="d-block w-100"
                                 src={imageHome}
                                 alt="imageHome"
-                                height='800px'
-                                width="100px"
                             />
                             <Carousel.Caption>
                                 <h3>
