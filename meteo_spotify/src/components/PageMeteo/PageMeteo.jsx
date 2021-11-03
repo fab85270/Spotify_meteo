@@ -122,7 +122,8 @@ const PageMeteo = () => {
         event.preventDefault();
         console.log(cp);
     
-        //Recuperer le code insee
+        /* Merci ici d'utiliser une méthode get qui permet d'obtenir les reponses selon un URL placé en paramètre ( voir comment a fait Fabien si possible avec token dans .env pour qu'il ne soit pas direct dans le code) */
+        //Recuperer le code insee 
         const responseCP = await fetch('https://api.meteo-concept.com/api/location/cities?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&search='+ cp);
         console.log(responseCP);
         
