@@ -29,17 +29,28 @@ function SpotiTherLayout({}){
                     <h1>Welcome to the web site</h1>
                     <p>Ici mettre des images.. photos et tout..informations are coming...</p>  
                     <Carousel>
-                        <Carousel.Item Intervalle = {1000}>
+                        <Carousel.Item>
                             <img 
                                 className="d-block w-100"
-                                src="holder.js/800x400?text=First slide&bg=373940"
+                                src=""
                                 alt="e"
                             />
+                            <Carousel.Caption>
+                                <h3>coucouuuu</h3>
+                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                            </Carousel.Caption>
                         </Carousel.Item>
-                        <Carousel.Caption>
-                            <h3>coucouuuu</h3>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                        </Carousel.Caption>
+                        <Carousel.Item>
+                            <img 
+                                className="d-block w-100"
+                                src=""
+                                alt="e"
+                            />
+                            <Carousel.Caption>
+                                <h3>Hello</h3>
+                                <p>Second diapo</p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
                     </Carousel>           
                 </>       
             }></LayoutGlobal>
