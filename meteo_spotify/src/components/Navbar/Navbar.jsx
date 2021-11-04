@@ -101,6 +101,14 @@ const NavBar = () => {
             <div className="divNav">
                 <nav>
                     <ul className="fonction">
+                        <li>
+                            <img 
+                                alt="logoSpotiTherMe"
+                                src={logoSpotiTherMe}
+                                wight="45"
+                                height="45"
+                            />   
+                        </li> 
                         <Link to="/"  className="btn">
                             {traduction && "Home"}
                             {!traduction && "Accueil"}
