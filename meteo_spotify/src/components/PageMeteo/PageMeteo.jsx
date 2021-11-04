@@ -142,7 +142,7 @@ const PageMeteo = () => {
             //console.log(donneesMeteo);
 
         } catch(Error){ //Cas d'une saisie invalide d'un code postal
-             console.log("Please to renseigner un CP valide")  //Voir avoir prof comment intégrer un message de warning à l'écran avec boostraps <Alert>
+             console.log("Please to renseigner un CP valide")  //Voir avoir prof comment intégrer un message de warning à l'écran avec boostraps <Aler>
         }
     }
     return (  

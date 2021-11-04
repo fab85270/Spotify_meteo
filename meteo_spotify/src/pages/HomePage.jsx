@@ -71,6 +71,47 @@ function HomePage(){
                 <>
                     <h1>Welcome to the web site</h1>
                     <p>Ici mettre des images.. photos et tout..informations are coming...</p>
+                    <Carousel>
+                        <Carousel.Item>
+                            <img 
+                                className="d-block w-100"
+                                src={imageHome}
+                                alt="imageHome"
+                            />
+                            <Carousel.Caption>
+                                <h3>
+                                    {traduction && "Hello"}
+                                    {!traduction && "Coucou"}
+                                </h3>
+                                <p>
+                                    {traduction && "Nulla vitae elit libero, a pharetra augue mollis interdum."}
+                                    {!traduction && "wesh"}
+                                </p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <img 
+                                className="d-block w-100"
+                                src={image2}
+                                alt="e"
+                            />
+                            <Carousel.Caption>
+                                <h3>Hello</h3>
+                                <p>Second diapo</p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <img 
+                                className="d-block w-100"
+                                src=""
+                                alt="e"
+                            />
+                            <Carousel.Caption>
+                                <h3>Hello</h3>
+                                <p>Troisième diapo</p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                    </Carousel>  
                     <ButtonRedirection/>
                 </>       
             }></LayoutGlobal>
