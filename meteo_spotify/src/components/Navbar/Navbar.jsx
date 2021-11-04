@@ -40,12 +40,14 @@ const NavBar = () => {
                 <nav>
                     <ul className="fonction">
                         <li>
-                            <img 
-                                alt="logoSpotiTherMe"
-                                src={logoSpotiTherMe}
-                                wight="45"
-                                height="45"
-                            />   
+                            <Link to="/" className="btn">
+                                <img 
+                                    alt="logoSpotiTherMe"
+                                    src={logoSpotiTherMe}
+                                    wight="45"
+                                    height="45"
+                                />   
+                            </Link>  
                         </li>    
                         <Link to="/"  className="btn">
                             {traduction && "Home"}
