@@ -6,6 +6,8 @@ import Form_research from '../components/Form_research/Form_research';
 import { TraductionContext } from '../Context/TraductionContext';
 import ListAlbums from '../components/ListAlbums/ListAlbums';
 import ListArtistes from '../components/ListArtistes/ListArtistes';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Ajouter le boostrap au sein de l'application
+import Table from 'react-bootstrap/Table';
 
 const SpotiTherLayout = () =>{
 
@@ -79,16 +81,28 @@ const SpotiTherLayout = () =>{
             <strong>
                 <h1>
                     {!traduction && "Bienvenue dans l'application SpotiTheirMe"}
-                    {traduction && "Welcome to the SpotiTheirMe Application"}
+                    {traduction && "Welcome to the SpotiTherMe Application"}
                 </h1>
             </strong>
-            <br></br>
-            <Form_research
-                handleSearch={handleSearch}
-                handleInputChange={handleInputChange}
-                value={searchTerm}
-            >
-            </Form_research>
+            <br/>
+            <Table>
+              <tbody>
+                <tr>
+                  <td>
+                    <Form_research
+                        handleSearch={handleSearch}
+                        handleInputChange={handleInputChange}
+                        value={searchTerm}
+                    >
+                    </Form_research>
+                  </td>
+                  <td/>
+                  <td>
+                    Prochainement votre application meteo intégrée.
+                  </td>
+                </tr>
+              </tbody>
+            </Table>
             <table>
                 <td>
                   <ListAlbums
