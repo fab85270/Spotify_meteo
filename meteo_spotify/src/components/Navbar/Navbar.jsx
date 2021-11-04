@@ -5,6 +5,7 @@ import { Form, Button } from 'react-bootstrap';
 import {AccessTokenContext} from '../../Context/AccessTokenContext';
 import { BoutonContext } from '../../Context/BoutonContext';
 import { TraductionContext } from '../../Context/TraductionContext';
+import logoSpotiTherMe from '../../Images/SpotiTherMeLogo.jpeg';
 import './Navbar.css';
 
 const NavBar = () => {
@@ -38,6 +39,14 @@ const NavBar = () => {
             <div className="divNav">
                 <nav>
                     <ul className="fonction">
+                        <li>
+                            <img 
+                                alt="logoSpotiTherMe"
+                                src={logoSpotiTherMe}
+                                wight="45"
+                                height="45"
+                            />   
+                        </li>    
                         <Link to="/"  className="btn">
                             {traduction && "Home"}
                             {!traduction && "Accueil"}
