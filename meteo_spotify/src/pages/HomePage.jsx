@@ -7,6 +7,7 @@ import {AccessTokenContext} from '../Context/AccessTokenContext';
 import Carousel from 'react-bootstrap/Carousel'; 
 import imageHome from '../Images/menu2.jpeg';
 import image2 from '../Images/imageHome.jpeg';
+import Ballet from '../Images/Ballet.jpg';
 import { TraductionContext } from '../Context/TraductionContext';
 
 
@@ -28,6 +29,7 @@ function HomePage(){
                                 className="d-block w-100"
                                 src={imageHome}
                                 alt="imageHome"
+                                height ="500"
                             />
                             <Carousel.Caption>
                                 <h3>
@@ -55,8 +57,9 @@ function HomePage(){
                         <Carousel.Item>
                             <img 
                                 className="d-block w-100"
-                                src=""
+                                src={Ballet}
                                 alt="e"
+                                height ="500"
                             />
                             <Carousel.Caption>
                                 <h3>Hello</h3>
