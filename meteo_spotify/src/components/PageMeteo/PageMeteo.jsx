@@ -4,14 +4,15 @@ import LayoutGlobal from '../../Layout/LayoutGlobal';
 import ButtonRedirection from '../Button/ButtonRedirection';
 import {AccessTokenContext} from '../../Context/AccessTokenContext';
 import { useHistory } from "react-router-dom";
-import Alert from 'react-bootstrap/Alert'
 import { useState } from 'react';
 
 
 const PageMeteo = () => {
 
-    /* Utilisation du context */
+    /* Utilisation du hook (context,états) */
     const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
+    const [city,setCity] = useState([]); //Plusieurs villes peuvent être attribuées à un même code Postal
+
     let history = useHistory();
 
     /* On doit être connecté pour accéder a la méteo */
@@ -130,13 +131,18 @@ const PageMeteo = () => {
             console.log(responseCP);
             
             const catFacts = await responseCP.json();
+            console.log("Debut exemple");
+
+            //setCity(city.push(catFacts.cities[0].name)); //On ajoute le nom de la ville dans l'état pour l'afficher.
+
+            console.log(catFacts);
+            console.log("Fin exemple");
             setInsee(catFacts.cities[0].insee);
             
             console.log(catFacts.cities[0].insee);
 
 
             const response = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&insee='+ insee);
-            console.log(insee);
             const donneesMeteo = await response.json();
             console.log(WEATHER[donneesMeteo.forecast[0].weather]);
             //console.log(donneesMeteo);
