@@ -4,6 +4,7 @@ import LayoutGlobal from '../../Layout/LayoutGlobal';
 import ButtonRedirection from '../Button/ButtonRedirection';
 import {AccessTokenContext} from '../../Context/AccessTokenContext';
 import { useHistory } from "react-router-dom";
+import Alert from 'react-bootstrap/Alert'
 import { useState } from 'react';
 
 
@@ -141,7 +142,7 @@ const PageMeteo = () => {
             //console.log(donneesMeteo);
 
         } catch(Error){ //Cas d'une saisie invalide d'un code postal
-             console.log("Please to renseigner un CP valide")  //Voir avoir prof comment intégrer un message de warning à l'écran avec boostraps <Aler>
+            console.log("invalid hehe");
         }
     }
     return (  

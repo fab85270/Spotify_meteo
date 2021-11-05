@@ -16,8 +16,8 @@ const Form_CP = ({checkSubmit,checkChange}) => {
         <form class="CP_Meteo" onSubmit={(event)=> checkSubmit(event)}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>
-              {!traduction && "Code postale"}
-              {traduction && "PostCode"}
+              {!traduction && "Code postale Ville ou Nom de la ville"}
+              {traduction && "Street PostCode or name street"}
             </Form.Label> 
             <Form.Control
               type = "search"
@@ -25,7 +25,7 @@ const Form_CP = ({checkSubmit,checkChange}) => {
               placeHolder={traduction && "Please enter your PostCode" || !traduction && "Veuillez renseigner votre code postal"}
               onChange={(event)=> checkChange(event)}
               autocomplete="off"
-              required pattern="[0-9]{5}"
+              required pattern="[0-9]{5}|[A-Z]*[a-z]*"
             />
           </Form.Group>
             <div>
