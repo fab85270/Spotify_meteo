@@ -23,7 +23,10 @@ function HomePage(){
         return (      
             <LayoutGlobal children={
                 <>  
-                    <h1 style={{textAlign:"center"}}>La musique par tous temps</h1>
+                    <h1 style={{textAlign:"center"}}>
+                        {!traduction && "L'application de musique de tous les temps"}
+                        {traduction && "Music application for all time"}
+                    </h1>
                     <Carousel>
                         <Carousel.Item>
                             <img 
