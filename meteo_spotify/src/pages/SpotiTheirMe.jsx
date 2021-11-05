@@ -96,7 +96,6 @@ const SpotiTherLayout = () =>{
                     >
                     </Form_research>
                   </td>
-                  <td/>
                   <td>
                     Prochainement votre application meteo intégrée.
                   </td>
