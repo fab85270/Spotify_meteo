@@ -29,10 +29,10 @@ const About = () =>{
                     {traduction && "This project consists of using two APIs, those of spotify and a weather platform"}
                 
                 </p>
-                <div>
+                <div className="memberSpotiTherMe">
                     {!traduction && "Ce projet a été réalisé en commun par"}
                     {traduction && "This project was carried out jointly by"}
-                     <br />
+                     <br/>
                         Coutanceau Fabien /
                         Losego Abel /
                         Bodo Maxence
