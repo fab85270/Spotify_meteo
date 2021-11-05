@@ -3,7 +3,7 @@ import Form_CP from '../Form_CP/Form_CP';
 import LayoutGlobal from '../../Layout/LayoutGlobal';
 import ButtonRedirection from '../Button/ButtonRedirection';
 import {AccessTokenContext} from '../../Context/AccessTokenContext';
-import { useHistory,Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useState } from 'react';
 
 
@@ -124,21 +124,25 @@ const PageMeteo = () => {
     
         /* Merci ici d'utiliser une méthode get qui permet d'obtenir les reponses selon un URL placé en paramètre ( voir comment a fait Fabien si possible avec token dans .env pour qu'il ne soit pas direct dans le code) */
         //Recuperer le code insee 
-        const responseCP = await fetch('https://api.meteo-concept.com/api/location/cities?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&search='+ cp);
-        console.log(responseCP);
-        
-        const catFacts = await responseCP.json();
-        setInsee(catFacts.cities[0].insee);
-        
-        console.log(catFacts.cities[0].insee);
+        try {
+            const responseCP = await fetch('https://api.meteo-concept.com/api/location/cities?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&search='+ cp);
+            console.log(responseCP);
+            
+            const catFacts = await responseCP.json();
+            setInsee(catFacts.cities[0].insee);
+            
+            console.log(catFacts.cities[0].insee);
 
 
-        const response = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&insee='+ insee);
-        console.log(insee);
-        const donneesMeteo = await response.json();
-        console.log(WEATHER[donneesMeteo.forecast[0].weather]);
-        //console.log(donneesMeteo);
-        
+            const response = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&insee='+ insee);
+            console.log(insee);
+            const donneesMeteo = await response.json();
+            console.log(WEATHER[donneesMeteo.forecast[0].weather]);
+            //console.log(donneesMeteo);
+
+        } catch(Error){ //Cas d'une saisie invalide d'un code postal
+             console.log("Please to renseigner un CP valide")  //Voir avoir prof comment intégrer un message de warning à l'écran avec boostraps <Aler>
+        }
     }
     return (  
             <LayoutGlobal children ={

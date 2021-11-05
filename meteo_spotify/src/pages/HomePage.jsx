@@ -9,6 +9,7 @@ import imageHome from '../Images/menu2.jpeg';
 import image2 from '../Images/imageHome.jpeg';
 import { TraductionContext } from '../Context/TraductionContext';
 
+
 function HomePage(){ 
     
      /* Utilisation des hooks */
@@ -21,6 +22,57 @@ function HomePage(){
             <LayoutGlobal children={
                 <>  
                 <h1>coucou</h1>
+                    <Carousel>
+                        <Carousel.Item>
+                            <img 
+                                className="d-block w-100"
+                                src={imageHome}
+                                alt="imageHome"
+                            />
+                            <Carousel.Caption>
+                                <h3>
+                                    {traduction && "Hello"}
+                                    {!traduction && "Coucou"}
+                                </h3>
+                                <p>
+                                    {traduction && "Nulla vitae elit libero, a pharetra augue mollis interdum."}
+                                    {!traduction && "wesh"}
+                                </p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <img 
+                                className="d-block w-100"
+                                src={image2}
+                                alt="e"
+                                height ="500"
+                            />
+                            <Carousel.Caption>
+                                <h3>Hello</h3>
+                                <p>Second diapo</p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <img 
+                                className="d-block w-100"
+                                src=""
+                                alt="e"
+                            />
+                            <Carousel.Caption>
+                                <h3>Hello</h3>
+                                <p>Troisième diapo</p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                    </Carousel>         
+                </>       
+            }></LayoutGlobal>
+        ) 
+    } else {
+        return (      
+            <LayoutGlobal children={
+                <>
+                    <h1>Welcome to the web site</h1>
+                    <p>Ici mettre des images.. photos et tout..informations are coming...</p>
                     <Carousel>
                         <Carousel.Item>
                             <img 
@@ -61,16 +113,7 @@ function HomePage(){
                                 <p>Troisième diapo</p>
                             </Carousel.Caption>
                         </Carousel.Item>
-                    </Carousel>           
-                </>       
-            }></LayoutGlobal>
-        ) 
-    } else {
-        return (      
-            <LayoutGlobal children={
-                <>
-                    <h1>Welcome to the web site</h1>
-                    <p>Ici mettre des images.. photos et tout..informations are coming...</p>
+                    </Carousel>  
                     <ButtonRedirection/>
                 </>       
             }></LayoutGlobal>
