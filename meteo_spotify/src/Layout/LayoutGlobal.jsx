@@ -15,13 +15,13 @@ const LayoutGlobal= ({children}) =>{
                     <div class="text-center">
                         © 2021 Copyright: Projet MASTER 1 MIAGE ReactJS
                         <div className="socialNetwork">
-                            <a href="https://www.instagram.com/spotify/?hl=fr">
+                            <a href="https://www.instagram.com/spotify/?hl=fr" target="_blank">
                                 <Instagram/>
                             </a> 
-                            <a href="https://twitter.com/spotifyfrance">
+                            <a href="https://twitter.com/spotifyfrance" target="_blank">
                                 <Twitter/>
                             </a>
-                            <a href="https://fr.linkedin.com/company/spotify">
+                            <a href="https://fr.linkedin.com/company/spotify" target="_blank">
                                 <Linkedin/>
                             </a>  
                         </div>      
