@@ -3,8 +3,7 @@ import Form_CP from '../Form_CP/Form_CP';
 import LayoutGlobal from '../../Layout/LayoutGlobal';
 import ButtonRedirection from '../Button/ButtonRedirection';
 import {AccessTokenContext} from '../../Context/AccessTokenContext';
-import { useHistory,Link } from "react-router-dom";
-import Alert from 'react-bootstrap/Alert'
+import { useHistory } from "react-router-dom";
 import { useState } from 'react';
 
 
