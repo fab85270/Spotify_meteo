@@ -24,6 +24,7 @@ const SearchForm = ({value,handleSearch,handleInputChange}) => {
             placeholder={traduction && "Search for album, artist & playlist" || !traduction && "Rechercher votre album,artistes & playlist"}
             onChange={(event)=> handleInputChange(event)}
             autoComplete="off"
+            required
           />
         </Form.Group>
         <Button variant="info" type="submit">
