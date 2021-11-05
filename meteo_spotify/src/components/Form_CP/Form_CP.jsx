@@ -25,6 +25,7 @@ const Form_CP = ({checkSubmit,checkChange}) => {
               placeHolder={traduction && "Please enter your PostCode" || !traduction && "Veuillez renseigner votre code postal"}
               onChange={(event)=> checkChange(event)}
               autocomplete="off"
+              required pattern="[0-9]{5}"
             />
           </Form.Group>
             <div>
