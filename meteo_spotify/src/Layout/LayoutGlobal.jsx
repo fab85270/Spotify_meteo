@@ -6,7 +6,7 @@ import './LayoutGlobal.css';
 
 const LayoutGlobal= ({children}) =>{
     return(
-        <div>
+        <div className="layoutGlobal">
             <Navbar></Navbar>  
             {children} 
 
@@ -29,7 +29,6 @@ const LayoutGlobal= ({children}) =>{
                 </Card.Footer>
             </Card> 
         </div> 
-        /* Ajouter un footer (bas de page) */ 
     );
 }
 export default LayoutGlobal;
