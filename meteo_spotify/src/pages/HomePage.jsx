@@ -9,6 +9,7 @@ import imageHome from '../Images/menu2.jpeg';
 import image2 from '../Images/imageHome.jpeg';
 import { TraductionContext } from '../Context/TraductionContext';
 
+
 function HomePage(){ 
     
      /* Utilisation des hooks */
@@ -44,6 +45,7 @@ function HomePage(){
                                 className="d-block w-100"
                                 src={image2}
                                 alt="e"
+                                height ="500"
                             />
                             <Carousel.Caption>
                                 <h3>Hello</h3>
@@ -61,7 +63,7 @@ function HomePage(){
                                 <p>Troisième diapo</p>
                             </Carousel.Caption>
                         </Carousel.Item>
-                    </Carousel>           
+                    </Carousel>         
                 </>       
             }></LayoutGlobal>
         ) 
