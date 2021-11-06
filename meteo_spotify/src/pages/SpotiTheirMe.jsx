@@ -196,13 +196,8 @@ const SpotiTherLayout = () =>{
             const donneesMeteo = await response.json();
 
         /* Obtention des musiques spotify selon le temps obtenu */
-          /* Ici faire un switch case */
-
-           /* switch(donneesMeteo.forecast[0].weather){
-                
-                  
-            }
-          */
+  
+          
         }
         catch(Error){ //Cas d'une saisie invalide d'un code postal
             console.log("invalid hehe");
