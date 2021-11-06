@@ -203,13 +203,14 @@ const SpotiTherLayout = () =>{
             catFacts.cities.forEach(element=>
               tabCities.push(element)
             );
+            console.log(tabCities);
             /*
             for(var item in catFacts.cities){
               //setCities(cities => cities.concat(catFacts.cities[item]));
               tabCities.push(catFacts.cities[item]);
             }
               */
-            setCities(tabCities);
+            setCities(cities=>tabCities);
             console.log("Affichage des villes");
             console.log(cities)
             console.log("Fin affichage des villes");
