@@ -173,24 +173,20 @@ const SpotiTherLayout = () =>{
     const recupererMusiqueMeteo = async (event) =>{
     try {
       const responseCP = await fetch('https://api.meteo-concept.com/api/location/cities?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&search='+ cp);
-            console.log(responseCP);
-            
-            const catFacts = await responseCP.json();
-            console.log("Debut exemple");
 
-            //setCity(city.push(catFacts.cities[0].name)); //On ajoute le nom de la ville dans l'état pour l'afficher.
-            console.log(catFacts.cities);
-            console.log(catFacts.cities[0].name);
-            console.log("Fin exemple");
+            
+        /* Définition de l'insee de la ville afin de pouvoir obtenir la météo selon la ville saisie */
+            const catFacts = await responseCP.json();
             setInsee(catFacts.cities[0].insee);
             
-
-
-
+        /* Obtention des données météo selon la ville renseignée */
             const response = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&insee='+ insee);
             const donneesMeteo = await response.json();
-            console.log(WEATHER[donneesMeteo.forecast[0].weather]);
-            //console.log(donneesMeteo);
+            console.log("essai Fabinou"+WEATHER[donneesMeteo.forecast[0].weather]);
+
+        /* Obtention des musiques spotify selon le temps obtenu */
+
+
         }
         catch(Error){ //Cas d'une saisie invalide d'un code postal
             console.log("invalid hehe");
