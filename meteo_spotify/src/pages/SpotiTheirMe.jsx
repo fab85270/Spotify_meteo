@@ -21,7 +21,7 @@ const SpotiTherLayout = () =>{
     const [artistesState, setArtistes] = useState(''); //Objet des artistes obtenus suite à une requête sur l'API Spotify.
     const [playlistsState, setPlaylists] = useState(''); //Objet des artistes obtenus suite à une requête sur l'API Spotify.
     let history = useHistory();//Pour redirection entre pages de
-    const [cp, setCP] = useState("Entrer un code postal"); //A virer ?
+    const [cp, setCP] = useState(""); 
     const [insee, setInsee] = useState("");
 
 
