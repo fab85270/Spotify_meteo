@@ -76,11 +76,11 @@ const SpotiTherLayout = () =>{
       setPlaylists(playlists);
   };
 
-    const recupererMeteo = () =>{
+    const recupererMusiqueMeteo = () =>{
 
     }
     const recupererCP = () =>{
-      
+
     }
 
     return(
@@ -106,7 +106,7 @@ const SpotiTherLayout = () =>{
                   </td>
                   <td>
                     <Form_CP
-                     checkSubmit={recupererMeteo}
+                     checkSubmit={recupererMusiqueMeteo}
                      checkChange={recupererCP}
                     >
                     </Form_CP>
