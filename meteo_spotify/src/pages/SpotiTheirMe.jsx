@@ -177,7 +177,7 @@ const SpotiTherLayout = () =>{
       /* Récupération sous forme d'objet d'objet des données obtenues suite à notre requête */
       
       const response = await get(API_URL);
-      
+
       /* Les données des objets associés (albums/artistes/playlist) sont placés au sein de hook pour pouvoir être manipulés */
 
       affichage(response);
@@ -186,7 +186,6 @@ const SpotiTherLayout = () =>{
       setCP(event.target.value);
     }
 
-
     const recupererMusiqueMeteo = async (event) =>{
       event.preventDefault();
 
@@ -194,8 +193,7 @@ const SpotiTherLayout = () =>{
     try {
     
             const responseCP = await fetch('https://api.meteo-concept.com/api/location/cities?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&search='+ cp);
-
-            
+   
         /* Définition de l'insee de la ville afin de pouvoir obtenir la météo selon la ville saisie */
             const catFacts = await responseCP.json();
     
