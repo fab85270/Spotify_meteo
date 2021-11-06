@@ -12,7 +12,7 @@ const ListArtistes = ({ artists }) => {
               <React.Fragment key={index}>
                 <Card style={{ width: '18rem' }}>
                   <a
-                    target="blank"
+                    target="_blank"
                     href={artist.external_urls.spotify}
                     rel="noopener noreferrer"
                     className="card-image-link"

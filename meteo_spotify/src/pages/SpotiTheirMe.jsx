@@ -204,18 +204,20 @@ const SpotiTherLayout = () =>{
               //setCities(cities => cities.concat(catFacts.cities[item]));
               tabCities.push(catFacts.cities[item]);
             }
+
             setCities(tabCities);
             console.log("Affichage des villes");
             console.log(cities)
             console.log("Fin affichage des villes");
 
         /* Parcourt de tous les INSEE des villes associée(s) à un code postal */
-            
-            const tabInsee =[];
+            const tabInsee = [];
             for(var item in cities){
-              setInsee(insee => insee.concat(cities[item].insee));
+              //setInsee(insee => insee.concat(cities[item].insee));
+              tabInsee.push(cities[item].insee);
+
             }
-            
+            setInsee(tabInsee);
             console.log("Affichage des INSEE");
             console.log(insee);
             console.log("Fin affichage insee");
@@ -293,6 +295,9 @@ const SpotiTherLayout = () =>{
                   </td>
                 </tr>
               </tbody>
+              <showMeteo>
+                
+              </showMeteo>
             </Table>
             
             <table>
