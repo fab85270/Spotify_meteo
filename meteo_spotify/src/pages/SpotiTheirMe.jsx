@@ -199,16 +199,19 @@ const SpotiTherLayout = () =>{
     
 
         /* Parcourt de toutes les villes associée(s) à un code postal */
-
+            const tabCities =[];
             for(var item in catFacts.cities){
-              setCities(cities => cities.concat(catFacts.cities[item]));
+              //setCities(cities => cities.concat(catFacts.cities[item]));
+              tabCities.push(catFacts.cities[item]);
             }
+            setCities(tabCities);
             console.log("Affichage des villes");
             console.log(cities)
             console.log("Fin affichage des villes");
 
         /* Parcourt de tous les INSEE des villes associée(s) à un code postal */
-
+            
+            const tabInsee =[];
             for(var item in cities){
               setInsee(insee => insee.concat(cities[item].insee));
             }
@@ -222,11 +225,6 @@ const SpotiTherLayout = () =>{
             const donneesMeteo = await response.json();
 
         /* Définition d'une URL selon le temps obtenu */
-        console.log("HHHEHEHEHEHHE"+donneesMeteo.forecast[0].weather);
-        console.log("coucou21");
-        console.log(donneesMeteo.forecast);
-        console.log("coucou11");
-
 
         switch (donneesMeteo.forecast[0].weather){
           case 0: case 1: case 2:
