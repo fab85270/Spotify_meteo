@@ -134,12 +134,20 @@ const PageMeteo = () => {
             console.log("Debut exemple");
 
             //setCity(city.push(catFacts.cities[0].name)); //On ajoute le nom de la ville dans l'état pour l'afficher.
-
-            console.log(catFacts);
+            console.log(catFacts.cities);
+            console.log(catFacts.cities[0].name);
             console.log("Fin exemple");
             setInsee(catFacts.cities[0].insee);
             
             console.log(catFacts.cities[0].insee);
+            /* Debut test 12 prochaines heures */
+            const responseProchaineHeure = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&insee='+insee);
+            const catca = await responseProchaineHeure.json();
+            console.log("Meteo 12 prochaines heures");
+            console.log(catca.forecast);
+            console.log(catca.forecast[1].weather);
+            console.log("fin");
+            /* Fin test 12 prochaines heures */
 
 
             const response = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&insee='+ insee);
