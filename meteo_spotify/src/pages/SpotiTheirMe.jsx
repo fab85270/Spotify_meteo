@@ -120,6 +120,13 @@ const SpotiTherLayout = () =>{
       232 : "Pluie et neige mêlées",
       235 : "Averses de grêle",
   }
+    /* Méthode chargée de définir une url selon un mot clé */
+
+    const getUrl = (searchTerm) =>{
+      return `https://api.spotify.com/v1/search?query=${encodeURIComponent(
+          searchTerm
+        )}&type=album,playlist,artist`;
+    }
 
     /* Méthode chargée de la saisie dans la barre texte */
 
@@ -148,14 +155,15 @@ const SpotiTherLayout = () =>{
       }
     };
 
+    
 
     const handleSearch = async (event) => {
         event.preventDefault();
 
+        
       /* Définition de l'url auquelle on désire accéder */
-      const API_URL = `https://api.spotify.com/v1/search?query=${encodeURIComponent(
-          searchTerm
-        )}&type=album,playlist,artist`;
+      const API_URL = getUrl(searchTerm);
+      console.log(API_URL);
 
 
       /* Récupération sous forme d'objet d'objet des données obtenues suite à notre requête */
