@@ -195,9 +195,36 @@ const SpotiTherLayout = () =>{
             const response = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&insee='+ insee);
             const donneesMeteo = await response.json();
 
-        /* Obtention des musiques spotify selon le temps obtenu */
-  
+        /* Définition d'une URL selon le temps obtenu */
+        switch (donneesMeteo.forecast[0].weather){
+          case 0,1,2:
+              //Soleil
+              break;
+          case 10,11,12,13,14,15,16,140,141,210,211,212,230,231,232:
+              //Pluie
+              break;
+          case 3,4,5:
+              //Nuageux
+              const API_URL = get("SCH");
+              break;
+          case 100,101,102,103,104,105,106,107,108,120,121,122,123,124,125,126,127,128,130,131,132,133,134,135,136,137,138:
+              //Orage
+              break;
+          case 20,21,22,30,31,32,142,220,221,222,235:
+              //Neige
+              break;
+          case 6,7:
+              //Brouillard
+              break;
+          case 40,41,42,43,44,45,46,47,48,60,61,62,63,64,65,66,67,68,70,71,72,73,74,75,76,77,78:
+              //averse
+              break;
+          default:
+              console.log("coucou");
+              break;
+          } 
           
+          /* Obtention des musiques grâce à la sollicitation de l'API Spotify avec l'URL et son mot clé */
         }
         catch(Error){ //Cas d'une saisie invalide d'un code postal
             console.log("invalid hehe");
