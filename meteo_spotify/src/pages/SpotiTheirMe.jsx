@@ -233,22 +233,12 @@ const SpotiTherLayout = () =>{
               console.log("coucou22");
               break;
           } 
-
-        
-          
-    
-    
-      /* Les données des objets associés (albums/artistes/playlist) sont placés au sein de hook pour pouvoir être manipulés */
-
-
         }
 
         catch(Error){ //Cas d'une saisie invalide d'un code postal
             console.log("invalid hehe");
         }
     }
-    
-
     return(
     <LayoutGlobal children={
         <>
@@ -280,6 +270,7 @@ const SpotiTherLayout = () =>{
                 </tr>
               </tbody>
             </Table>
+            
             <table>
                 <td>
                   <ListAlbums
