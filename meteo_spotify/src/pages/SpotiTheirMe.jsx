@@ -201,9 +201,6 @@ const SpotiTherLayout = () =>{
             const catFacts = await responseCP.json();
             setInsee(catFacts.cities[0].insee);
 
-        /* Parcourt de tous les INSEE des villes associée(s) à un code postal */
-           
-
         /* Parcourt de toutes les villes associée(s) à un code postal */
 
             for(var item in catFacts.cities){
@@ -212,7 +209,16 @@ const SpotiTherLayout = () =>{
             console.log("Affichage des villes");
             console.log(cities)
             console.log("Fin affichage des villes");
-        
+
+        /* Parcourt de tous les INSEE des villes associée(s) à un code postal */
+
+            for(var item in cities){
+              setInsee(insee => insee.concat(cities[item]));
+            }
+
+            console.log("Affichage des INSEE");
+            console.log(insee);
+            console.log("Fin affichage insee");
             
         /* Obtention des données météo selon la ville renseignée */
             const response = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&insee='+ insee);
