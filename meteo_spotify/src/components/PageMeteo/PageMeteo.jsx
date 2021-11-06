@@ -20,7 +20,7 @@ const PageMeteo = () => {
         history.push("/");
     }
 
-    const WEATHER = {
+     const WEATHER = {
         0 : "Soleil",
         1 : "Peu nuageux",
         2 : "Ciel voilé",
