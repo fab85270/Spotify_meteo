@@ -200,11 +200,15 @@ const SpotiTherLayout = () =>{
 
         /* Parcourt de toutes les villes associée(s) à un code postal */
             const tabCities =[];
+            catFacts.cities.forEach(element=>
+              tabCities.push(element)
+            );
+            /*
             for(var item in catFacts.cities){
               //setCities(cities => cities.concat(catFacts.cities[item]));
               tabCities.push(catFacts.cities[item]);
             }
-
+              */
             setCities(tabCities);
             console.log("Affichage des villes");
             console.log(cities)
@@ -262,7 +266,7 @@ const SpotiTherLayout = () =>{
         }
 
         catch(Error){ //Cas d'une saisie invalide d'un code postal
-            console.log("invalid hehe");
+            console.log(Error);
         }
     }
     return(
@@ -295,9 +299,7 @@ const SpotiTherLayout = () =>{
                   </td>
                 </tr>
               </tbody>
-              <showMeteo>
-                
-              </showMeteo>
+
             </Table>
             
             <table>
