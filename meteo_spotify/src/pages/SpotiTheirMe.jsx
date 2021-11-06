@@ -163,8 +163,6 @@ const SpotiTherLayout = () =>{
         
       /* Définition de l'url auquelle on désire accéder */
       const API_URL = getUrl(searchTerm);
-      console.log(API_URL);
-
 
       /* Récupération sous forme d'objet d'objet des données obtenues suite à notre requête */
       
