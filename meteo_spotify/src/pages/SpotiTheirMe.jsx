@@ -169,8 +169,14 @@ const SpotiTherLayout = () =>{
       setArtistes(artists);
       setPlaylists(playlists);
   };
+    const recupererCPSpoti = (event) =>{
+      setCP(event.target.value);
+    }
+
 
     const recupererMusiqueMeteo = async (event) =>{
+      event.preventDefault();
+
     try {
       const responseCP = await fetch('https://api.meteo-concept.com/api/location/cities?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&search='+ cp);
 
@@ -182,20 +188,21 @@ const SpotiTherLayout = () =>{
         /* Obtention des données météo selon la ville renseignée */
             const response = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&insee='+ insee);
             const donneesMeteo = await response.json();
-            console.log("essai Fabinou"+WEATHER[donneesMeteo.forecast[0].weather]);
 
         /* Obtention des musiques spotify selon le temps obtenu */
+          /* Ici faire un switch case */
 
-
+           /* switch(donneesMeteo.forecast[0].weather){
+                
+                  
+            }
+          */
         }
         catch(Error){ //Cas d'une saisie invalide d'un code postal
             console.log("invalid hehe");
         }
     }
-    const recupererCP = (event) =>{
-      setCP(event.target.value);
-      console.log(event.target.value);
-    }
+    
 
     return(
     <LayoutGlobal children={
@@ -221,7 +228,7 @@ const SpotiTherLayout = () =>{
                   <td>
                     <Form_CP
                      checkSubmit={recupererMusiqueMeteo}
-                     checkChange={recupererCP}
+                     checkChange={recupererCPSpoti}
                     >
                     </Form_CP>
                   </td>
