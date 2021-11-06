@@ -196,6 +196,7 @@ const SpotiTherLayout = () =>{
             const donneesMeteo = await response.json();
 
         /* Définition d'une URL selon le temps obtenu */
+        console.log("HHHEHEHEHEHHE"+donneesMeteo.forecast[0].weather);
         switch (donneesMeteo.forecast[0].weather){
           case 0,1,2:
               //Soleil
@@ -203,9 +204,17 @@ const SpotiTherLayout = () =>{
           case 10,11,12,13,14,15,16,140,141,210,211,212,230,231,232:
               //Pluie
               break;
-          case 3,4,5:
+          case 4:
               //Nuageux
-              const API_URL = get("SCH");
+              console.log("tets");
+              const API_URL = getUrl("SCH");
+              const response1 = await get(API_URL);
+              console.log(response1);
+              const { albums, artists, playlists } = response1;
+
+              setAlbums(albums);
+              setArtistes(artists);
+              setPlaylists(playlists);
               break;
           case 100,101,102,103,104,105,106,107,108,120,121,122,123,124,125,126,127,128,130,131,132,133,134,135,136,137,138:
               //Orage
@@ -220,12 +229,19 @@ const SpotiTherLayout = () =>{
               //averse
               break;
           default:
-              console.log("coucou");
+              console.log("coucou22");
               break;
           } 
+
+        
           
-          /* Obtention des musiques grâce à la sollicitation de l'API Spotify avec l'URL et son mot clé */
+    
+    
+      /* Les données des objets associés (albums/artistes/playlist) sont placés au sein de hook pour pouvoir être manipulés */
+
+
         }
+
         catch(Error){ //Cas d'une saisie invalide d'un code postal
             console.log("invalid hehe");
         }
