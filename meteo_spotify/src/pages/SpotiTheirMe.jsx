@@ -190,23 +190,23 @@ const SpotiTherLayout = () =>{
       event.preventDefault();
 
     try {
-      const responseCP = await fetch('https://api.meteo-concept.com/api/location/cities?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&search='+ cp);
+        /* Remise à zéro du state contenant le tableau de ville associé au CP */
+            setCities([]);
+
+
+            const responseCP = await fetch('https://api.meteo-concept.com/api/location/cities?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&search='+ cp);
 
             
         /* Définition de l'insee de la ville afin de pouvoir obtenir la météo selon la ville saisie */
             const catFacts = await responseCP.json();
             setInsee(catFacts.cities[0].insee);
 
-            console.log("essai");
-            console.log(catFacts.cities);
-            console.log("fin essai");
-
-          /* Parcourt de toutes les villes associées à un code postal */
+        /* Parcourt de toutes les villes associées à un code postal */
 
             for(var item in catFacts.cities){
-              setCities(cities.push(catFacts.cities[item]));
+              setCities(cities => cities.concat(catFacts.cities[item]));
             }
-           
+  
         
             
         /* Obtention des données météo selon la ville renseignée */
