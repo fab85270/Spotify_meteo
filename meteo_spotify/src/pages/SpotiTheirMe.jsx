@@ -203,13 +203,13 @@ const SpotiTherLayout = () =>{
         /* Définition d'une URL selon le temps obtenu */
         console.log("HHHEHEHEHEHHE"+donneesMeteo.forecast[0].weather);
         switch (donneesMeteo.forecast[0].weather){
-          case 0,1,2:
+          case 0: case 1: case 2:
               //Soleil
               break;
-          case 10,11,12,13,14,15,16,140,141,210,211,212,230,231,232:
+          case 10: case 11: case 12: case 13: case 14: case 15: case 16: case 140: case 141: case 210: case 211: case 212: case 230: case 231: case 232:
               //Pluie
               break;
-          case 4:
+          case 3: case 4: case 5:
               //Nuageux
               console.log("tets");
               const API_URL = getUrl("SCH");
@@ -217,16 +217,16 @@ const SpotiTherLayout = () =>{
               console.log(response);
               affichage(response);
               break;
-          case 100,101,102,103,104,105,106,107,108,120,121,122,123,124,125,126,127,128,130,131,132,133,134,135,136,137,138:
+          case 100: case 101: case 102: case 103: case 104: case 105: case 106: case 107: case 108: case 120: case 121: case 122: case 123: case 124: case 125: case 126: case 127: case 128: case 130: case 131: case 132: case 133: case 134: case 135: case 136: case 137: case 138:
               //Orage
               break;
-          case 20,21,22,30,31,32,142,220,221,222,235:
+          case 20: case 21: case 22: case 30: case 31: case 32: case 142: case 220: case 221: case 222: case 235:
               //Neige
               break;
-          case 6,7:
+          case 6: case 7:
               //Brouillard
               break;
-          case 40,41,42,43,44,45,46,47,48,60,61,62,63,64,65,66,67,68,70,71,72,73,74,75,76,77,78:
+          case 40: case 41: case 42: case 43: case 44: case 45: case 46: case 47: case 48: case 60: case 61: case 62: case 63: case 64: case 65: case 66: case 67: case 68: case 70: case 71: case 72: case 73: case 74: case 75: case 76: case 77: case 78:
               //averse
               break;
           default:
