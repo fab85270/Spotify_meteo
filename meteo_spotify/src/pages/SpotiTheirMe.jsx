@@ -22,6 +22,7 @@ const SpotiTherLayout = () =>{
     const [playlistsState, setPlaylists] = useState(''); //Objet des artistes obtenus suite à une requête sur l'API Spotify.
     let history = useHistory();//Pour redirection entre pages de
     const [cp, setCP] = useState(""); 
+    const [cities,setCities] = useState([]);
     const [insee, setInsee] = useState("");
 
 
@@ -195,6 +196,18 @@ const SpotiTherLayout = () =>{
         /* Définition de l'insee de la ville afin de pouvoir obtenir la météo selon la ville saisie */
             const catFacts = await responseCP.json();
             setInsee(catFacts.cities[0].insee);
+
+            console.log("essai");
+            console.log(catFacts.cities);
+            console.log("fin essai");
+
+          /* Parcourt de toutes les villes associées à un code postal */
+
+            for(var item in catFacts.cities){
+              setCities(cities.push(catFacts.cities[item]));
+            }
+           
+        
             
         /* Obtention des données météo selon la ville renseignée */
             const response = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&insee='+ insee);
@@ -202,6 +215,11 @@ const SpotiTherLayout = () =>{
 
         /* Définition d'une URL selon le temps obtenu */
         console.log("HHHEHEHEHEHHE"+donneesMeteo.forecast[0].weather);
+        console.log("coucou21");
+        console.log(donneesMeteo.forecast);
+        console.log("coucou11");
+
+
         switch (donneesMeteo.forecast[0].weather){
           case 0: case 1: case 2:
               //Soleil
