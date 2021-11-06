@@ -23,7 +23,7 @@ const SpotiTherLayout = () =>{
     let history = useHistory();//Pour redirection entre pages de
     const [cp, setCP] = useState(""); 
     const [cities,setCities] = useState([]);
-    const [insee, setInsee] = useState([]);
+    const [meteo,setMeteo] = useState([]);
 
      
 
@@ -204,13 +204,8 @@ const SpotiTherLayout = () =>{
               tabCities.push(element)
             );
             console.log(tabCities);
-            /*
-            for(var item in catFacts.cities){
-              //setCities(cities => cities.concat(catFacts.cities[item]));
-              tabCities.push(catFacts.cities[item]);
-            }
-              */
-            setCities(cities=>tabCities);
+          
+            setCities(tabCities);
             console.log("Affichage des villes");
             console.log(cities)
             console.log("Fin affichage des villes");
@@ -222,15 +217,13 @@ const SpotiTherLayout = () =>{
               tabInsee.push(cities[item].insee);
 
             }
-            setInsee(tabInsee);
-            console.log("Affichage des INSEE");
-            console.log(insee);
-            console.log("Fin affichage insee");
-            
+          
         /* Obtention des données météo selon la ville renseignée */
+        
+        for(var insee in tabInsee){
             const response = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&insee='+ insee);
             const donneesMeteo = await response.json();
-
+             
         /* Définition d'une URL selon le temps obtenu */
 
         switch (donneesMeteo.forecast[0].weather){
@@ -265,6 +258,7 @@ const SpotiTherLayout = () =>{
               break;
           } 
         }
+      }
 
         catch(Error){ //Cas d'une saisie invalide d'un code postal
             console.log(Error);
