@@ -154,7 +154,14 @@ const SpotiTherLayout = () =>{
         throw new Error(Error); //Faire un composant qui permet de personaliser les pages d'erreur (404 ou quoi..)
       }
     };
+    const affichage = (response)=>{
 
+      const { albums, artists, playlists } = response;
+
+      setAlbums(albums);
+      setArtistes(artists);
+      setPlaylists(playlists);
+    }
     
 
     const handleSearch = async (event) => {
@@ -171,9 +178,7 @@ const SpotiTherLayout = () =>{
     
       /* Les données des objets associés (albums/artistes/playlist) sont placés au sein de hook pour pouvoir être manipulés */
 
-      setAlbums(albums);
-      setArtistes(artists);
-      setPlaylists(playlists);
+      affichage(response);
   };
     const recupererCPSpoti = (event) =>{
       setCP(event.target.value);
@@ -208,13 +213,9 @@ const SpotiTherLayout = () =>{
               //Nuageux
               console.log("tets");
               const API_URL = getUrl("SCH");
-              const response1 = await get(API_URL);
-              console.log(response1);
-              const { albums, artists, playlists } = response1;
-
-              setAlbums(albums);
-              setArtistes(artists);
-              setPlaylists(playlists);
+              const response = await get(API_URL);
+              console.log(response);
+              affichage(response);
               break;
           case 100,101,102,103,104,105,106,107,108,120,121,122,123,124,125,126,127,128,130,131,132,133,134,135,136,137,138:
               //Orage
