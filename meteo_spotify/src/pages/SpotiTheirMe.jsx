@@ -25,7 +25,9 @@ const SpotiTherLayout = () =>{
     const [cities,setCities] = useState([]);
     const [insee, setInsee] = useState([]);
 
+     
 
+      
     if(!isConnected){ //Ne pas acceder a cette page si non connecté
         history.push("/");
     }
@@ -189,17 +191,15 @@ const SpotiTherLayout = () =>{
     const recupererMusiqueMeteo = async (event) =>{
       event.preventDefault();
 
+    
     try {
-        /* Remise à zéro du state contenant le tableau de ville associé au CP et à l'insee*/
-            setCities([]);
-            setInsee([]);
-
+    
             const responseCP = await fetch('https://api.meteo-concept.com/api/location/cities?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&search='+ cp);
 
             
         /* Définition de l'insee de la ville afin de pouvoir obtenir la météo selon la ville saisie */
             const catFacts = await responseCP.json();
-            setInsee(catFacts.cities[0].insee);
+    
 
         /* Parcourt de toutes les villes associée(s) à un code postal */
 
@@ -213,9 +213,9 @@ const SpotiTherLayout = () =>{
         /* Parcourt de tous les INSEE des villes associée(s) à un code postal */
 
             for(var item in cities){
-              setInsee(insee => insee.concat(cities[item]));
+              setInsee(insee => insee.concat(cities[item].insee));
             }
-
+            
             console.log("Affichage des INSEE");
             console.log(insee);
             console.log("Fin affichage insee");
