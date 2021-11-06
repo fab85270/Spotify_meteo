@@ -6,6 +6,7 @@ import Form_research from '../components/Form_research/Form_research';
 import { TraductionContext } from '../Context/TraductionContext';
 import ListAlbums from '../components/ListAlbums/ListAlbums';
 import ListArtistes from '../components/ListArtistes/ListArtistes';
+import Form_CP from '../components/Form_CP/Form_CP';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ajouter le boostrap au sein de l'application
 import Table from 'react-bootstrap/Table';
 
@@ -75,6 +76,13 @@ const SpotiTherLayout = () =>{
       setPlaylists(playlists);
   };
 
+    const recupererMeteo = () =>{
+
+    }
+    const recupererCP = () =>{
+      
+    }
+
     return(
     <LayoutGlobal children={
         <>
@@ -97,7 +105,11 @@ const SpotiTherLayout = () =>{
                     </Form_research>
                   </td>
                   <td>
-                    Prochainement votre application meteo intégrée.
+                    <Form_CP
+                     checkSubmit={recupererMeteo}
+                     checkChange={recupererCP}
+                    >
+                    </Form_CP>
                   </td>
                 </tr>
               </tbody>

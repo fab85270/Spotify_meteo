@@ -144,7 +144,7 @@ const PageMeteo = () => {
             const responseProchaineHeure = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&insee='+insee);
             const catca = await responseProchaineHeure.json();
             console.log("Meteo 12 prochaines heures");
-            console.log(catca.forecast);
+            console.log(catca.forecast[0].weather);
             console.log(catca.forecast[1].weather);
             console.log("fin");
             /* Fin test 12 prochaines heures */
