@@ -6,6 +6,7 @@ import {AccessTokenContext} from '../../Context/AccessTokenContext';
 import {MeteoContext} from '../../Context/MeteoContext';
 import { useHistory } from "react-router-dom";
 import { useState } from 'react';
+import DisplayMeteo from '../DisplayMeteo/DisplayMeteo';
 
 
 const PageMeteo = () => {
@@ -155,12 +156,11 @@ const PageMeteo = () => {
             const response = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&insee='+ insee);
             const donneesMeteo = await response.json();
             console.log(WEATHER[donneesMeteo.forecast[0].weather]);
-            //console.log(donneesMeteo);
 
             /* Changement du contexte avec les informations obtenues sur la météo suite à la requête selon le code postal saisit (codePostal/nomVille/donnéesMétéo) */
                 changeContexte(cp,catFacts.cities[0].name,donneesMeteo.forecast[0].weather);
     
-        } catch(Error){ //Cas d'une saisie invalide d'un code postal
+        } catch(Error){ //Gestion cas d'erreur : voir avec le prof pour afficher un message d'alerte.
             console.log("invalid hehe");
         }
     }
@@ -171,8 +171,10 @@ const PageMeteo = () => {
                     checkSubmit={recupererMeteo}
                     checkChange={recupererCP}
                 />
+            <DisplayMeteo/>
             <ButtonRedirection/>
-            </div>     
+            </div>  
+
             
         }>
         </LayoutGlobal>
