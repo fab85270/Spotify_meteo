@@ -9,7 +9,8 @@ import ListArtistes from '../components/ListArtistes/ListArtistes';
 import Form_CP from '../components/Form_CP/Form_CP';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ajouter le boostrap au sein de l'application
 import Table from 'react-bootstrap/Table';
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
+import './SpotiTheirMe.css';
 
 const SpotiTherLayout = () =>{
 
@@ -303,6 +304,7 @@ const SpotiTherLayout = () =>{
             
             <table>
                 <tr>
+                  <div className ="boutonChoixDisplay">
                   {Object.keys(albumsState).length > 0 && (
                     <Button variant="primary" size="lg"
                      className={`${
@@ -313,17 +315,38 @@ const SpotiTherLayout = () =>{
                      Albums
                    </Button>
                   )}
+                  {Object.keys(artistesState).length > 0 && (
+                    <Button variant="primary" size="lg"
+                     className={`${
+                       display === 'Artists' ? 'btn active' : 'btn'
+                     }`}
+                     onClick={() => setDisplay('Artists')}
+                   >
+                     {traduction && "Artists"}
+                     {!traduction && "Artistes"}
+                   </Button>
+                  )}
+                  {Object.keys(playlistsState).length > 0 && (
+                    <Button variant="primary" size="lg"
+                     className={`${
+                       display === 'Playlists' ? 'btn active' : 'btn'
+                     }`}
+                     onClick={() => setDisplay('Playlists')}
+                   >
+                     Playlists
+                   </Button>
+                  )}
+                  </div>
                 </tr>
                 <td>
-                  <ListAlbums
-                    albums={albumsState}
-                  >
-                  </ListAlbums>
+                  <div className="displayAlbums">
+                  {display == "Albums" && <ListAlbums albums={albumsState}/>} 
+                  </div>
                 </td>
                 <td>
-                  <ListArtistes
-                  artists = {artistesState}>
-                  </ListArtistes>
+                  <div className="displayArtistes">
+                  {display == "Artists" && <ListArtistes artists={artistesState}/>}
+                  </div>
                 </td>
              </table>
         </>
