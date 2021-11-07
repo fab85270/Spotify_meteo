@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const showMeteo = (meteo,) =>{
+const showMeteo = (vill) =>{
     return (
             ecou    
     );

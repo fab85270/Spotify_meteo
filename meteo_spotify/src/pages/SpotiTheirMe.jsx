@@ -9,6 +9,7 @@ import ListArtistes from '../components/ListArtistes/ListArtistes';
 import Form_CP from '../components/Form_CP/Form_CP';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ajouter le boostrap au sein de l'application
 import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button'
 
 const SpotiTherLayout = () =>{
 
@@ -20,10 +21,12 @@ const SpotiTherLayout = () =>{
     const [albumsState, setAlbums] = useState(''); //Objet des albums obtenus suite à une requête sur l'API Spotify.
     const [artistesState, setArtistes] = useState(''); //Objet des artistes obtenus suite à une requête sur l'API Spotify.
     const [playlistsState, setPlaylists] = useState(''); //Objet des artistes obtenus suite à une requête sur l'API Spotify.
+    const [display,setDisplay] = useState('Albums'); //Afin de gérer l'affichage entre albums/artistes & playlist
     let history = useHistory();//Pour redirection entre pages de
     const [cp, setCP] = useState(""); 
     const [cities,setCities] = useState([]);
     const [meteo,setMeteo] = useState([]);
+
 
      
 
@@ -211,6 +214,7 @@ const SpotiTherLayout = () =>{
             console.log("Fin affichage des villes");
 
         /* Parcourt de tous les INSEE des villes associée(s) à un code postal */
+
             const tabInsee = [];
             for(var item in cities){
               //setInsee(insee => insee.concat(cities[item].insee));
@@ -298,6 +302,18 @@ const SpotiTherLayout = () =>{
             </Table>
             
             <table>
+                <tr>
+                  {Object.keys(albumsState).length > 0 && (
+                    <Button variant="primary" size="sm">
+                     className={`${
+                       display === 'Albums' ? 'btn active' : 'btn'
+                     }`}
+                     onClick={() => setDisplay('Albums')}
+                   >
+                     Albums
+                   </Button>
+                  )}
+                </tr>
                 <td>
                   <ListAlbums
                     albums={albumsState}
