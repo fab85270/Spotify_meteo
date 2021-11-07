@@ -304,7 +304,7 @@ const SpotiTherLayout = () =>{
             <table>
                 <tr>
                   {Object.keys(albumsState).length > 0 && (
-                    <Button variant="primary" size="sm">
+                    <Button variant="primary" size="lg"
                      className={`${
                        display === 'Albums' ? 'btn active' : 'btn'
                      }`}
