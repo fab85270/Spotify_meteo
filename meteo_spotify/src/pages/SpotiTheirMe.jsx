@@ -6,6 +6,7 @@ import Form_research from '../components/Form_research/Form_research';
 import { TraductionContext } from '../Context/TraductionContext';
 import ListAlbums from '../components/ListAlbums/ListAlbums';
 import ListArtistes from '../components/ListArtistes/ListArtistes';
+import ListPlaylist from '../components/ListPlaylist/ListPlaylist';
 import Form_CP from '../components/Form_CP/Form_CP';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ajouter le boostrap au sein de l'application
 import Table from 'react-bootstrap/Table';
@@ -346,6 +347,11 @@ const SpotiTherLayout = () =>{
                 <td>
                   <div className="displayArtistes">
                   {display == "Artists" && <ListArtistes artists={artistesState}/>}
+                  </div>
+                </td>
+                <td>
+                  <div className="displayPlaylist">
+                  {display == "Playlists" && <ListPlaylist playlist={playlistsState}/>}
                   </div>
                 </td>
              </table>

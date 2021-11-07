@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 import _ from 'lodash';
-import music from '../images/imageMusique.jpg';
+
 
 const PlayList = ({ playlist }) => {
   return (
@@ -18,11 +18,9 @@ const PlayList = ({ playlist }) => {
                     rel="noopener noreferrer"
                     className="card-image-link"
                   >
-                    {!_.isEmpty(item.images) ? (
+              
                       <Card.Img variant="top" src={item.images[0].url} alt="" />
-                    ) : (
-                      <img src={music} alt="" />
-                    )}
+                   
                   </a>
                   <Card.Body>
                     <Card.Title>{item.name}</Card.Title>
