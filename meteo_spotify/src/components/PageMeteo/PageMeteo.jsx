@@ -165,8 +165,7 @@ const PageMeteo = () => {
                 <Form_CP
                     checkSubmit={recupererMeteo}
                     checkChange={recupererCP}
-                >
-            </Form_CP>
+                />
             <ButtonRedirection/>
             </div>     
             
