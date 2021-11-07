@@ -3,6 +3,7 @@ import Form_CP from '../Form_CP/Form_CP';
 import LayoutGlobal from '../../Layout/LayoutGlobal';
 import ButtonRedirection from '../Button/ButtonRedirection';
 import {AccessTokenContext} from '../../Context/AccessTokenContext';
+import {MeteoContext} from '../../Context/MeteoContext';
 import { useHistory } from "react-router-dom";
 import { useState } from 'react';
 
@@ -11,6 +12,9 @@ const PageMeteo = () => {
 
     /* Utilisation du hook (context,états) */
     const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
+    const{codePostal,nomVille,numTemps,changeContexte} = useContext(MeteoContext);
+
+    /* tests autours des states de tableau (à peut etre virer) */
     const [city,setCity] = useState([]); //Plusieurs villes peuvent être attribuées à un même code Postal
 
     let history = useHistory();
@@ -122,7 +126,6 @@ const PageMeteo = () => {
  
     const recupererMeteo = async (event) => {
         event.preventDefault();
-        console.log(cp);
     
         /* Merci ici d'utiliser une méthode get qui permet d'obtenir les reponses selon un URL placé en paramètre ( voir comment a fait Fabien si possible avec token dans .env pour qu'il ne soit pas direct dans le code) */
         //Recuperer le code insee 
@@ -131,18 +134,17 @@ const PageMeteo = () => {
             console.log(responseCP);
             
             const catFacts = await responseCP.json();
-            console.log("Debut exemple");
 
             //setCity(city.push(catFacts.cities[0].name)); //On ajoute le nom de la ville dans l'état pour l'afficher.
             console.log(catFacts.cities);
             console.log(catFacts.cities[0].name);
-            console.log("Fin exemple");
             setInsee(catFacts.cities[0].insee);
             
             console.log(catFacts.cities[0].insee);
             /* Debut test 12 prochaines heures */
             const responseProchaineHeure = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&insee='+insee);
             const catca = await responseProchaineHeure.json();
+            
             console.log("Meteo 12 prochaines heures");
             console.log(catca.forecast[0].weather);
             console.log(catca.forecast[1].weather);
@@ -155,6 +157,9 @@ const PageMeteo = () => {
             console.log(WEATHER[donneesMeteo.forecast[0].weather]);
             //console.log(donneesMeteo);
 
+            /* Changement du contexte avec les informations obtenues sur la météo suite à la requête selon le code postal saisit (codePostal/nomVille/donnéesMétéo) */
+                changeContexte(cp,catFacts.cities[0].name,donneesMeteo.forecast[0].weather);
+    
         } catch(Error){ //Cas d'une saisie invalide d'un code postal
             console.log("invalid hehe");
         }

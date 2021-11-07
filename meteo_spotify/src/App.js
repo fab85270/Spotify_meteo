@@ -12,6 +12,7 @@ import {AccessTokenContextProvider} from './Context/AccessTokenContext';
 import {BoutonContextProvider} from './Context/BoutonContext';
 import { TraductionContextProvider } from './Context/TraductionContext';
 import PageMeteo from './components/PageMeteo/PageMeteo';
+import { MeteoContextProvider } from './Context/MeteoContext';
 
 
 
@@ -20,6 +21,7 @@ function App() {
     <AccessTokenContextProvider>
       <BoutonContextProvider>
         <TraductionContextProvider>
+          <MeteoContextProvider>
           <Router>
             <Switch>
               <Route exact path="/">
@@ -42,6 +44,7 @@ function App() {
               </Route>
             </Switch>
           </Router>
+          </MeteoContextProvider>
         </TraductionContextProvider>
       </BoutonContextProvider>
     </AccessTokenContextProvider>
