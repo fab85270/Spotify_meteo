@@ -306,37 +306,38 @@ const SpotiTherLayout = () =>{
             <table>
                 <tr>
                   <div className ="boutonChoixDisplay">
-                  {Object.keys(albumsState).length > 0 && (
-                    <Button variant="primary" size="lg"
-                     className={`${
-                       display === 'Albums' ? 'btn active' : 'btn'
-                     }`}
-                     onClick={() => setDisplay('Albums')}
-                   >
-                     Albums
-                   </Button>
-                  )}
-                  {Object.keys(artistesState).length > 0 && (
-                    <Button variant="primary" size="lg"
-                     className={`${
-                       display === 'Artists' ? 'btn active' : 'btn'
-                     }`}
-                     onClick={() => setDisplay('Artists')}
-                   >
-                     {traduction && "Artists"}
-                     {!traduction && "Artistes"}
-                   </Button>
-                  )}
-                  {Object.keys(playlistsState).length > 0 && (
-                    <Button variant="primary" size="lg"
-                     className={`${
-                       display === 'Playlists' ? 'btn active' : 'btn'
-                     }`}
-                     onClick={() => setDisplay('Playlists')}
-                   >
-                     Playlists
-                   </Button>
-                  )}
+          
+                    {Object.keys(albumsState).length > 0 && (
+                      <Button variant="secondary"  size="lg"
+                      className={`${
+                        display === 'Albums' ? 'btn active' : 'btn'
+                      }`}
+                      onClick={() => setDisplay('Albums')}
+                    >
+                      Albums
+                    </Button>
+                    )}
+                    {Object.keys(artistesState).length > 0 && (
+                      <Button variant="secondary" size="lg"
+                      className={`${
+                        display === 'Artists' ? 'btn active' : 'btn'
+                      }`}
+                      onClick={() => setDisplay('Artists')}
+                    >
+                      {traduction && "Artists"}
+                      {!traduction && "Artistes"}
+                    </Button>
+                    )}
+                    {Object.keys(playlistsState).length > 0 && (
+                      <Button variant="secondary"  size="lg"
+                      className={`${
+                        display === 'Playlists' ? 'btn active' : 'btn'
+                      }`}
+                      onClick={() => setDisplay('Playlists')}
+                    >
+                      Playlists
+                    </Button>
+                    )}
                   </div>
                 </tr>
                 <td>
