@@ -10,8 +10,11 @@ import React,{createContext, useState} from 'react'
     codePostal: "",
     nomVille:"",
     numTemps: 0,
+    intituleMeteo: "",
     setNomVille: () =>{},
-    setCodePostal: () =>{}
+    setCodePostal: () =>{},
+    setNumTemps: () =>{},
+    setIntituleMeteo: () =>{}
    
 })
 
@@ -22,13 +25,15 @@ export const MeteoContextProvider = ({children}) => { //Ici le children va reprÃ
     const [codePostal,setCodePostal] = useState("");
     const [nomVille,setNomVille] = useState("");
     const [numTemps,setNumTemps] = useState(0);
+    const [intituleMeteo,setIntituleMeteo] = useState("");
      
-    const changeContexte = (codePostal,nomVille,numTemps) => {
+    const changeContexte = (codePostal,nomVille,numTemps,intituleMeteo) => {
         setCodePostal(codePostal);
         setNomVille(nomVille);
-        setNumTemps(numTemps)
+        setNumTemps(numTemps);
+        setIntituleMeteo(intituleMeteo);
     }
-      return (<MeteoContext.Provider value={{codePostal,nomVille,numTemps,changeContexte}}> {children} </MeteoContext.Provider>)
+      return (<MeteoContext.Provider value={{codePostal,nomVille,numTemps,intituleMeteo,changeContexte}}> {children} </MeteoContext.Provider>)
   };
   
  

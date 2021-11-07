@@ -158,7 +158,7 @@ const PageMeteo = () => {
             console.log(WEATHER[donneesMeteo.forecast[0].weather]);
 
             /* Changement du contexte avec les informations obtenues sur la météo suite à la requête selon le code postal saisit (codePostal/nomVille/donnéesMétéo) */
-                changeContexte(cp,catFacts.cities[0].name,donneesMeteo.forecast[0].weather);
+                changeContexte(cp,catFacts.cities[0].name,donneesMeteo.forecast[0].weather,WEATHER[donneesMeteo.forecast[0].weather]);
     
         } catch(Error){ //Gestion cas d'erreur : voir avec le prof pour afficher un message d'alerte.
             console.log("invalid hehe");
