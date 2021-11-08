@@ -231,9 +231,13 @@ const SpotiTherLayout = () =>{
               const response = await get(API_URL);
               console.log(response);
               /* On filtre l'objet reponse obtenu pour n'avoir que la playlist désirée */
-              const {playlists } = response.playlists;
-              console.log(playlists);
-              //affichage(response);
+              const {playlists } = response; //On a ici l'objet avec toutes les playlists
+
+              /* Afin d'avoir notre playlist en particulier */
+             const playlistFilter = playlists.items.filter(item => item.name === "School Appropriate Upbeat Songs");
+             
+              playlists.items = playlistFilter;
+              setPlaylists(playlists);
 
               break;
           case 100: case 101: case 102: case 103: case 104: case 105: case 106: case 107: case 108: case 120: case 121: case 122: case 123: case 124: case 125: case 126: case 127: case 128: case 130: case 131: case 132: case 133: case 134: case 135: case 136: case 137: case 138:
