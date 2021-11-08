@@ -1,7 +1,8 @@
 import React from 'react';
 import imageMusique from '../../Images/imageMusique.jpg';
-import { Card } from 'react-bootstrap';
 import _ from 'lodash';
+import { Card } from 'react-bootstrap';
+
 
 
 const ListAlbums = ({ albums }) => {
@@ -19,7 +20,7 @@ const ListAlbums = ({ albums }) => {
                     rel="noopener noreferrer"
                     className="card-image-link"
                   >   
-                 {!_.isEmpty(album.images) ? (
+                 {album.images.length > 0 ? (
                       <Card.Img
                         variant="top"
                         src={album.images[0].url}

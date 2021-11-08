@@ -1,5 +1,7 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
+import imageMusique from '../../Images/imageMusique.jpg';
+import _ from 'lodash';
 
 
 const ListArtistes = ({ artists }) => {
@@ -17,12 +19,15 @@ const ListArtistes = ({ artists }) => {
                     rel="noopener noreferrer"
                     className="card-image-link"
                   >  
-                                  
+                     {artist.images.length > 0 ? (
                       <Card.Img
                         variant="top"
                         src={artist.images[0].url}
                         alt=""
-                      />      
+                      />
+                    ) : (
+                      <img src={imageMusique} alt="" />
+                    )}     
                   </a>
                   <Card.Body>
                     <Card.Title>{artist.name}</Card.Title>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import _ from 'lodash';
+import imageMusique from '../../Images/imageMusique.jpg';
 
 
 const PlayList = ({ playlist }) => {
@@ -8,24 +8,32 @@ const PlayList = ({ playlist }) => {
     <div>
       {Object.keys(playlist).length > 0 && (
         <div className="playlist">
-          {playlist.items.map((item, index) => {
+          {playlist.items.map((playlist, index) => {
             return (
               <React.Fragment key={index}>
                 <Card style={{ width: '18rem' }}>
                   <a
                     target="_blank"
-                    href={item.external_urls.spotify}
+                    href={playlist.external_urls.spotify}
                     rel="noopener noreferrer"
                     className="card-image-link"
                   >
-              
-                      <Card.Img variant="top" src={item.images[0].url} alt="" />
+                    {playlist.images.length > 0 ? (
+                      <Card.Img
+                        variant="top"
+                        src={playlist.images[0].url}
+                        alt=""
+                      />
+                    ) : (
+                      <img src={imageMusique} alt="" />
+                    )}   
+            
                    
                   </a>
                   <Card.Body>
-                    <Card.Title>{item.name}</Card.Title>
+                    <Card.Title>{playlist.name}</Card.Title>
                     <Card.Text>
-                      <small>By {item.owner.display_name}</small>
+                      <small>By {playlist.owner.display_name}</small>
                     </Card.Text>
                   </Card.Body>
                 </Card>

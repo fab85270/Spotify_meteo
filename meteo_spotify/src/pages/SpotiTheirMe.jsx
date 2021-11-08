@@ -195,7 +195,7 @@ const SpotiTherLayout = () =>{
       const response = await get(API_URL);
 
       /* Les données des objets associés (albums/artistes/playlist) sont placés au sein de hook pour pouvoir être manipulés */
-
+      console.log(response);
       affichage(response,false);
   };
 
