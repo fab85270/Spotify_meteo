@@ -17,7 +17,7 @@ const PageMeteo = () => {
 
     /* tests autours des states de tableau (à peut etre virer) */
     const [city,setCity] = useState([]); //Plusieurs villes peuvent être attribuées à un même code Postal
-    const [cp,setCP] = useState(false);
+    const [cpErreur,setCPErreur] = useState(false); //Afin de gérer affichage message d'erreur lors de la saisie d'un mauvais codePostale
 
     let history = useHistory();
 
