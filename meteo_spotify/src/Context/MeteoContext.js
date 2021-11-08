@@ -24,7 +24,7 @@ export const MeteoContextProvider = ({children}) => { //Ici le children va repr�
     /* Initialisation du context utilisé par le bouléen false */
     const [codePostal,setCodePostal] = useState("");
     const [nomVille,setNomVille] = useState("");
-    const [numTemps,setNumTemps] = useState(0);
+    const [numTemps,setNumTemps] = useState(-1);
     const [intituleMeteo,setIntituleMeteo] = useState("");
      
     const changeContexte = (codePostal,nomVille,numTemps,intituleMeteo) => {

@@ -3,7 +3,7 @@ import {MeteoContext} from '../../Context/MeteoContext';
 import tempsCouvert from '../../Images/img_meteo/Couvert.svg';
 import tempsEclair from '../../Images/img_meteo/Eclair.svg';
 import tempsNeige from '../../Images/img_meteo/Neige.svg';
-import tempsNuageux from '../../Images/img_meteo/nuageux.svg';
+import tempsNuageux from '../../Images/img_meteo/nuageux.jpg';
 import tempsPluvieux from '../../Images/img_meteo/Pluvieux.svg';
 import tempsSoleil from '../../Images/img_meteo/Sun.svg';
 import './DisplayMeteo.css';
