@@ -31,6 +31,10 @@ const DisplayMeteo = () =>{
                     <img src={tempsPluvieux}/>
                     && <p>Temps {intituleMeteo} sur {nomVille} ({codePostal})</p>
                 }
+                {numTemps >= 20 && numTemps <= 22  && numTemps >= 60 && numTemps <=68 &&
+                    <img src={tempsNeige}/>
+                    && <p>{intituleMeteo} sur {nomVille} ({codePostal})</p>
+                }
             </div>
             <br/>
         </>
