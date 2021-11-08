@@ -40,8 +40,6 @@ const PageMeteo = () => {
  
     const recupererMeteo = async (event) => {
         event.preventDefault();
-    
-        //Recuperer le code insee 
         authenticateCP(cp);
     }
     return (  
