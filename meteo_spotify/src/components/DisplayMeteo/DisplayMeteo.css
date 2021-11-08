@@ -1,6 +1,8 @@
+
 .tempsMeteo {
-    padding-top: 10px;
+    border: thick double #32a1ce;;
     text-align: center;
+    display: inline-block;
 }
 
 .tempsMeteo div{
