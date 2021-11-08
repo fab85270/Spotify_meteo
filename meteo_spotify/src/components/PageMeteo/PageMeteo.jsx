@@ -142,19 +142,10 @@ const PageMeteo = () => {
             setInsee(catFacts.cities[0].insee);
             
             console.log(catFacts.cities[0].insee);
-            /* Debut test 12 prochaines heures */
-            const responseProchaineHeure = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&insee='+insee);
-            const catca = await responseProchaineHeure.json();
-            
-            console.log("Meteo 12 prochaines heures");
-            console.log(catca.forecast[0].weather);
-            console.log(catca.forecast[1].weather);
-            console.log("fin");
-            /* Fin test 12 prochaines heures */
-
 
             const response = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&insee='+ insee);
             const donneesMeteo = await response.json();
+            console.log(donneesMeteo);
             console.log(WEATHER[donneesMeteo.forecast[0].weather]);
 
             /* Changement du contexte avec les informations obtenues sur la météo suite à la requête selon le code postal saisit (codePostal/nomVille/donnéesMétéo) */

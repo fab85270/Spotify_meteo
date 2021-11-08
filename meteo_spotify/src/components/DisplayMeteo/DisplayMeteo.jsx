@@ -16,6 +16,7 @@ const DisplayMeteo = () =>{
 
     return (
         <>
+            affichage numero {numTemps};
             {numTemps >= 0 && (
             <div className="tempsMeteo">
                     {numTemps == 0 && 
@@ -27,7 +28,7 @@ const DisplayMeteo = () =>{
                     {numTemps > 0 && numTemps < 5 && 
                         <div className="Nuageux">
                             <p>Ciel {intituleMeteo} sur {nomVille} ({codePostal})</p>
-                            <Image src="{{tempsNuageux}}/200x200"/>
+                            <Image src="{tempsNuageux}/200x200"/>
                         </div>}
                     {numTemps == 5 && 
                         <div className="Couvert">
