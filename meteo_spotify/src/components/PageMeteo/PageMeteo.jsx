@@ -59,9 +59,7 @@ const PageMeteo = () => {
                 />
             <DisplayMeteo/>
 
-            </div>  
-
-            
+            </div>       
         }>
         </LayoutGlobal>
     )
