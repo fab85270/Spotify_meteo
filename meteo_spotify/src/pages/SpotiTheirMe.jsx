@@ -167,13 +167,19 @@ const SpotiTherLayout = () =>{
         throw new Error(Error); //Faire un composant qui permet de personaliser les pages d'erreur (404 ou quoi..)
       }
     };
-    const affichage = (response)=>{
+    const affichage = (response,isPlaylistMeteo)=>{
 
-      const { albums, artists, playlists } = response;
-        /* Ici mettre un filter pour faire en sorte qu'on affiche les choses seulement qu'on veut */
-      setAlbums(albums);
-      setArtistes(artists);
-      setPlaylists(playlists);
+      if(!isPlaylistMeteo){
+        const { albums, artists, playlists } = response;
+          /* Ici mettre un filter pour faire en sorte qu'on affiche les choses seulement qu'on veut */
+        setAlbums(albums);
+        setArtistes(artists);
+        setPlaylists(playlists);
+      } else{
+        setPlaylists(response);    
+        setAlbums({}); // Afin d'afficher que les playlists associées au temps définis.
+        setArtistes({});        
+      }
     }
     
 
@@ -190,7 +196,7 @@ const SpotiTherLayout = () =>{
 
       /* Les données des objets associés (albums/artistes/playlist) sont placés au sein de hook pour pouvoir être manipulés */
 
-      affichage(response);
+      affichage(response,false);
   };
 
 
@@ -205,19 +211,9 @@ const SpotiTherLayout = () =>{
       const {playlists} = response; //Obtention de toutes les playlists associées à ce mot clé
 
       /* On filtre l'ensemble des playlists obtenues pour n'avoir que celles qui matchent avec notre mot clé */
-
-      const playlistFilter = playlists.items.filter(item => item.name === "cloudy days" || item.name === "Cloudy Days" || item.name === "cloudy fall days");
-             
-      playlists.items = playlistFilter;
-      setPlaylists(playlists);
-    
-      setAlbums({}); // Afin d'afficher que les playlists associées au temps définis.
-      setArtistes({});
-      
-      
+      return playlists;
+     
     }
-
-
 
 
 
@@ -254,7 +250,15 @@ const SpotiTherLayout = () =>{
               break;
           case 1: case 2: case 3: case 4: case 5:
               //Nuageux
-                getPlaylistMeteo("Cloudy Day");
+               const playlists = await getPlaylistMeteo("Cloudy Day");
+               const playlistFilter = playlists.items.filter(item => item.name === "cloudy days" || item.name === "Cloudy Days" || item.name === "cloudy fall days");
+             
+               playlists.items = playlistFilter;
+
+               affichage(playlists,true);
+               
+          
+             
               break;
           case 100: case 101: case 102: case 103: case 104: case 105: case 106: case 107: case 108: case 120: case 121: case 122: case 123: case 124: case 125: case 126: case 127: case 128: case 130: case 131: case 132: case 133: case 134: case 135: case 136: case 137: case 138:
               //Orage
