@@ -138,9 +138,9 @@ const PageMeteo = () => {
             const responseCP = await fetch('https://api.meteo-concept.com/api/location/cities?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&search='+ cp);
             
             const catFacts = await responseCP.json();
-
+            console.log(catFacts);
             /*Récuperation de l'erreur dans le cas d'une mauvaise saisie de CP  */
-            if (!catFacts.cities[0]){
+            if (!catFacts.cities){
                 setCPErreur(true);
                 return 
             }
@@ -170,6 +170,7 @@ const PageMeteo = () => {
                     checkChange={recupererCP}
                 />
             <DisplayMeteo/>
+
             </div>  
 
             
