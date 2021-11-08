@@ -132,17 +132,11 @@ const PageMeteo = () => {
         //Recuperer le code insee 
         try {
             const responseCP = await fetch('https://api.meteo-concept.com/api/location/cities?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&search='+ cp);
-            console.log(responseCP);
             
             const catFacts = await responseCP.json();
 
-            //setCity(city.push(catFacts.cities[0].name)); //On ajoute le nom de la ville dans l'état pour l'afficher.
-            console.log(catFacts.cities);
-            console.log(catFacts.cities[0].name);
             setInsee(catFacts.cities[0].insee);
             
-            console.log(catFacts.cities[0].insee);
-
             const response = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&insee='+ insee);
             const donneesMeteo = await response.json();
             console.log(donneesMeteo);
