@@ -34,7 +34,7 @@ const NavBar = () => {
             history.push("/");
         }
     }
-    if(clicked){
+
         return (
             <div className="divNav">
                 <nav>
@@ -63,12 +63,16 @@ const NavBar = () => {
                             {traduction && "About us"}
                             {!traduction && "Nous concernant"}
                         </Link>
-                        <Link to="/spotiTherMe"  className="btn">
+                        {clicked && (
+                            <Link to="/spotiTherMe"  className="btn">
                                 SpotiTheirMe
                         </Link>
+                        )}
                         <li><Button variant="outline-secondary" onClick={() => click()} className="ApiSpotify">
-                                {!traduction && "Se deconnecter"}  
-                                {traduction && "Disconnect"} 
+                                {!traduction && clicked && "Se deconnecter"}  
+                                {traduction && clicked && "Disconnect"} 
+                                {!traduction && !clicked && "Se connecter"}  
+                                {traduction && !clicked && "Connect"} 
                             </Button>
                         </li>
                         <li>
@@ -90,71 +94,7 @@ const NavBar = () => {
                     </ul>
                 </nav>
             </div>
-    /**
-     * Interessant de créer une fonction dans ce composant navbar qui regroupe toutes les actions qu'on veut réaliser lorsque on clique sur le 
-     * bouton "se connecter" 
-     */
-            /* 
-            Choses à faire : 
-                - créer un composant bouton qui permet donc de déterminer une redirection vers une page spécifique selon le type du bouton.
-            On aura ainsi un bouton "clicked" => On se connecte et donc on va être redirigé vers une page avec les différentes utilisations 
-            Et l'inverse du bouton "clicked"*/
-    
-        );
-    }else{
-        return (
-            <div className="divNav">
-                <nav>
-                    <ul className="fonction">
-                        <li>
-                            <Link to="/" className="btn">
-                                <img 
-                                    alt="logoSpotiTherMe"
-                                    src={logoSpotiTherMe}
-                                    wight="45"
-                                    height="45"
-                                />   
-                            </Link>
-                        </li> 
-                        <Link to="/"  className="btn">
-                            {traduction && "Home"}
-                            {!traduction && "Accueil"}
-                        </Link>
-                        <Link to="/service"  className="btn">
-                            Service
-                        </Link> 
-                        <Link to="/about"  className="btn">
-                            {traduction && "About us"}
-                            {!traduction && "Nous concernant"}
-                        </Link>
-                        <li><Button variant="outline-secondary" onClick={() => click()} className="ApiSpotify">
-                            {!traduction && "Se connecter"}
-                            {traduction && "Connect"}
-                            </Button>
-                        </li>
-                        <li>
-                            <Form.Select arial-label="Default select example" onChange={(event)=>traductionApp(event)}>
-                                <option>
-                                    {traduction && "Translate"}
-                                    {!traduction && "Traduction"}
-                                </option>
-                                <option value = "1">
-                                    {traduction && "English"}
-                                    {!traduction && "Anglais"}
-                                </option>
-                                <option value="2">
-                                    {traduction && "French"}
-                                    {!traduction && "Français"}
-                                </option>
-                            </Form.Select>
-                        </li>
-                    </ul>
-                </nav>
-            </div>    
         );
     }
-    
-};
-
 export default NavBar;
 
