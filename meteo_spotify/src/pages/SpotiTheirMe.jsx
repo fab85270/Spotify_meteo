@@ -228,14 +228,14 @@ const SpotiTherLayout = () =>{
 
             event.preventDefault();
     try {
-          const responseCP = await fetch('https://api.meteo-concept.com/api/location/cities?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&search='+ cp);
+          const responseCP = await fetch('https://api.meteo-concept.com/api/location/cities?token=bd663c7a504d422555c26f49c6bc20b4be261c59176727c9c7d316b98514da40&search='+ cp);
             
         /* Définition de l'insee de la ville afin de pouvoir obtenir la météo selon la ville saisie */
             const catFacts = await responseCP.json();
     
         /* Obtention des données météo selon la ville renseignée */
         
-          const response = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&insee='+ catFacts.cities[0].insee);
+          const response = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=bd663c7a504d422555c26f49c6bc20b4be261c59176727c9c7d316b98514da40&insee='+ catFacts.cities[0].insee);
           const donneesMeteo = await response.json();
           console.log(donneesMeteo);
               

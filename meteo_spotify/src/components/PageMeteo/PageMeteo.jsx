@@ -135,7 +135,7 @@ const PageMeteo = () => {
         /* Merci ici d'utiliser une méthode get qui permet d'obtenir les reponses selon un URL placé en paramètre ( voir comment a fait Fabien si possible avec token dans .env pour qu'il ne soit pas direct dans le code) */
         //Recuperer le code insee 
        
-            const responseCP = await fetch('https://api.meteo-concept.com/api/location/cities?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&search='+ cp);
+            const responseCP = await fetch('https://api.meteo-concept.com/api/location/cities?token=bd663c7a504d422555c26f49c6bc20b4be261c59176727c9c7d316b98514da40&search='+ cp);
             console.log(responseCP);
             const catFacts = await responseCP.json();
             console.log(catFacts);
@@ -147,7 +147,7 @@ const PageMeteo = () => {
             }
             setInsee(catFacts.cities[0].insee);
             
-            const response = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&insee='+ insee);
+            const response = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=bd663c7a504d422555c26f49c6bc20b4be261c59176727c9c7d316b98514da40&insee='+ insee);
             const donneesMeteo = await response.json();
             console.log(donneesMeteo);
             console.log(WEATHER[donneesMeteo.forecast[0].weather]);
