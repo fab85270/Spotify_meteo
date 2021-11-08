@@ -7,6 +7,7 @@ import {MeteoContext} from '../../Context/MeteoContext';
 import { useHistory } from "react-router-dom";
 import { useState } from 'react';
 import DisplayMeteo from '../DisplayMeteo/DisplayMeteo';
+import { TraductionContext } from '../../Context/TraductionContext';
 
 
 const PageMeteo = () => {
@@ -14,6 +15,7 @@ const PageMeteo = () => {
     /* Utilisation du hook (context,états) */
     const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
     const{codePostal,nomVille,numTemps,changeContexte} = useContext(MeteoContext);
+    const {traduction,traductionApp} = useContext(TraductionContext);
 
     /* tests autours des states de tableau (à peut etre virer) */
     const [city,setCity] = useState([]); //Plusieurs villes peuvent être attribuées à un même code Postal
@@ -129,8 +131,7 @@ const PageMeteo = () => {
  
     const recupererMeteo = async (event) => {
         event.preventDefault();
-        /* Ici remettre à vide le state d'erreur du CP. */
-
+        setCPErreur(false);
 
         /* Merci ici d'utiliser une méthode get qui permet d'obtenir les reponses selon un URL placé en paramètre ( voir comment a fait Fabien si possible avec token dans .env pour qu'il ne soit pas direct dans le code) */
         //Recuperer le code insee 
@@ -140,9 +141,8 @@ const PageMeteo = () => {
             const catFacts = await responseCP.json();
 
             /*Récuperation de l'erreur dans le cas d'une mauvaise saisie de CP  */
-
             if (!catFacts.cities[0]){
-                //set meteo erreur.
+                setCPErreur(true);
                 return 
             }
             setInsee(catFacts.cities[0].insee);
@@ -153,13 +153,19 @@ const PageMeteo = () => {
             console.log(WEATHER[donneesMeteo.forecast[0].weather]);
 
             /* Changement du contexte avec les informations obtenues sur la météo suite à la requête selon le code postal saisit (codePostal/nomVille/donnéesMétéo) */
-                changeContexte(cp,catFacts.cities[0].name,donneesMeteo.forecast[0].weather,WEATHER[donneesMeteo.forecast[0].weather]);
-    
-        
+                changeContexte(cp,catFacts.cities[0].name,donneesMeteo.forecast[0].weather,WEATHER[donneesMeteo.forecast[0].weather]);    
     }
     return (  
             <LayoutGlobal children ={
-            <div className='layout'>        
+            <div className='layout'>  
+            {cpErreur &&
+                <p>
+                    <strong>
+                        {traduction && "Entry error: Please enter a valid postal code"}
+                        {!traduction && "Erreur saisie : Veuillez saisir un code postal valide"}
+                    </strong>
+                </p>
+            }      
                 <Form_CP
                     checkSubmit={recupererMeteo}
                     checkChange={recupererCP}
