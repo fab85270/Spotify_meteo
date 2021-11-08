@@ -15,27 +15,29 @@ const DisplayMeteo = () =>{
 
     return (
         <>
+            {numTemps >= 0 && (
             <div className="tempsMeteo">
-                {numTemps == 0 && 
-                    <img src={tempsSoleil}/>
-                    && <p>Le temps ensoleillé sur {nomVille} ({codePostal})</p>
-                }   
-                {numTemps > 0 && numTemps < 5 && 
-                    <img src={tempsNuageux}/>
-                    && <p>Ciel {intituleMeteo} sur {nomVille} ({codePostal})</p>}
-                {numTemps == 5 && 
-                    <img src={tempsCouvert}/>
-                    && <p>Ciel {intituleMeteo} sur {nomVille} ({codePostal})</p>
-                }
-                {numTemps > 9 && numTemps < 17 || numTemps >= 40 && numTemps <= 48 && 
-                    <img src={tempsPluvieux}/>
-                    && <p>Temps {intituleMeteo} sur {nomVille} ({codePostal})</p>
-                }
-                {numTemps >= 20 && numTemps <= 22  && numTemps >= 60 && numTemps <=68 &&
-                    <img src={tempsNeige}/>
-                    && <p>{intituleMeteo} sur {nomVille} ({codePostal})</p>
-                }
-            </div>
+                    {numTemps == 0 && 
+                        <img src={tempsSoleil}/>
+                        && <p>Le temps ensoleillé sur {nomVille} ({codePostal})</p>
+                    }   
+                    {numTemps > 0 && numTemps < 5 && 
+                        <img src={tempsNuageux}/>
+                        && <p>Ciel {intituleMeteo} sur {nomVille} ({codePostal})</p>}
+                    {numTemps == 5 && 
+                        <img src={tempsCouvert}/>
+                        && <p>Ciel {intituleMeteo} sur {nomVille} ({codePostal})</p>
+                    }
+                    {numTemps > 9 && numTemps < 17 || numTemps >= 40 && numTemps <= 48 && 
+                        <img src={tempsPluvieux}/>
+                        && <p>Temps {intituleMeteo} sur {nomVille} ({codePostal})</p>
+                    }
+                    {numTemps >= 20 && numTemps <= 22  && numTemps >= 60 && numTemps <=68 &&
+                        <img src={tempsNeige}/>
+                        && <p>{intituleMeteo} sur {nomVille} ({codePostal})</p>
+                    }
+                </div>
+            )}
             <br/>
         </>        
     );   
