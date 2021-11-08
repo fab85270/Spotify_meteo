@@ -22,13 +22,13 @@ const DisplayMeteo = () =>{
                     {numTemps == 0 && 
                         <div className="Soleil">
                             <p>Le temps ensoleillé sur {nomVille} ({codePostal})</p>
-                            <Image src="{tempsSoleil}/171x180"/>    
+                            <Image src={tempsSoleil}/>    
                         </div>
                     }   
                     {numTemps > 0 && numTemps < 5 && 
                         <div className="Nuageux">
                             <p>Ciel {intituleMeteo} sur {nomVille} ({codePostal})</p>
-                            <Image src="{tempsNuageux}/200x200"/>
+                            <Image src={tempsNuageux}/>
                         </div>}
                     {numTemps == 5 && 
                         <div className="Couvert">

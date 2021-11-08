@@ -116,7 +116,8 @@ const PageMeteo = () => {
         235 : "Averses de grêle",
     }
 
-    const [cp, setCP] = useState("Entrer un code postal"); //A virer ?
+    /* Utilisation de hooks(useState) */
+    const [cp, setCP] = useState(""); 
     const [insee, setInsee] = useState("");
 
     const recupererCP = (event) => {
