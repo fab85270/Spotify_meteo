@@ -226,15 +226,15 @@ const SpotiTherLayout = () =>{
           case 1: case 2: case 3: case 4: case 5:
               //Nuageux
               console.log("tets");
-              const API_URL = getUrl("SCH");
+              const API_URL = getUrl("Cloudy Day");
               console.log(API_URL);
               const response = await get(API_URL);
               console.log(response);
               /* On filtre l'objet reponse obtenu pour n'avoir que la playlist désirée */
               const {playlists } = response; //On a ici l'objet avec toutes les playlists
-
+              console.log(playlists);
               /* Afin d'avoir notre playlist en particulier */
-             const playlistFilter = playlists.items.filter(item => item.name === "School Appropriate Upbeat Songs");
+              const playlistFilter = playlists.items.filter(item => item.name === ("cloudy day" ||  "Cloudy Days"));
              
               playlists.items = playlistFilter;
               setPlaylists(playlists);
