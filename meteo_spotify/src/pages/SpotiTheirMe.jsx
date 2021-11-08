@@ -192,6 +192,35 @@ const SpotiTherLayout = () =>{
 
       affichage(response);
   };
+
+
+    /* Méthode chargée de l'obtention des playlists selon le codePostal saisit et le temps associé */
+
+    const getPlaylistMeteo = async (keyword) =>{
+
+      /* Définition de l'URL selon le mot clé associé au temps météo du CP renseigné */
+      const API_URL = getUrlMusiqueMeteo(keyword);
+
+      const response = await get(API_URL);
+      const {playlists} = response; //Obtention de toutes les playlists associées à ce mot clé
+
+      /* On filtre l'ensemble des playlists obtenues pour n'avoir que celles qui matchent avec notre mot clé */
+
+      const playlistFilter = playlists.items.filter(item => item.name === "cloudy days" || item.name === "Cloudy Days" || item.name === "cloudy fall days");
+             
+      playlists.items = playlistFilter;
+      setPlaylists(playlists);
+    
+      setAlbums({}); // Afin d'afficher que les playlists associées au temps définis.
+      setArtistes({});
+      
+      
+    }
+
+
+
+
+
     const recupererCPSpoti = (event) =>{
       setCP(event.target.value);
     }
@@ -225,21 +254,7 @@ const SpotiTherLayout = () =>{
               break;
           case 1: case 2: case 3: case 4: case 5:
               //Nuageux
-              const API_URL = getUrl("Cloudy Day");
-              const response = await get(API_URL);
-
-              /* On filtre l'objet reponse obtenu pour n'avoir que les playlists désirées */
-
-              const {playlists } = response; //On a ici l'objet avec toutes les playlists
-              console.log(playlists);
-              /* Afin d'avoir notre playlist en particulier */
-              const playlistFilter = playlists.items.filter(item => item.name === "cloudy days" || item.name === "Cloudy Days" || item.name === "cloudy fall days");
-             
-              playlists.items = playlistFilter;
-              setPlaylists(playlists);
-              setAlbums({});
-              setArtistes({});
-
+                getPlaylistMeteo("Cloudy Day");
               break;
           case 100: case 101: case 102: case 103: case 104: case 105: case 106: case 107: case 108: case 120: case 121: case 122: case 123: case 124: case 125: case 126: case 127: case 128: case 130: case 131: case 132: case 133: case 134: case 135: case 136: case 137: case 138:
               //Orage
