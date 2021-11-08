@@ -17,7 +17,7 @@ const DisplayMeteo = () =>{
                     {numTemps == 0 && 
                         <div className="Soleil">
                             <p>Le temps ensoleillé sur {nomVille} ({codePostal})</p>
-                            <Image src={tempsSoleil}/>    
+                            <Image src="{tempsSoleil}"/>    
                         </div>
                     }   
                     {numTemps > 0 && numTemps < 5 && 
@@ -28,15 +28,15 @@ const DisplayMeteo = () =>{
                     {numTemps == 5 && 
                         <div className="Couvert">
                             <p>Ciel {intituleMeteo} sur {nomVille} ({codePostal})</p>
-                            <img src={tempsCouvert}/> 
+                            <img src="{tempsCouvert}"/> 
                         </div>
                     }
                     {numTemps > 9 && numTemps < 17 || numTemps >= 40 && numTemps <= 48 && 
-                        <img src={tempsPluvieux}/>
+                        <img src="{tempsPluvieux}"/>
                         && <p>Temps {intituleMeteo} sur {nomVille} ({codePostal})</p>
                     }
                     {numTemps >= 20 && numTemps <= 22  && numTemps >= 60 && numTemps <=68 &&
-                        <img src={tempsNeige}/>
+                        <img src="{tempsNeige}"/>
                         && <p>{intituleMeteo} sur {nomVille} ({codePostal})</p>
                     }
                 </div>
