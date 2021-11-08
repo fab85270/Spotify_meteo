@@ -192,10 +192,10 @@ const SpotiTherLayout = () =>{
       setCP(event.target.value);
     }
 
+    /* Méthode chargée de récupérer la musique associée à la méteo du code postal saisit */
     const recupererMusiqueMeteo = async (event) =>{
-      event.preventDefault();
 
-    
+            event.preventDefault();
     try {
     
             const responseCP = await fetch('https://api.meteo-concept.com/api/location/cities?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&search='+ cp);
@@ -209,12 +209,7 @@ const SpotiTherLayout = () =>{
             catFacts.cities.forEach(element=>
               tabCities.push(element)
             );
-            console.log(tabCities);
-          
-            setCities(tabCities);
-            console.log("Affichage des villes");
-            console.log(cities)
-            console.log("Fin affichage des villes");
+
 
         /* Parcourt de tous les INSEE des villes associée(s) à un code postal */
 

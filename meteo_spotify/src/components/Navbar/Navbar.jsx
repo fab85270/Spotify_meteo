@@ -63,6 +63,9 @@ const NavBar = () => {
                             {traduction && "About us"}
                             {!traduction && "Nous concernant"}
                         </Link>
+                        <Link to="/spotiTherMe"  className="btn">
+                                SpotiTheirMe
+                        </Link>
                         <li><Button variant="outline-secondary" onClick={() => click()} className="ApiSpotify">
                                 {!traduction && "Se deconnecter"}  
                                 {traduction && "Disconnect"} 
