@@ -244,21 +244,22 @@ const SpotiTherLayout = () =>{
         switch (donneesMeteo.forecast[0].weather){
           case 0: 
               //Soleil
+              const playlistsSoleil = await getPlaylistMeteo("Sunny Day");
+              playlistsSoleil.items = playlistsSoleil.items.filter(item => item.name === "sunny day" || item.name === "Sunny Day");             
+              affichage(playlistsSoleil,true);  
               break;
           case 10: case 11: case 12: case 13: case 14: case 15: case 16: case 140: case 141: case 210: case 211: case 212: case 230: case 231: case 232:
               //Pluie
+              const playlistsPluie = await getPlaylistMeteo("Rainy Day");
+              playlistsPluie.items = playlistsPluie.items.filter(item => item.name === "Rainy Day" || item.name === "Rainy Day Vibes" || item.name === "Rainy Day Jazz");             
+              affichage(playlistsPluie,true);  
               break;
           case 1: case 2: case 3: case 4: case 5:
               //Nuageux
-               const playlists = await getPlaylistMeteo("Cloudy Day");
-               const playlistFilter = playlists.items.filter(item => item.name === "cloudy days" || item.name === "Cloudy Days" || item.name === "cloudy fall days");
-             
-               playlists.items = playlistFilter;
-
-               affichage(playlists,true);
-               
-          
-             
+              const playlistsNuageux = await getPlaylistMeteo("Cloudy Day");
+              const playlistFilter = playlistsNuageux.items.filter(item => item.name === "cloudy days" || item.name === "Cloudy Days" || item.name === "cloudy fall days");             
+              playlistsNuageux.items = playlistFilter;
+              affichage(playlistsNuageux,true);   
               break;
           case 100: case 101: case 102: case 103: case 104: case 105: case 106: case 107: case 108: case 120: case 121: case 122: case 123: case 124: case 125: case 126: case 127: case 128: case 130: case 131: case 132: case 133: case 134: case 135: case 136: case 137: case 138:
               //Orage
