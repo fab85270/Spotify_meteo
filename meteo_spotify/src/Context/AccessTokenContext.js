@@ -34,9 +34,6 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
         case '1': //Cas de Maxence
           clientID=process.env.REACT_APP_CLIENT_ID_MAX;
           clientSecret=process.env.REACT_APP_CLIENT_SECRET_MAX;
-
-          console.log("client ID :"+clientID);
-          console.log("clientSecret :"+clientSecret);
           break;
         case '2': //Cas Abel
           clientID=process.env.REACT_APP_CLIENT_ID_ABEL;
@@ -45,9 +42,6 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
         case '3': //Cas Fabien
           clientID=process.env.REACT_APP_CLIENT_ID_FAB;
           clientSecret=process.env.REACT_APP_CLIENT_SECRET_FAB;
-
-          console.log("client ID :"+clientID );
-          console.log("clientSecret :"+clientSecret);
         break;
         default:
           throw new Error("Le compte choisit ne figure pas parmis ceux listés"); //Déclaration d'une erreur.
