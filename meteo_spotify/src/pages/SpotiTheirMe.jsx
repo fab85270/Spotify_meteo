@@ -4,6 +4,7 @@ import {AccessTokenContext} from '../Context/AccessTokenContext';
 import { useHistory } from "react-router-dom";
 import Form_research from '../components/Form_research/Form_research';
 import { TraductionContext } from '../Context/TraductionContext';
+import {MeteoContext} from '../Context/MeteoContext';
 import ListAlbums from '../components/ListAlbums/ListAlbums';
 import ListArtistes from '../components/ListArtistes/ListArtistes';
 import ListPlaylist from '../components/ListPlaylist/ListPlaylist';
@@ -20,6 +21,7 @@ const SpotiTherLayout = () =>{
 
     const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
     const {traduction,traductionApp} = useContext(TraductionContext);
+    const{codePostal,nomVille,numTemps,changeContexte} = useContext(MeteoContext);
     const [searchTerm, setSearchTerm] = useState('');
     const [albumsState, setAlbums] = useState({}); //Objet des albums obtenus suite à une requête sur l'API Spotify.
     const [artistesState, setArtistes] = useState(''); //Objet des artistes obtenus suite à une requête sur l'API Spotify.
@@ -237,7 +239,10 @@ const SpotiTherLayout = () =>{
         
           const response = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=bd663c7a504d422555c26f49c6bc20b4be261c59176727c9c7d316b98514da40&insee='+ catFacts.cities[0].insee);
           const donneesMeteo = await response.json();
-          console.log(donneesMeteo);
+
+        /* Changement du contexte avec les informations obtenues sur la météo suite à la requête selon le code postal saisit (codePostal/nomVille/donnéesMétéo) */
+          changeContexte(cp,catFacts.cities[0].name,donneesMeteo.forecast[0].weather,WEATHER[donneesMeteo.forecast[0].weather]);    
+
               
         /* Définition d'une URL selon le temps obtenu */
 
