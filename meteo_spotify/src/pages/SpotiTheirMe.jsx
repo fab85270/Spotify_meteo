@@ -275,12 +275,18 @@ const SpotiTherLayout = () =>{
               break;
           case 6: case 7:
               //Brouillard
+              const playlistsBrouillard= await getPlaylistMeteo("Foggy");
+              playlistsBrouillard.items = playlistsBrouillard.items.filter(item => item.name === "foggy forest vibes" || item.name === "Foggy Mornings" || item.name === "foggy days");
+              affichage(playlistsBrouillard,true); 
               break;
           case 40: case 41: case 42: case 43: case 44: case 45: case 46: case 47: case 48: case 60: case 61: case 62: case 63: case 64: case 65: case 66: case 67: case 68: case 70: case 71: case 72: case 73: case 74: case 75: case 76: case 77: case 78:
               //averse
+              const playlistsAverses= await getPlaylistMeteo("downtown blues");
+              playlistsAverses.items = playlistsAverses.items.filter(item => item.name === "downtown Blues" || item.name === "Downtown Blues");
+              affichage(playlistsAverses,true); 
               break;
           default:
-              console.log("coucou22");
+              console.log("Le numéro de météo retourné ne peut être considéré");
               break;
           } 
         }
