@@ -130,9 +130,15 @@ const SpotiTherLayout = () =>{
     /* Méthode chargée de définir une url selon un mot clé */
 
     const getUrl = (searchTerm) =>{
-      return `https://api.spotify.com/v1/search?query=${encodeURIComponent(
+      return `https://api.spotify.com/v1/search?query="${encodeURIComponent(
           searchTerm
-        )}&type=album,playlist,artist`;
+        )}"&type=album,playlist,artist`;
+    }
+
+    const getUrlMusiqueMeteo = (searchTerm) =>{
+      return `https://api.spotify.com/v1/search?query="${encodeURIComponent(
+        searchTerm
+      )}"&type=playlist`;
     }
 
     /* Méthode chargée de la saisie dans la barre texte */
@@ -190,6 +196,8 @@ const SpotiTherLayout = () =>{
       setCP(event.target.value);
     }
 
+    /* Méthode chargée de découper  */
+
     /* Méthode chargée de récupérer la musique associée à la méteo du code postal saisit */
     const recupererMusiqueMeteo = async (event) =>{
 
@@ -219,9 +227,14 @@ const SpotiTherLayout = () =>{
               //Nuageux
               console.log("tets");
               const API_URL = getUrl("SCH");
+              console.log(API_URL);
               const response = await get(API_URL);
               console.log(response);
-              affichage(response);
+              /* On filtre l'objet reponse obtenu pour n'avoir que la playlist désirée */
+              const {playlists } = response.playlists;
+              console.log(playlists);
+              //affichage(response);
+
               break;
           case 100: case 101: case 102: case 103: case 104: case 105: case 106: case 107: case 108: case 120: case 121: case 122: case 123: case 124: case 125: case 126: case 127: case 128: case 130: case 131: case 132: case 133: case 134: case 135: case 136: case 137: case 138:
               //Orage
@@ -241,7 +254,7 @@ const SpotiTherLayout = () =>{
           } 
         }
         catch(Error){ //Cas d'une saisie invalide d'un code postal
-            console.log("erreu");
+            console.log("erreur");
         }
     }
     return(
