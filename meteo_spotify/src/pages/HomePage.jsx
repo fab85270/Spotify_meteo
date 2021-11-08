@@ -13,10 +13,7 @@ import { TraductionContext } from '../Context/TraductionContext';
 function HomePage(){ 
     
      /* Utilisation des hooks */
-     const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
      const {traduction,traductionApp} = useContext(TraductionContext);
-
-
     
         return (      
             <LayoutGlobal children={
