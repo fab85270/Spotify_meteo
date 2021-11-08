@@ -2,7 +2,6 @@ import React, {useContext, useState } from 'react';
 import Image from 'react-bootstrap/Image'
 import {MeteoContext} from '../../Context/MeteoContext';
 import tempsNuageux from '../../Images/img_meteo/nuageux.jpg';
-
 import './DisplayMeteo.css';
 
 const DisplayMeteo = () =>{
