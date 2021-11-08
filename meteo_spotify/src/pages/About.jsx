@@ -36,7 +36,7 @@ const About = () =>{
                         Bodo Maxence
                 </div>
             </div>
-            <img style={{width:'50%',wheight:'50%',display:'block',marginLeft:'auto',marginRight:'auto'}} src="https://upload.wikimedia.org/wikipedia/fr/2/2c/Universit%C3%A9_Panth%C3%A9on-Sorbonne_%28depuis_janvier_2015%29.svg" ></img>
+            <img style={{maxWidth:'50%',height:'auto',display:'block',marginLeft:'auto',marginRight:'auto'}} src="https://upload.wikimedia.org/wikipedia/fr/2/2c/Universit%C3%A9_Panth%C3%A9on-Sorbonne_%28depuis_janvier_2015%29.svg" ></img>
         </>
     }>   
     </LayoutGlobal>
