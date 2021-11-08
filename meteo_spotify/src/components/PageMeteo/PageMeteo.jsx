@@ -171,8 +171,6 @@ const PageMeteo = () => {
                     checkChange={recupererCP}
                 />
             <DisplayMeteo/>
-            <ButtonRedirection/>
-
             </div>  
 
             

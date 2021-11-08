@@ -6,7 +6,7 @@ import './LayoutGlobal.css';
 
 const LayoutGlobal= ({children}) =>{
     return(
-        <div className="layoutGlobal">
+        <div className="layoutGlobal"> 
             <Navbar></Navbar>  
             {children} 
 
