@@ -131,10 +131,10 @@ export const MeteoContextProvider = ({children}) => { //Ici le children va repr�
 
     const authenticateCP = async (cp) =>{
         setCPErreur(false); 
-        const responseCP = await fetch('https://api.meteo-concept.com/api/location/cities?token=bd663c7a504d422555c26f49c6bc20b4be261c59176727c9c7d316b98514da40&search='+ cp);
-        console.log(responseCP);
+        const token=process.env.REACT_APP_TOKEN; //Récupération du token
+        const responseCP = await fetch('https://api.meteo-concept.com/api/location/cities?token='+token+'&search='+ cp);
         const CP = await responseCP.json();
-        console.log(CP);
+ 
 
         /*Récuperation de l'erreur dans le cas d'une mauvaise saisie de CP  */
         if (!CP.cities[0]){
@@ -142,10 +142,8 @@ export const MeteoContextProvider = ({children}) => { //Ici le children va repr�
             return 
         }
         
-        const response = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=bd663c7a504d422555c26f49c6bc20b4be261c59176727c9c7d316b98514da40&insee='+ CP.cities[0].insee);
+        const response = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token='+token+'&insee='+ CP.cities[0].insee);
         const donneesMeteo = await response.json();
-        console.log(donneesMeteo);
-        console.log(WEATHER[donneesMeteo.forecast[0].weather]);
 
         /* Changement du contexte avec les informations obtenues sur la météo suite à la requête selon le code postal saisit (codePostal/nomVille/donnéesMétéo) */
             changeContexte(cp,CP.cities[0].name,donneesMeteo.forecast[0].weather,WEATHER[donneesMeteo.forecast[0].weather]);    
