@@ -136,11 +136,12 @@ const PageMeteo = () => {
         //Recuperer le code insee 
        
             const responseCP = await fetch('https://api.meteo-concept.com/api/location/cities?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&search='+ cp);
-            
+            console.log(responseCP);
             const catFacts = await responseCP.json();
             console.log(catFacts);
+
             /*Récuperation de l'erreur dans le cas d'une mauvaise saisie de CP  */
-            if (!catFacts.cities){
+            if (!catFacts.cities[0]){
                 setCPErreur(true);
                 return 
             }
@@ -161,7 +162,7 @@ const PageMeteo = () => {
                 <p>
                     <strong>
                         {traduction && "Entry error: Please enter a valid postal code"}
-                        {!traduction && "Erreur saisie : Veuillez saisir un code postal valide"}
+                        {!traduction && " Erreur saisie : Veuillez saisir un code postal valide"}
                     </strong>
                 </p>
             }      
