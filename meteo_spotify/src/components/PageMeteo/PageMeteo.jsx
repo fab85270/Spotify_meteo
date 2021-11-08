@@ -15,9 +15,7 @@ const PageMeteo = () => {
     const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
     const{codePostal,nomVille,numTemps,intituleMeteo,cpErreur,changeContexte,authenticateCP,setCPErreur} = useContext(MeteoContext);
     const {traduction,traductionApp} = useContext(TraductionContext);
-
-    /* tests autours des states de tableau (à peut etre virer) */
-    const [city,setCity] = useState([]); //Plusieurs villes peuvent être attribuées à un même code Postal
+    const [cp, setCP] = useState(""); 
 
     let history = useHistory();
 
@@ -25,12 +23,6 @@ const PageMeteo = () => {
     if(!isConnected){ 
         history.push("/");
     }
-
-
-
-    /* Utilisation de hooks(useState) */
-    const [cp, setCP] = useState(""); 
-
 
     const recupererCP = (event) => {
         setCP(event.target.value);
