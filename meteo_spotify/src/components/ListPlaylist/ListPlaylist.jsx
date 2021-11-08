@@ -26,9 +26,7 @@ const PlayList = ({ playlist }) => {
                       />
                     ) : (
                       <img src={imageMusique} alt="" />
-                    )}   
-            
-                   
+                    )}       
                   </a>
                   <Card.Body>
                     <Card.Title>{playlist.name}</Card.Title>
