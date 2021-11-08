@@ -17,6 +17,7 @@ const PageMeteo = () => {
 
     /* tests autours des states de tableau (à peut etre virer) */
     const [city,setCity] = useState([]); //Plusieurs villes peuvent être attribuées à un même code Postal
+    const [cp,setCP] = useState(false);
 
     let history = useHistory();
 
@@ -128,14 +129,22 @@ const PageMeteo = () => {
  
     const recupererMeteo = async (event) => {
         event.preventDefault();
-    
+        /* Ici remettre à vide le state d'erreur du CP. */
+
+
         /* Merci ici d'utiliser une méthode get qui permet d'obtenir les reponses selon un URL placé en paramètre ( voir comment a fait Fabien si possible avec token dans .env pour qu'il ne soit pas direct dans le code) */
         //Recuperer le code insee 
-        try {
+       
             const responseCP = await fetch('https://api.meteo-concept.com/api/location/cities?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&search='+ cp);
             
             const catFacts = await responseCP.json();
 
+            /*Récuperation de l'erreur dans le cas d'une mauvaise saisie de CP  */
+
+            if (!catFacts.cities[0]){
+                //set meteo erreur.
+                return 
+            }
             setInsee(catFacts.cities[0].insee);
             
             const response = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&insee='+ insee);
@@ -146,19 +155,18 @@ const PageMeteo = () => {
             /* Changement du contexte avec les informations obtenues sur la météo suite à la requête selon le code postal saisit (codePostal/nomVille/donnéesMétéo) */
                 changeContexte(cp,catFacts.cities[0].name,donneesMeteo.forecast[0].weather,WEATHER[donneesMeteo.forecast[0].weather]);
     
-        } catch(Error){ //Gestion cas d'erreur : voir avec le prof pour afficher un message d'alerte.
-            console.log("invalid hehe");
-        }
+        
     }
     return (  
             <LayoutGlobal children ={
-            <div className='layout'>
+            <div className='layout'>        
                 <Form_CP
                     checkSubmit={recupererMeteo}
                     checkChange={recupererCP}
                 />
             <DisplayMeteo/>
             <ButtonRedirection/>
+
             </div>  
 
             

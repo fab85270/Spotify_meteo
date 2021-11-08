@@ -21,7 +21,7 @@ const SpotiTherLayout = () =>{
     const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
     const {traduction,traductionApp} = useContext(TraductionContext);
     const [searchTerm, setSearchTerm] = useState('');
-    const [albumsState, setAlbums] = useState(''); //Objet des albums obtenus suite à une requête sur l'API Spotify.
+    const [albumsState, setAlbums] = useState({}); //Objet des albums obtenus suite à une requête sur l'API Spotify.
     const [artistesState, setArtistes] = useState(''); //Objet des artistes obtenus suite à une requête sur l'API Spotify.
     const [playlistsState, setPlaylists] = useState(''); //Objet des artistes obtenus suite à une requête sur l'API Spotify.
     const [display,setDisplay] = useState('Albums'); //Afin de gérer l'affichage entre albums/artistes & playlist
@@ -166,7 +166,7 @@ const SpotiTherLayout = () =>{
     const affichage = (response)=>{
 
       const { albums, artists, playlists } = response;
-
+        /* Ici mettre un filter pour faire en sorte qu'on affiche les choses seulement qu'on veut */
       setAlbums(albums);
       setArtistes(artists);
       setPlaylists(playlists);
@@ -234,13 +234,13 @@ const SpotiTherLayout = () =>{
         /* Définition d'une URL selon le temps obtenu */
 
         switch (donneesMeteo.forecast[0].weather){
-          case 0: case 1: case 2:
+          case 0: 
               //Soleil
               break;
           case 10: case 11: case 12: case 13: case 14: case 15: case 16: case 140: case 141: case 210: case 211: case 212: case 230: case 231: case 232:
               //Pluie
               break;
-          case 3: case 4: case 5:
+          case 1: case 2: case 3: case 4: case 5:
               //Nuageux
               console.log("tets");
               const API_URL = getUrl("SCH");
