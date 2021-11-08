@@ -14,7 +14,7 @@ const DisplayMeteo = () =>{
     const{codePostal,nomVille,numTemps,intituleMeteo,changeContexte} = useContext(MeteoContext);
 
     return (
-        <>
+        <div className="test">
             {numTemps >= 0 && (
             <div className="tempsMeteo">
                     {numTemps == 0 && 
@@ -54,7 +54,7 @@ const DisplayMeteo = () =>{
                 </div>
             )}
             <br/>
-        </>        
+        </div>        
     );   
 }
 export default DisplayMeteo;

@@ -1,7 +1,6 @@
 import React,{useContext} from 'react';
 import Form_CP from '../Form_CP/Form_CP';
 import LayoutGlobal from '../../Layout/LayoutGlobal';
-import ButtonRedirection from '../Button/ButtonRedirection';
 import {AccessTokenContext} from '../../Context/AccessTokenContext';
 import {MeteoContext} from '../../Context/MeteoContext';
 import { useHistory } from "react-router-dom";

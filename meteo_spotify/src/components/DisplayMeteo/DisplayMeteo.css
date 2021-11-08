@@ -1,6 +1,13 @@
-.tempsMeteo {
-    padding-top: 10px;
+.test{
     text-align: center;
+    padding: 10px;
+
+}
+.tempsMeteo {
+
+    border: thick double #32a1ce;;
+    text-align: center;
+    display: inline-block;
 }
 
 .tempsMeteo div{
