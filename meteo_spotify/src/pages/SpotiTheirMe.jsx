@@ -12,6 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'; // Ajouter le boostrap au sein de
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import './SpotiTheirMe.css';
+import DisplayMeteo from '../components/DisplayMeteo/DisplayMeteo';
 
 const SpotiTherLayout = () =>{
 
@@ -297,6 +298,7 @@ const SpotiTherLayout = () =>{
                      checkChange={recupererCPSpoti}
                     >
                     </Form_CP>
+                    <DisplayMeteo/>
                   </td>
                 </tr>
               </tbody>

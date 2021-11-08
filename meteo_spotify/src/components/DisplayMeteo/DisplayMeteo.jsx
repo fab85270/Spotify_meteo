@@ -37,11 +37,7 @@ const DisplayMeteo = () =>{
                 }
             </div>
             <br/>
-        </>
-        
-         
-    );
-    
+        </>        
+    );   
 }
-
 export default DisplayMeteo;
