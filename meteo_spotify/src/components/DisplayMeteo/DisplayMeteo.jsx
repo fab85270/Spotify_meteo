@@ -1,4 +1,5 @@
 import React, {useContext, useState } from 'react';
+import Image from 'react-bootstrap/Image'
 import {MeteoContext} from '../../Context/MeteoContext';
 import tempsCouvert from '../../Images/img_meteo/Couvert.svg';
 import tempsEclair from '../../Images/img_meteo/Eclair.svg';
@@ -18,15 +19,21 @@ const DisplayMeteo = () =>{
             {numTemps >= 0 && (
             <div className="tempsMeteo">
                     {numTemps == 0 && 
-                        <img src={tempsSoleil}/>
-                        && <p>Le temps ensoleillé sur {nomVille} ({codePostal})</p>
+                        <div className="Soleil">
+                            <p>Le temps ensoleillé sur {nomVille} ({codePostal})</p>
+                            <Image src="{tempsSoleil}/171x180"/>    
+                        </div>
                     }   
                     {numTemps > 0 && numTemps < 5 && 
-                        <img src={tempsNuageux}/>
-                        && <p>Ciel {intituleMeteo} sur {nomVille} ({codePostal})</p>}
+                        <div className="Nuageux">
+                            <p>Ciel {intituleMeteo} sur {nomVille} ({codePostal})</p>
+                            <Image src="{{tempsNuageux}}/200x200"/>
+                        </div>}
                     {numTemps == 5 && 
-                        <img src={tempsCouvert}/>
-                        && <p>Ciel {intituleMeteo} sur {nomVille} ({codePostal})</p>
+                        <div className="Couvert">
+                            <p>Ciel {intituleMeteo} sur {nomVille} ({codePostal})</p>
+                            <img src={tempsCouvert}/> 
+                        </div>
                     }
                     {numTemps > 9 && numTemps < 17 || numTemps >= 40 && numTemps <= 48 && 
                         <img src={tempsPluvieux}/>
