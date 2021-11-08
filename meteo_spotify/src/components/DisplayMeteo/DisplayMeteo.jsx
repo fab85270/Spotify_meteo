@@ -6,21 +6,34 @@ import tempsNeige from '../../Images/img_meteo/Neige.svg';
 import tempsNuageux from '../../Images/img_meteo/Nuageux.svg';
 import tempsPluvieux from '../../Images/img_meteo/Pluvieux.svg';
 import tempsSoleil from '../../Images/img_meteo/Sun.svg';
+import './DisplayMeteo.css';
 
 const DisplayMeteo = () =>{
 
     /* Utilisation du context de météo (codePostal/nomVille/numTemps) */
-    const{codePostal,nomVille,numTemps,changeContexte} = useContext(MeteoContext);
+    const{codePostal,nomVille,numTemps,intituleMeteo,changeContexte} = useContext(MeteoContext);
 
     return (
-        <div className="tempsMeteo">
-            {numTemps}
-            {numTemps == 0 && <img src={tempsSoleil}/>}
-            {numTemps > 0 && numTemps < 5 && <img src={tempsNuageux}/>}
-            {numTemps == 5 && <img src={tempsCouvert}/>}
-            {numTemps > 9 && numTemps < 17 || numTemps >= 40 && numTemps <= 48 && <img src={tempsPluvieux}/>}
-        </div>
-        
+        <>
+            <div className="tempsMeteo">
+                {numTemps == 0 && 
+                    <img src={tempsSoleil}/>
+                    && <p>Le temps ensoleillé sur {nomVille} ({codePostal})</p>
+                }   
+                {numTemps > 0 && numTemps < 5 && 
+                    <img src={tempsNuageux}/>
+                    && <p>Ciel {intituleMeteo} sur {nomVille} ({codePostal})</p>}
+                {numTemps == 5 && 
+                    <img src={tempsCouvert}/>
+                    && <p>Ciel {intituleMeteo} sur {nomVille} ({codePostal})</p>
+                }
+                {numTemps > 9 && numTemps < 17 || numTemps >= 40 && numTemps <= 48 && 
+                    <img src={tempsPluvieux}/>
+                    && <p>Temps {intituleMeteo} sur {nomVille} ({codePostal})</p>
+                }
+            </div>
+            <br/>
+        </>
         
          
     );
