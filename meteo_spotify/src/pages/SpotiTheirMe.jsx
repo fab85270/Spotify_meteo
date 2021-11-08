@@ -31,9 +31,7 @@ const SpotiTherLayout = () =>{
     const [meteo,setMeteo] = useState([]);
 
 
-     
-
-      
+  
     if(!isConnected){ //Ne pas acceder a cette page si non connecté
         history.push("/");
     }
@@ -197,35 +195,17 @@ const SpotiTherLayout = () =>{
 
             event.preventDefault();
     try {
-    
-            const responseCP = await fetch('https://api.meteo-concept.com/api/location/cities?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&search='+ cp);
-   
+          const responseCP = await fetch('https://api.meteo-concept.com/api/location/cities?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&search='+ cp);
+            
         /* Définition de l'insee de la ville afin de pouvoir obtenir la météo selon la ville saisie */
             const catFacts = await responseCP.json();
     
-
-        /* Parcourt de toutes les villes associée(s) à un code postal */
-            const tabCities =[];
-            catFacts.cities.forEach(element=>
-              tabCities.push(element)
-            );
-
-
-        /* Parcourt de tous les INSEE des villes associée(s) à un code postal */
-
-            const tabInsee = [];
-            for(var item in cities){
-              //setInsee(insee => insee.concat(cities[item].insee));
-              tabInsee.push(cities[item].insee);
-
-            }
-          
         /* Obtention des données météo selon la ville renseignée */
         
-        for(var insee in tabInsee){
-            const response = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&insee='+ insee);
-            const donneesMeteo = await response.json();
-             
+          const response = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token=75f4db03b57d18224268961147be7dbb75239b391add7a75f4b31cbd28afa58e&insee='+ catFacts.cities[0].insee);
+          const donneesMeteo = await response.json();
+          console.log(donneesMeteo);
+              
         /* Définition d'une URL selon le temps obtenu */
 
         switch (donneesMeteo.forecast[0].weather){
@@ -260,10 +240,8 @@ const SpotiTherLayout = () =>{
               break;
           } 
         }
-      }
-
         catch(Error){ //Cas d'une saisie invalide d'un code postal
-            console.log(Error);
+            console.log("erreu");
         }
     }
     return(
