@@ -1,7 +1,5 @@
 import React from 'react';
-import imageMusique from '../../Images/imageMusique.jpg';
 import { Card } from 'react-bootstrap';
-import _ from 'lodash';
 
 
 const ListArtistes = ({ artists }) => {
@@ -18,16 +16,13 @@ const ListArtistes = ({ artists }) => {
                     href={artist.external_urls.spotify}
                     rel="noopener noreferrer"
                     className="card-image-link"
-                  >                  
-                     {!_.isEmpty(artists.images) ? (
+                  >  
+                                  
                       <Card.Img
                         variant="top"
-                        src={artists.images[0].url}
+                        src={artist.images[0].url}
                         alt=""
-                      />
-                    ) : (
-                      <img src={imageMusique} alt="" />
-                    )}      
+                      />      
                   </a>
                   <Card.Body>
                     <Card.Title>{artist.name}</Card.Title>
