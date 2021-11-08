@@ -263,9 +263,15 @@ const SpotiTherLayout = () =>{
               break;
           case 100: case 101: case 102: case 103: case 104: case 105: case 106: case 107: case 108: case 120: case 121: case 122: case 123: case 124: case 125: case 126: case 127: case 128: case 130: case 131: case 132: case 133: case 134: case 135: case 136: case 137: case 138:
               //Orage
+              const playlistsOrage= await getPlaylistMeteo("Thunderstorm Music");
+              playlistsOrage.items = playlistsOrage.items.filter(item => item.name === "Thunderstorm Music");
+              affichage(playlistsOrage,true);  
               break;
           case 20: case 21: case 22: case 30: case 31: case 32: case 142: case 220: case 221: case 222: case 235:
               //Neige
+              const playlistsNeige= await getPlaylistMeteo("lofi beats");
+              playlistsNeige.items = playlistsNeige.items.filter(item => item.name === "lofi beats" || item.name === "Lofi Beats" || item.name === "Lofi Beats 2021");
+              affichage(playlistsNeige,true);  
               break;
           case 6: case 7:
               //Brouillard
