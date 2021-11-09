@@ -199,7 +199,7 @@ const SpotiTherLayout = () =>{
     }
     return(
     <LayoutGlobal children={
-        <>
+        <div className="testTrucMachin">
             <strong>
                 <h1>
                     {!traduction && "Bienvenue dans l'application SpotiTheirMe"}
@@ -230,61 +230,62 @@ const SpotiTherLayout = () =>{
               </tbody>
 
             </Table>
+            <div className="showPlaylist">
+              <table >
+                  <tr className="showPlaylist">
+                    <div className ="boutonChoixDisplay">
             
-            <table>
-                <tr>
-                  <div className ="boutonChoixDisplay">
-          
-                    {Object.keys(albumsState).length > 0 && (
-                      <Button variant="secondary"  size="lg"
-                      className={`${
-                        display === 'Albums' ? 'btn active' : 'btn'
-                      }`}
-                      onClick={() => setDisplay('Albums')}
-                    >
-                      Albums
-                    </Button>
-                    )}
-                    {Object.keys(artistesState).length > 0 && (
-                      <Button variant="secondary" size="lg"
-                      className={`${
-                        display === 'Artists' ? 'btn active' : 'btn'
-                      }`}
-                      onClick={() => setDisplay('Artists')}
-                    >
-                      {traduction && "Artists"}
-                      {!traduction && "Artistes"}
-                    </Button>
-                    )}
-                    {Object.keys(playlistsState).length > 0 && (
-                      <Button variant="secondary"  size="lg"
-                      className={`${
-                        display === 'Playlists' ? 'btn active' : 'btn'
-                      }`}
-                      onClick={() => setDisplay('Playlists')}
-                    >
-                      Playlists
-                    </Button>
-                    )}
-                  </div>
-                </tr>
-                <td>
-                  <div className="displayAlbums">
-                  {display == "Albums" && <ListAlbums albums={albumsState}/>} 
-                  </div>
-                </td>
-                <td>
-                  <div className="displayArtistes">
-                  {display == "Artists" && <ListArtistes artists={artistesState}/>}
-                  </div>
-                </td>
-                <td>
-                  <div className="displayPlaylist">
-                  {display == "Playlists" && <ListPlaylist playlist={playlistsState}/>}
-                  </div>
-                </td>
-             </table>
-        </>
+                      {Object.keys(albumsState).length > 0 && (
+                        <Button variant="secondary"  size="lg"
+                        className={`${
+                          display === 'Albums' ? 'btn active' : 'btn'
+                        }`}
+                        onClick={() => setDisplay('Albums')}
+                      >
+                        Albums
+                      </Button>
+                      )}
+                      {Object.keys(artistesState).length > 0 && (
+                        <Button variant="secondary" size="lg"
+                        className={`${
+                          display === 'Artists' ? 'btn active' : 'btn'
+                        }`}
+                        onClick={() => setDisplay('Artists')}
+                      >
+                        {traduction && "Artists"}
+                        {!traduction && "Artistes"}
+                      </Button>
+                      )}
+                      {Object.keys(playlistsState).length > 0 && (
+                        <Button variant="secondary"  size="lg"
+                        className={`${
+                          display === 'Playlists' ? 'btn active' : 'btn'
+                        }`}
+                        onClick={() => setDisplay('Playlists')}
+                      >
+                        Playlists
+                      </Button>
+                      )}
+                    </div>
+                  </tr>
+                  <td>
+                    <div className="displayAlbums">
+                    {display == "Albums" && <ListAlbums albums={albumsState}/>} 
+                    </div>
+                  </td>
+                  <td>
+                    <div className="displayArtistes">
+                    {display == "Artists" && <ListArtistes artists={artistesState}/>}
+                    </div>
+                  </td>
+                  <td>
+                    <div className="displayPlaylist">
+                    {display == "Playlists" && <ListPlaylist playlist={playlistsState}/>}
+                    </div>
+                  </td>
+              </table>
+            </div>
+        </div>
     }>         
     </LayoutGlobal>
     );
