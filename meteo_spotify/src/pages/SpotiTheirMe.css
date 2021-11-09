@@ -1,0 +1,12 @@
+.boutonChoixDisplay {
+    padding: 30px;
+    display: inline-block;
+}
+
+strong{
+    text-align: center;
+}
+
+strong h1{
+    padding-top: 2%;
+}

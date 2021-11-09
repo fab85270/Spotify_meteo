@@ -1,14 +1,29 @@
+<<<<<<< HEAD
 
 .active {
     background-color: #4CAF50;
+=======
+nav {
+    height:70px;
+    background: black;
+>>>>>>> 7e0ed6919bc32257206bc0670493ac463993113a
 }
 
 ul {
     list-style-type: none;
+<<<<<<< HEAD
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #333;
+=======
+    background: black;
+    height: 100%;
+    display: flex;
+    justify-content:  center;
+    align-items: center;
+    position: relative;
+>>>>>>> 7e0ed6919bc32257206bc0670493ac463993113a
 }
 
 li {

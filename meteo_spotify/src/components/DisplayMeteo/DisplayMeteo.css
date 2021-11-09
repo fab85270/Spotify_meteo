@@ -1,0 +1,26 @@
+.test{
+    text-align: center;
+    padding: 10px;
+
+}
+.tempsMeteo {
+
+    border: thick double #32a1ce;;
+    text-align: center;
+    display: inline-block;
+}
+
+.tempsMeteo div{
+    margin: 2px 10px;
+    display: flex;
+}
+
+.nomVille{
+    flex-basis: 10%;
+}
+
+
+
+.intitule{
+    flex-basis: 10%;
+}
