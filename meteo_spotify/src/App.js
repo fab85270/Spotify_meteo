@@ -5,6 +5,7 @@ import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import HomePage from './pages/HomePage';
 import About from './pages/About';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Service from './pages/Service';
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
     </Router>
 =======
 import Service from './pages/Service'
+=======
+>>>>>>> 429a93f6c79ec8a50a486fcd53f4931212339570
 import SpotiTherMe from './pages/SpotiTheirMe';
 import PageConnect from './pages/PageConnect';
 
@@ -66,8 +69,12 @@ function App() {
         </TraductionContextProvider>
       </BoutonContextProvider>
     </AccessTokenContextProvider>
+<<<<<<< HEAD
 >>>>>>> 7e0ed6919bc32257206bc0670493ac463993113a
+=======
+>>>>>>> 429a93f6c79ec8a50a486fcd53f4931212339570
   );
 }
+
 
 export default App; // Ceci permet d'avoir le composant app dans toute l'application.

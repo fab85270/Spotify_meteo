@@ -5,6 +5,7 @@ import { TraductionContext } from '../Context/TraductionContext';
 
 
 const About = () =>{
+<<<<<<< HEAD
 
     /* Utilisation des hooks(états/contexts) */
     const {traduction,traductionApp} = useContext(TraductionContext);
@@ -31,12 +32,26 @@ const About = () =>{
                     {!traduction && "Ce projet a été réalisé en commun par"}
                     {traduction && "This project was carried out jointly by"}
                      <br/>
+=======
+    return(
+    <LayoutGlobal children={
+        <>
+            <h1 style={{textAlign:'center'}}>Notre projet</h1>
+            <div style={{textAlign:'center'}}>
+                <p>Bienvenu dans notre projet de M1 en Architecture Logiciel et web</p>
+                <p>Ce projet consiste à utiliser deux API, celles de spotify et d'une plateforme de météo</p>
+                <div>Ce projet a été réalisé en commun par <br />
+>>>>>>> 429a93f6c79ec8a50a486fcd53f4931212339570
                         Coutanceau Fabien /
                         Losego Abel /
                         Bodo Maxence
                 </div>
             </div>
+<<<<<<< HEAD
             <img style={{maxWidth:'50%',height:'auto',display:'block',marginLeft:'auto',marginRight:'auto'}} src="https://upload.wikimedia.org/wikipedia/fr/2/2c/Universit%C3%A9_Panth%C3%A9on-Sorbonne_%28depuis_janvier_2015%29.svg" ></img>
+=======
+            <img style={{width:'50%',wheight:'50%',display:'block',marginLeft:'auto',marginRight:'auto'}} src="https://upload.wikimedia.org/wikipedia/fr/2/2c/Universit%C3%A9_Panth%C3%A9on-Sorbonne_%28depuis_janvier_2015%29.svg" ></img>
+>>>>>>> 429a93f6c79ec8a50a486fcd53f4931212339570
         </>
     }>   
     </LayoutGlobal>

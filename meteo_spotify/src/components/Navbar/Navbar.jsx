@@ -34,7 +34,7 @@ const NavBar = () => {
             history.push("/");
         }
     }
-
+    if(clicked){
         return (
             <div className="divNav">
                 <nav>
@@ -96,7 +96,6 @@ const NavBar = () => {
             </div>
         );
     }
-<<<<<<< HEAD
     return (
         <div className="divNav">
             <ul>
@@ -109,10 +108,11 @@ const NavBar = () => {
         </div>
         //Créer un composant lien : voir avec le prof si c'est nécéssaire ? 
     );
+
+    
 };
 
 export default NavBar;
-=======
+
 export default NavBar;
 
->>>>>>> 7e0ed6919bc32257206bc0670493ac463993113a

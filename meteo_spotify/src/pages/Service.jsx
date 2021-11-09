@@ -1,16 +1,21 @@
 <<<<<<< HEAD
 import Navbar from '../components/Navbar/Navbar';
+import LayoutGlobal from '../Layout/LayoutGlobal';
 
 /* Demander comment utiliser le navbar dans toute les "classes" ? le faire hériter ? utiliser "contexte" ?? */
-const About = () =>{
+const Service = () =>{
     return(
-    <>  
-        <Navbar></Navbar>
-        <h1>Service</h1>     
-    </>
+        <LayoutGlobal children={
+            <>  
+                <h1>Service</h1>     
+            </>
+
+        }>
+        </LayoutGlobal>
     );
 }
 
+<<<<<<< HEAD
 export default About;
 =======
 
@@ -70,3 +75,6 @@ export default Service;
 
 /* Crée un layout assez global avec une navbar ou autre élément présent sur chaque page qui est toujours présente et modifier  */
 >>>>>>> 7e0ed6919bc32257206bc0670493ac463993113a
+=======
+export default Service;
+>>>>>>> 429a93f6c79ec8a50a486fcd53f4931212339570

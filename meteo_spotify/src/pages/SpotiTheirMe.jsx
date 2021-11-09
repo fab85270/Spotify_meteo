@@ -1,9 +1,10 @@
 import LayoutGlobal from '../Layout/LayoutGlobal';
-import React, {useContext, useState } from 'react';
+import React, {useContext, useState,Component  } from 'react';
 import {AccessTokenContext} from '../Context/AccessTokenContext';
 import { useHistory } from "react-router-dom";
 import Form_research from '../components/Form_research/Form_research';
 import { TraductionContext } from '../Context/TraductionContext';
+<<<<<<< HEAD
 import {MeteoContext} from '../Context/MeteoContext';
 import ListAlbums from '../components/ListAlbums/ListAlbums';
 import ListArtistes from '../components/ListArtistes/ListArtistes';
@@ -14,6 +15,10 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import './SpotiTheirMe.css';
 import DisplayMeteo from '../components/DisplayMeteo/DisplayMeteo';
+=======
+import { SpotifyApiContext, Artist } from 'react-spotify-api';
+
+>>>>>>> 429a93f6c79ec8a50a486fcd53f4931212339570
 
 const SpotiTherLayout = () =>{
 
@@ -206,6 +211,7 @@ const SpotiTherLayout = () =>{
                     {traduction && "Welcome to the SpotiTherMe Application"}
                 </h1>
             </strong>
+<<<<<<< HEAD
             <br/>
             <Table>
               <tbody>
@@ -284,6 +290,25 @@ const SpotiTherLayout = () =>{
                   </div>
                 </td>
              </table>
+=======
+            <br></br>
+            <SpotifyApiContext.Provider value={props.token}>
+      <Artist id={props.id}>
+        {({ data, loading, error }) =>
+          data ? (
+            <div>
+              <h1>{data.name}</h1>
+              <ul>
+                {data.genres.map(genre => (
+                  <li key={genre}>{genre}</li>
+                ))}
+              </ul>
+            </div>
+          ) : null
+        }
+      </Artist>
+    </SpotifyApiContext.Provider>
+>>>>>>> 429a93f6c79ec8a50a486fcd53f4931212339570
         </>
     }>         
     </LayoutGlobal>
