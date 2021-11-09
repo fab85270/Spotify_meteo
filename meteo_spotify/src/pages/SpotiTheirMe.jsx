@@ -1,18 +1,20 @@
 import LayoutGlobal from '../Layout/LayoutGlobal';
 import React, {useContext, useState } from 'react';
-import {AccessTokenContext} from '../Context/AccessTokenContext';
 import { useHistory } from "react-router-dom";
-import Form_research from '../components/Form_research/Form_research';
-import { TraductionContext } from '../Context/TraductionContext';
-import {MeteoContext} from '../Context/MeteoContext';
-import ListAlbums from '../components/ListAlbums/ListAlbums';
-import ListArtistes from '../components/ListArtistes/ListArtistes';
-import ListPlaylist from '../components/ListPlaylist/ListPlaylist';
-import Form_CP from '../components/Form_CP/Form_CP';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ajouter le boostrap au sein de l'application
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import './SpotiTheirMe.css';
+
+import {AccessTokenContext} from '../Context/AccessTokenContext';
+import {TraductionContext } from '../Context/TraductionContext';
+import {MeteoContext} from '../Context/MeteoContext';
+
+import Form_research from '../components/Form_research/Form_research';
+import ListAlbums from '../components/ListAlbums/ListAlbums';
+import ListArtistes from '../components/ListArtistes/ListArtistes';
+import ListPlaylist from '../components/ListPlaylist/ListPlaylist';
+import Form_CP from '../components/Form_CP/Form_CP';
 import DisplayMeteo from '../components/DisplayMeteo/DisplayMeteo';
 
 const SpotiTherLayout = () =>{

@@ -4,17 +4,29 @@ import { useHistory,Link } from "react-router-dom";
 import { Form, Button } from 'react-bootstrap';
 import {AccessTokenContext} from '../../Context/AccessTokenContext';
 import { BoutonContext } from '../../Context/BoutonContext';
+import {DarkModeContext} from '../../Context/DarkModeContext';
 import { TraductionContext } from '../../Context/TraductionContext';
+
+import {ThemeProvider} from "styled-components";
+import { GlobalStyles } from "../../components/GlobalStyle/GlobalStyle";
+import { lightTheme, darkTheme } from "../../components/Theme"
+
 import logoSpotiTherMe from '../../Images/SpotiTherMeLogo.jpeg';
 import './Navbar.css';
 
 const NavBar = () => {
-    
+
+    const [theme, setTheme] = useState('light');
+    const themeToggler = () => {
+      theme === 'light' ? setTheme('dark') : setTheme('light')
+    }
     /* Rendre le bouton indisponible quuand on a cliqué dessus ou le rendre "deconnecter" pour se deconnecter : comment se deconnecter ? 
     Retour vers la page principale Avec de nouveau le bouton "seConnecter qui se présente a nous"  */
 
     /* Utilisation des hooks */
+    
     const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
+    const{dark,darkApp} = useContext(DarkModeContext);
     const {clicked,changeContexte} = useContext(BoutonContext);
     const {traduction,traductionApp} = useContext(TraductionContext);
     let history = useHistory();
@@ -90,6 +102,9 @@ const NavBar = () => {
                                     {!traduction && "Français"}
                                 </option>
                             </Form.Select>
+                        </li>
+                        <li>
+                            <button onClick={themeToggler}>Switch Theme</button>
                         </li>
                     </ul>
                 </nav>
