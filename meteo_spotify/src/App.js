@@ -24,29 +24,29 @@ function App() {
         <TraductionContextProvider>
           <MeteoContextProvider>
             <DarkModeProvider>
-          <Router>
-            <Switch>
-              <Route exact path="/">
-                <HomePage/>
-              </Route>
-              <Route path="/about">
-                <About/>
-              </Route>
-              <Route path="/spotiTherMe">
-                <SpotiTherMe/>
-              </Route>
-              <Route path="/meteo">
-                <PageMeteo/>
-              </Route>
-              <Route path='/connectAPI'>
-                  <PageConnect/>
-              </Route>
-              <Route path="/service">
-                <Service/>
-              </Route>
-            </Switch>
-          </Router>
-          </DarkModeProvider>
+              <Router>
+                <Switch>
+                  <Route exact path="/">
+                    <HomePage/>
+                  </Route>
+                  <Route path="/about">
+                    <About/>
+                  </Route>
+                  <Route path="/spotiTherMe">
+                    <SpotiTherMe/>
+                  </Route>
+                  <Route path="/meteo">
+                    <PageMeteo/>
+                  </Route>
+                  <Route path='/connectAPI'>
+                      <PageConnect/>
+                  </Route>
+                  <Route path="/service">
+                    <Service/>
+                  </Route>
+                </Switch>
+              </Router>
+            </DarkModeProvider>
           </MeteoContextProvider>
         </TraductionContextProvider>
       </BoutonContextProvider>
