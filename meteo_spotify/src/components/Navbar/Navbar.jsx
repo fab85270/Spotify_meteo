@@ -90,8 +90,7 @@ const NavBar = () => {
                             <Button variant="outline-secondary" onClick={themeToggler} className="ApiSpotify">
                                 Theme
                             </Button>
-                        </li> 
-                        
+                        </li>    
                         <li>
                             <Form.Select arial-label="Default select example" onChange={(event)=>traductionApp(event)}>
                                 <option>

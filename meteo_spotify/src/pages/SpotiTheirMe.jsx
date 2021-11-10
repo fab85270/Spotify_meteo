@@ -16,6 +16,7 @@ import ListArtistes from '../components/ListArtistes/ListArtistes';
 import ListPlaylist from '../components/ListPlaylist/ListPlaylist';
 import Form_CP from '../components/Form_CP/Form_CP';
 import DisplayMeteo from '../components/DisplayMeteo/DisplayMeteo';
+import { WalletFill } from 'react-bootstrap-icons';
 
 const SpotiTherLayout = () =>{
 
@@ -90,6 +91,8 @@ const SpotiTherLayout = () =>{
         setArtistes(artists);
         setPlaylists(playlists);
       } else{
+        console.log("test fafa");
+        console.log(response);
         setPlaylists(response);    
         setAlbums({}); // Afin d'afficher que les playlists associées au temps définis.
         setArtistes({});        
@@ -142,11 +145,11 @@ const SpotiTherLayout = () =>{
 
             event.preventDefault();
     try {
-          authenticateCP(cp);
-              
+            
+           const numT = await authenticateCP(cp);
         /* Définition d'une URL selon le temps obtenu */
 
-        switch (numTemps){
+        switch (numT){
           case 0: 
               //Soleil
               const playlistsSoleil = await getPlaylistMeteo("Sunny Day");
