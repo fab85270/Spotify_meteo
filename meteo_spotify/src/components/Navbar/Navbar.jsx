@@ -87,6 +87,12 @@ const NavBar = () => {
                             </Button>
                         </li>
                         <li>
+                            <Button variant="outline-secondary" onClick={themeToggler} className="ApiSpotify">
+                                Theme
+                            </Button>
+                        </li> 
+                        
+                        <li>
                             <Form.Select arial-label="Default select example" onChange={(event)=>traductionApp(event)}>
                                 <option>
                                     {traduction && "Translate"}
@@ -101,11 +107,6 @@ const NavBar = () => {
                                     {!traduction && "Français"}
                                 </option>
                             </Form.Select>
-                        </li>
-                        <li>
-                            <Button variant="outline-secondary" onClick={themeToggler} className="ApiSpotify">
-                                Theme
-                            </Button>
                         </li>
                     </ul>
                 </nav>
