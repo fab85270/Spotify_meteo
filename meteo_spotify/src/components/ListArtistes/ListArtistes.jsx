@@ -36,7 +36,6 @@ const ListArtistes = ({ artists }) => {
                   </Card.Body>
                 </Card>
               </React.Fragment>
-              
             );
           })}
         </div>
