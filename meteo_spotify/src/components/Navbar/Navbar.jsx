@@ -103,7 +103,9 @@ const NavBar = () => {
                             </Form.Select>
                         </li>
                         <li>
-                            <button onClick={themeToggler}>Switch Theme</button>
+                            <Button variant="outline-secondary" onClick={themeToggler} className="ApiSpotify">
+                                Theme
+                            </Button>
                         </li>
                     </ul>
                 </nav>
