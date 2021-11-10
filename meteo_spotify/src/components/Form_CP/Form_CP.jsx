@@ -31,7 +31,7 @@ const Form_CP = ({checkSubmit,checkChange}) => {
             <div>
               <Button variant="info" type="submit">
                   {traduction && "Submit"}
-                  {!traduction && "Envoyer"}
+                  {!traduction && "Valider"}
               </Button>
             </div>
         </form>

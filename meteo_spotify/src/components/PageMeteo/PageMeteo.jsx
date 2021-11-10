@@ -24,6 +24,7 @@ const PageMeteo = () => {
         history.push("/");
     }
 
+    
     const recupererCP = (event) => {
         setCP(event.target.value);
         console.log(event.target.value);

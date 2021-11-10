@@ -11,44 +11,70 @@ import './DisplayMeteo.css';
 const DisplayMeteo = () =>{
 
     /* Utilisation du context de météo (codePostal/nomVille/numTemps) */
-    const{codePostal,nomVille,numTemps,intituleMeteo,changeContexte} = useContext(MeteoContext);
+    const{codePostal,nomVille,numTemps,intituleMeteo, valTemp, numTempsH3,intituleMeteoH3,valTempH3,numTempsH6,intituleMeteoH6,valTempH6,numTempsH9,intituleMeteoH9,valTempH9,changeContexte} = useContext(MeteoContext);
 
     return (
         <div className="test">
             {numTemps >= 0 && (
             <div className="tempsMeteo">
                     {numTemps == 0 && 
-                        <div className="Soleil">
-                            <p className="nomVille">{nomVille}</p>
-                            <Image src={tempsSoleil}/>    
-                            <p className="intitule">Temps ensoleillé</p>
-                        </div>
+                        <table>
+                            <tr>
+                                <th rowspan="2">{nomVille}</th>
+                                <th>{valTemp} °C</th>
+                                <th rowspan="2"><Image src={tempsSoleil}/></th>
+                            </tr>
+                            <tr>
+                                <td>Temps ensoleillé</td>
+                            </tr>
+                            <tr>
+                                <td>H+3</td>
+                                <td></td>
+                                <td>$100</td>
+                            </tr>
+                            
+                            <tr>
+                                <td >image1</td>
+                                <td >image2</td>
+                                <td >image3</td>
+                            </tr>
+                            <tr>
+                                <td>February</td>
+                                <td>$80</td>
+                                <td>$100</td>
+                            </tr>
+                            
+                            
+                            
+                        </table>
+                        
                     }   
                     {numTemps > 0 && numTemps < 5 && 
                         <div className="Nuageux">
                             <p className="nomVille">{nomVille}</p>
                             <Image src={tempsNuageux}/>
                             <p className="intitule">{intituleMeteo}</p>
+                            <p> {valTemp}</p>
                         </div>}
                     {numTemps == 5 && 
                         <div className="Couvert">
                             <p className="nomVille">{nomVille}</p>
                             <Image src={tempsCouvert}/>
-                            <p className="intitule">{intituleMeteo}</p> 
+                            <p className="intitule">{intituleMeteo} {valTemp}</p> 
                         </div>
                     }
                     {numTemps > 9 && numTemps < 17 || numTemps >= 40 && numTemps <= 48 && 
                         <div className="Pluvieux">
                             <p className="nomVille">{nomVille}</p>
                             <Image src={tempsPluvieux}/>
-                            <p className="intitule">{intituleMeteo}</p>
+                            <p className="intitule">{intituleMeteo} {valTemp}</p>
                         </div>
                     }
                     {numTemps >= 20 && numTemps <= 22  && numTemps >= 60 && numTemps <=68 &&
                         <div className="Neige">
                             <p className="nomVille">{nomVille}</p>
                             <Image src={tempsNeige}/>
-                            <p className="intitule">{intituleMeteo}</p>
+                            <p className="intitule">{intituleMeteo} {valTemp}</p>
                         </div>
                     }
                 </div>
