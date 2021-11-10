@@ -13,6 +13,7 @@ import {BoutonContextProvider} from './Context/BoutonContext';
 import { TraductionContextProvider } from './Context/TraductionContext';
 import PageMeteo from './components/PageMeteo/PageMeteo';
 import { MeteoContextProvider } from './Context/MeteoContext';
+import { DarkModeProvider } from './Context/DarkModeContext';
 
 
 
@@ -22,6 +23,7 @@ function App() {
       <BoutonContextProvider>
         <TraductionContextProvider>
           <MeteoContextProvider>
+            <DarkModeProvider>
           <Router>
             <Switch>
               <Route exact path="/">
@@ -44,6 +46,7 @@ function App() {
               </Route>
             </Switch>
           </Router>
+          </DarkModeProvider>
           </MeteoContextProvider>
         </TraductionContextProvider>
       </BoutonContextProvider>
