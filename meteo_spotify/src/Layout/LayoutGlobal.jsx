@@ -12,7 +12,8 @@ import React, { useContext, useState} from "react";
 const LayoutGlobal= ({children}) =>{
 
     /* Definition des hooks(useState/useContext) */
-    const {dark, setDark} = useContext(DarkModeContext);
+    const {dark, setDark,darkApp} = useContext(DarkModeContext);
+    console.log("Darkmode : "+dark);
 
     return(
         <ThemeProvider dark={dark === 'light' ? lightTheme : darkTheme}>
@@ -40,8 +41,8 @@ const LayoutGlobal= ({children}) =>{
                         </Card.Footer>
                     </Card> 
                 </div> 
-                </>
-    </ThemeProvider>
+            </>
+        </ThemeProvider>
     );
 }
 export default LayoutGlobal;

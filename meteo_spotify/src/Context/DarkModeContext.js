@@ -4,7 +4,7 @@ import React,{createContext, useState} from 'react'
 
 export const DarkModeContext= createContext({
     dark:"",
-    setDark: () =>{},
+    setDark: () =>{}
 })
 
 export const DarkModeProvider = ({children}) => { 
@@ -20,7 +20,7 @@ export const DarkModeProvider = ({children}) => {
         }
     }
 
-      return (<DarkModeContext.Provider value={{dark,darkApp}}> {children} </DarkModeContext.Provider>)
+      return (<DarkModeContext.Provider value={{dark,setDark,darkApp}}> {children} </DarkModeContext.Provider>)
   };
   
  
