@@ -5,15 +5,16 @@ import './LayoutGlobal.css';
 import {ThemeProvider} from "styled-components";
 import { GlobalStyles } from "../components/GlobalStyle/GlobalStyle";
 import { lightTheme, darkTheme } from "../components/Theme"
-import React, { useState} from "react";
+import { DarkModeContext } from '../Context/DarkModeContext';
+import React, { useContext, useState} from "react";
 
 
 const LayoutGlobal= ({children}) =>{
 
-    const [theme, setTheme] = useState('light');
+    const {dark, setDark} = useContext(DarkModeContext);
 
     return(
-        <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+        <ThemeProvider dark={dark === 'light' ? lightTheme : darkTheme}>
             <>
             <GlobalStyles/>
         <div className="layoutGlobal"> 

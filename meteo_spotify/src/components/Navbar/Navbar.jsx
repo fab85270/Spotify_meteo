@@ -16,21 +16,20 @@ import './Navbar.css';
 
 const NavBar = () => {
 
-    const [theme, setTheme] = useState('light');
-    const themeToggler = () => {
-      theme === 'light' ? setTheme('dark') : setTheme('light')
-    }
     /* Rendre le bouton indisponible quuand on a cliqué dessus ou le rendre "deconnecter" pour se deconnecter : comment se deconnecter ? 
     Retour vers la page principale Avec de nouveau le bouton "seConnecter qui se présente a nous"  */
 
     /* Utilisation des hooks */
     
     const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
-    const{dark,darkApp} = useContext(DarkModeContext);
+    const{dark,setDark} = useContext(DarkModeContext);
     const {clicked,changeContexte} = useContext(BoutonContext);
     const {traduction,traductionApp} = useContext(TraductionContext);
     let history = useHistory();
 
+    const themeToggler = () => {
+        dark === 'light' ? setDark('dark') : setDark('light')
+    }
     /* Fonction des actions réalisées suite au click du bonton connexion/déconnection  */
 
     const click = async() => { //C'est bien de ne mettre que une fonction dans un "OnClick d'un boutton"
