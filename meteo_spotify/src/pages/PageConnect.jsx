@@ -2,8 +2,11 @@ import React, {useContext,useState} from 'react';
 import { useHistory} from "react-router-dom";
 import Form_Connect from "../components/Form_Connect/Form_Connect";
 import {AccessTokenContext} from '../Context/AccessTokenContext';
+import {ThemeProvider} from "styled-components";
 import { BoutonContext } from '../Context/BoutonContext';
-
+import { GlobalStyles } from "../components/GlobalStyle/GlobalStyle";
+import { lightTheme, darkTheme } from "../components/Theme"
+import { DarkModeContext } from '../Context/DarkModeContext';
 
 const PageConnect = () => {
     
@@ -11,6 +14,7 @@ const PageConnect = () => {
 
     const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
     const {clicked,changeContexte} = useContext(BoutonContext);
+    const {dark, setDark,darkApp} = useContext(DarkModeContext);
     const[selectedValue,setSelectedValue] = useState("1");
     let history = useHistory();
  
@@ -24,9 +28,8 @@ const PageConnect = () => {
 
      /* Méthode pour se connecter au compte choisit */
     const connexionCompte = async (event) =>{
-
+        
         event.preventDefault();
-        console.log(selectedValue);
 
          /* On récupère le AccessToken de l'API spotify  du compte désiré */
 
@@ -34,13 +37,18 @@ const PageConnect = () => {
             changeContexte(); //Afin de changer la valeur du contexte
             history.push("/spotiTherMe");
     }
-    return(   
-            <Form_Connect
-                value={selectedValue}
-                checkSub={connexionCompte}
-                checkChange={recupererPersonne}
-            >     
-            </Form_Connect>
+    return( 
+        <ThemeProvider theme={dark === 'light' ? lightTheme : darkTheme}>
+            <>
+            <GlobalStyles/>
+                <Form_Connect
+                    value={selectedValue}
+                    checkSub={connexionCompte}
+                    checkChange={recupererPersonne}
+                >     
+                </Form_Connect>
+            </>
+        </ThemeProvider>
         );
 }
 export default PageConnect;
