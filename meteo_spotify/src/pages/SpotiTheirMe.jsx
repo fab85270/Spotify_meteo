@@ -148,7 +148,7 @@ const SpotiTherLayout = () =>{
             
            const numT = await authenticateCP(cp);
         /* Définition d'une URL selon le temps obtenu */
-
+        console.log(numT);
         switch (numT){
           case 0: 
               //Soleil

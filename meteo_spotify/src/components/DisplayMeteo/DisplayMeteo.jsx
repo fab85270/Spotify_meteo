@@ -64,7 +64,7 @@ const DisplayMeteo = () =>{
                             <p className="intitule">{intituleMeteo} {valTemp}</p> 
                         </div>
                     }
-                    {numTemps > 9 && numTemps < 17 || numTemps >= 40 && numTemps <= 48 && 
+                    {numTemps > 9 && numTemps < 17 || numTemps >= 40 && numTemps <= 48 || numTemps >=210 && numTemps <=212 && 
                         <div className="Pluvieux">
                             <p className="nomVille">{nomVille}</p>
                             <Image src={tempsPluvieux}/>
