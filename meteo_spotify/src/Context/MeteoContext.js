@@ -146,7 +146,8 @@ export const MeteoContextProvider = ({children}) => { //Ici le children va repr�
         const donneesMeteo = await response.json();
 
         /* Changement du contexte avec les informations obtenues sur la météo suite à la requête selon le code postal saisit (codePostal/nomVille/donnéesMétéo) */
-            changeContexte(cp,CP.cities[0].name,donneesMeteo.forecast[0].weather,WEATHER[donneesMeteo.forecast[0].weather]);    
+            changeContexte(cp,CP.cities[0].name,donneesMeteo.forecast[0].weather,WEATHER[donneesMeteo.forecast[0].weather]);   
+            return  donneesMeteo.forecast[0].weather;
 
     }
       return (<MeteoContext.Provider value={{codePostal,nomVille,numTemps,intituleMeteo,cpErreur,changeContexte,authenticateCP,setCPErreur}}> {children} </MeteoContext.Provider>)
