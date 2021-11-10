@@ -88,7 +88,7 @@ const DisplayMeteo = () =>{
                     {numTemps >= 100 && numTemps <= 141  && numTemps >= 70 && numTemps <=78 &&
                         <div className="Orage">
                             <p className="nomVille">{nomVille}</p>
-                            <Image src={}/>
+                            <Image src=""/>
                             <p className="intitule">{intituleMeteo} {valTemp}</p>
                         </div>
                     }
