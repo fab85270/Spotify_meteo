@@ -16,7 +16,7 @@ const LayoutGlobal= ({children}) =>{
     console.log("Darkmode : "+dark);
 
     return(
-        <ThemeProvider dark={dark === 'light' ? lightTheme : darkTheme}>
+        <ThemeProvider theme={dark === 'light' ? lightTheme : darkTheme}>
             <>
             <GlobalStyles/>
                 <div className="layoutGlobal"> 
