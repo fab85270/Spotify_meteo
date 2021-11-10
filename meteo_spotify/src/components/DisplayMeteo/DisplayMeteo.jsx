@@ -6,6 +6,7 @@ import tempsSoleil from '../../Images/img_meteo/Soleil.jpg';
 import tempsCouvert from '../../Images/img_meteo/Couvert.jpg';
 import tempsPluvieux from '../../Images/img_meteo/Pluvieux.jpg';
 import tempsNeige from '../../Images/img_meteo/Neige.jpg';
+import tempsNeigePluie from '../../Images/img_meteo/neige_pluie.jpg';
 
 import './DisplayMeteo.css';
 const DisplayMeteo = () =>{
@@ -74,6 +75,13 @@ const DisplayMeteo = () =>{
                         <div className="Neige">
                             <p className="nomVille">{nomVille}</p>
                             <Image src={tempsNeige}/>
+                            <p className="intitule">{intituleMeteo} {valTemp}</p>
+                        </div>
+                    }
+                    {numTemps >= 30 && numTemps <= 32  && numTemps >= 70 && numTemps <=78 &&
+                        <div className="Neige">
+                            <p className="nomVille">{nomVille}</p>
+                            <Image src={tempsNeigePluie}/>
                             <p className="intitule">{intituleMeteo} {valTemp}</p>
                         </div>
                     }
