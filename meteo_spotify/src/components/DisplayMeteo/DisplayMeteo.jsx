@@ -16,6 +16,19 @@ const DisplayMeteo = () =>{
     /* Utilisation du context de météo (codePostal/nomVille/numTemps) */
     const{codePostal,nomVille,numTemps,intituleMeteo, valTemp, numTempsH3,valTempH3, numTempsH6,valTempH6 ,numTempsH9,valTempH9,changeContexte} = useContext(MeteoContext);
 
+    var d = new Date();
+    var heureH0 = d.getHours();
+
+    const heureFormat24 = (heure, ecart) => {
+        if(heure+ecart >=24){
+            return heure+ecart-24 + "H";
+        }
+        else{
+            return heure+ecart + "H";
+        }
+    }
+
+
     const numEnImage = (numero) =>{
         if((20<=numero && 32>=numero) || (60<=numero && 68>=numero) || (220<=numero && 222>=numero)){
             console.log("neige");
@@ -47,39 +60,39 @@ const DisplayMeteo = () =>{
     return (
         <div className="test">
             {numTemps >= 0 && (
-            <div className="tempsMeteo">
-                        <table>
-                            <tr>
-                                <th rowspan="2">{nomVille}, {codePostal}</th>
-                                <th>{valTemp} °C</th>
-                                <th rowspan="2">{numEnImage(numTemps)}</th>
-                            </tr>
-                            <tr>
-                                <td>{intituleMeteo}</td>
-                            </tr>
-                            <tr>
-                                <td>H+3</td>
-                                <td>H+6</td>
-                                <td>H+9</td>
-                            </tr>
-                            
-                            <tr>
-                                <td >{numEnImage(numTempsH3)}</td>
-                                <td >{numEnImage(numTempsH6)}</td>
-                                <td >{numEnImage(numTempsH9)}</td>
-                            </tr>
-                            <tr>
-                                <td>{valTempH3}°C</td>
-                                <td>{valTempH6}°C</td>
-                                <td>{valTempH9}°C</td>
-                            </tr>
-                            
-                            
-                            
-                        </table>
+                <div className="tempsMeteo">
+                    <table>
+                        <tr id="lignePrincipale">
+                            <th rowspan="2" id="cellulePrincipale">{nomVille}, {codePostal}</th>
+                            <th>{valTemp} °C</th>
+                            <th rowspan="2" id="cellulePrincipale">{numEnImage(numTemps)}</th>
+                        </tr>
+                        <tr id="lignePrincipale">
+                            <td id="cellulePrincipale">{intituleMeteo}</td>
+                        </tr>
+                        <tr>
+                            <td>{heureFormat24(heureH0,3)}</td>
+                            <td>{heureFormat24(heureH0,6)}</td>
+                            <td>{heureFormat24(heureH0,9)}</td>
+                        </tr>
                         
-                    
-                    
+                        <tr>
+                            <td >{numEnImage(numTempsH3)}</td>
+                            <td >{numEnImage(numTempsH6)}</td>
+                            <td >{numEnImage(numTempsH9)}</td>
+                        </tr>
+                        <tr>
+                            <td>{valTempH3}°C</td>
+                            <td>{valTempH6}°C</td>
+                            <td>{valTempH9}°C</td>
+                        </tr>
+                        
+                        
+                        
+                    </table>
+                            
+                        
+                        
                 </div>
             )}
             <br/>
