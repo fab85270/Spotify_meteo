@@ -222,6 +222,7 @@ const SpotiTherLayout = () =>{
     return(
     <LayoutGlobal children={
         <div className="testTrucMachin">
+          <div className="partieHaute">
             <strong>
                 <h1>
                     {!traduction && "Bienvenue dans l'application SpotiTheirMe"}
@@ -252,9 +253,12 @@ const SpotiTherLayout = () =>{
               </tbody>
 
             </Table>
-            <div className="showPlaylist">
-              <table >
+          </div>
+          <div className="partieBasse">
+              <table className="showTableau">
+                <thead>
                   <tr className="showPlaylist">
+                    <th colspan="3">
                     <div className ="boutonChoixDisplay">
             
                       {Object.keys(albumsState).length > 0 && (
@@ -289,18 +293,20 @@ const SpotiTherLayout = () =>{
                       </Button>
                       )}
                     </div>
+                    </th>
                   </tr>
-                  <td>
+                </thead>
+                  <td className="showPlaylist2">
                     <div className="displayAlbums">
                     {display == "Albums" && <ListAlbums albums={albumsState}/>} 
                     </div>
                   </td>
-                  <td>
+                  <td className="showPlaylist3">
                     <div className="displayArtistes">
                     {display == "Artists" && <ListArtistes artists={artistesState}/>}
                     </div>
                   </td>
-                  <td>
+                  <td className="showPlaylist4">
                     <div className="displayPlaylist">
                     {display == "Playlists" && <ListPlaylist playlist={playlistsState}/>}
                     </div>
