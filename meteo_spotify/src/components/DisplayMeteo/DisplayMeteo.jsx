@@ -60,7 +60,7 @@ const DisplayMeteo = () =>{
         }
     }
     return (
-        <div className="test">
+        <div className="divMeteo">
             {numTemps >= 0 && (
                 <div className="tempsMeteo">
                     <table>
