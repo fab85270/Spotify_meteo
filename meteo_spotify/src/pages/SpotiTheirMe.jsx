@@ -242,6 +242,14 @@ const SpotiTherLayout = () =>{
                     </Form_research>
                   </td>
                   <td>
+                  {cpErreur &&
+                    <p>
+                      <strong>
+                        {traduction && "Entry error: Please enter a valid postal code"}
+                        {!traduction && " Erreur saisie : Veuillez saisir un code postal valide"}
+                      </strong>
+                    </p>
+                  } 
                     <Form_CP
                      checkSubmit={recupererMusiqueMeteo}
                      checkChange={recupererCPSpoti}
