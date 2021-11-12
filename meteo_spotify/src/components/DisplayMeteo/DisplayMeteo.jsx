@@ -7,6 +7,7 @@ import tempsSoleil from '../../Images/img_meteo/Soleil.jpg';
 import tempsCouvert from '../../Images/img_meteo/Couvert.jpg';
 import tempsPluvieux from '../../Images/img_meteo/Pluvieux.jpg';
 import tempsNeige from '../../Images/img_meteo/Neige.jpg';
+import tempsNeigePluie from '../../Images/img_meteo/neige_pluie.jpg';
 
 
 import './DisplayMeteo.css';
