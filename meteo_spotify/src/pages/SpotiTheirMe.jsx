@@ -304,17 +304,17 @@ const SpotiTherLayout = () =>{
                     </th>
                   </tr>
                 </thead>
-                  <td className="showPlaylist2">
+                  <td className="showList">
                     <div className="displayAlbums">
                     {display == "Albums" && <ListAlbums albums={albumsState}/>} 
                     </div>
                   </td>
-                  <td className="showPlaylist3">
+                  <td className="showList">
                     <div className="displayArtistes">
                     {display == "Artists" && <ListArtistes artists={artistesState}/>}
                     </div>
                   </td>
-                  <td className="showPlaylist4">
+                  <td className="showList">
                     <div className="displayPlaylist">
                     {display == "Playlists" && <ListPlaylist playlist={playlistsState}/>}
                     </div>

@@ -1,27 +1,13 @@
-.boutonChoixDisplay {
-    padding: 30px;
-}
+
 
 .partieBasse{
+    padding-top: 2%;
     text-align: center;
-    padding-left: 20%;
-    padding-right: 20%;
+    padding-left: 30%;
+    padding-right: 30%;
 }
-.showPlaylist{
-    background-color: brown;
-}
-.showPlaylist2{
-    background-color: black;
-    text-align: center;
-}
-.showPlaylist3{
-    background-color: rgb(243, 116, 116);
-    text-align: center;
-}
-.showPlaylist4{
-    background-color: blue;
-    text-align: center;
-}
+
+
 strong{
     text-align: center;
 }
