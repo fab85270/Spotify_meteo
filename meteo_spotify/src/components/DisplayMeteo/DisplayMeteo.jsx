@@ -7,7 +7,8 @@ import tempsSoleil from '../../Images/img_meteo/Soleil.jpg';
 import tempsCouvert from '../../Images/img_meteo/Couvert.jpg';
 import tempsPluvieux from '../../Images/img_meteo/Pluvieux.jpg';
 import tempsNeige from '../../Images/img_meteo/Neige.jpg';
-import tempsNeigePluie from '../../Images/img_meteo/neige_pluie.jpg';
+import tempsBrouillard from '../../Images/img_meteo/brouillard.jpg'; 
+import tempsOrage from '../../Images/img_meteo/orage.jpg'
 
 
 import './DisplayMeteo.css';
@@ -30,31 +31,31 @@ const DisplayMeteo = () =>{
 
 
     const numEnImage = (numero) =>{
-        console.log("Le numero est "+numero);
+        console.log(numero)
         if((numero >= 20 && numero <= 32 || numero >= 60 && numero <= 78 || numero == 142 || numero >= 220 && numero <= 222)){
-            console.log("neige");
             return <img src={tempsNeige}
                         style={{height: 20 + '%', width: 20 + '%',}}                     />;
             
         }else if(numero >= 1 && numero <= 4){
-            console.log("nuageux");
             return <img src={tempsNuageux}
                         style={{height: 20 + '%', width: 20 + '%',}}                     />;
 
-
         }else if(0==numero){
-            console.log("soleil");
             return <img src={tempsSoleil}
                         style={{height: 20 + '%', width: 20 + '%',}}                     />;
 
         }else if((numero == 5)){
-            console.log("couvert");
             return <img src={tempsCouvert}
                         style={{height: 20 + '%', width: 20 + '%',}}                     />;
 
         }else if(numero >= 10 && numero <= 16 || numero >= 30 && numero <= 48 || numero >= 70 && numero <= 78 || numero >= 140 && numero <= 141 || numero >= 211 && numero <=212 || numero >= 230 && numero <=232){
-            console.log("else");
             return <img src={tempsPluvieux}
+                        style={{height: 20 + '%', width: 20 + '%',}}                     />;
+        } else if(numero >= 6 && numero <= 7){
+            return <img src={tempsBrouillard}
+                        style={{height: 20 + '%', width: 20 + '%',}}                     />;
+        }else if(numero >= 100 && numero <= 138){
+            return <img src={tempsOrage}
                         style={{height: 20 + '%', width: 20 + '%',}}                     />;
         }
     }
