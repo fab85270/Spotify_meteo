@@ -2,7 +2,7 @@ import React, {useContext, useState } from 'react';
 import Image from 'react-bootstrap/Image'
 import {MeteoContext} from '../../Context/MeteoContext';
 
-import tempsNuageux from '../../Images/img_meteo/Nuageux.jpg';
+import tempsNuageux from '../../Images/img_meteo/nuageux.jpg';
 import tempsSoleil from '../../Images/img_meteo/Soleil.jpg';
 import tempsCouvert from '../../Images/img_meteo/Couvert.jpg';
 import tempsPluvieux from '../../Images/img_meteo/Pluvieux.jpg';
