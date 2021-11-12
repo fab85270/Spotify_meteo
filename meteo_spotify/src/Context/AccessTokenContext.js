@@ -54,8 +54,10 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
             'Accept': 'application/json',
             'Authorization': 'Basic ' + Buffer.from(clientID + ':' + clientSecret).toString('base64'),
             'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+  
           },
           body: `grant_type=client_credentials`,
+          scope: 'playlist-modify-private user-read-private',
           }).then(res => res.json())
 
            /* Changement de l'état de accessToken et de isConneted par le token récupéré */
