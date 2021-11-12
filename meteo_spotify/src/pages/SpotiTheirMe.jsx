@@ -103,6 +103,7 @@ const SpotiTherLayout = () =>{
     const handleSearch = async (event) => {
         event.preventDefault();
 
+      console.log("Access Token : "+accessToken);
       /* Partie de test Fabien */
       console.log("test fabien");
       const testUrl = 'https://api.spotify.com/v1/me';
@@ -115,8 +116,7 @@ const SpotiTherLayout = () =>{
       });
     
 
-      console.log(testFabien);
-      console.log(testFabien.display_name);
+      console.log(await testFabien.json());
       console.log("fin test fabien");
       
       /* Fin partie de test Fabien */
