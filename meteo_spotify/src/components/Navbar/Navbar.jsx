@@ -7,10 +7,6 @@ import { BoutonContext } from '../../Context/BoutonContext';
 import {DarkModeContext} from '../../Context/DarkModeContext';
 import { TraductionContext } from '../../Context/TraductionContext';
 
-import {ThemeProvider} from "styled-components";
-import { GlobalStyles } from "../../components/GlobalStyle/GlobalStyle";
-import { lightTheme, darkTheme } from "../../components/Theme"
-
 import logoSpotiTherMe from '../../Images/SpotiTherMeLogo.jpeg';
 import './Navbar.css';
 
