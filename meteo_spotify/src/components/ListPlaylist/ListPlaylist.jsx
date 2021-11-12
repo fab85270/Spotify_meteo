@@ -9,6 +9,7 @@ const PlayList = ({ playlist }) => {
       {Object.keys(playlist).length > 0 && (
         <div className="playlist">
           {playlist.items.map((playlist, index) => {
+            if(index < 10){
             return (
               <React.Fragment key={index}>
                 <Card style={{ width: '18rem' }}>
@@ -37,6 +38,7 @@ const PlayList = ({ playlist }) => {
                 </Card>
               </React.Fragment>
             );
+            }
           })}
         </div>
       )}
