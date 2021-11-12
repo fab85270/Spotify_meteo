@@ -4,7 +4,7 @@ import LayoutGlobal from '../Layout/LayoutGlobal';
 import React, {useContext} from 'react';
 import {AccessTokenContext} from '../Context/AccessTokenContext';
 import Carousel from 'react-bootstrap/Carousel'; 
-import imageHome from '../Images/menu2.jpeg';
+import imageHome from '../Images/Concert_Rouge.png';
 import image2 from '../Images/imageHome.jpeg';
 import Ballet from '../Images/Ballet.jpg';
 import { TraductionContext } from '../Context/TraductionContext';
@@ -17,18 +17,20 @@ function HomePage(){
     
         return (      
             <LayoutGlobal children={
-                <>  
+                <>      
+                    <br/>
                     <h1 style={{textAlign:"center"}}>
                         {!traduction && "L'application de musique de tous les temps"}
                         {traduction && "Music application for all time"}
                     </h1>
+                    <br/>
                     <Carousel>
                         <Carousel.Item>
                             <img 
                                 className="d-block w-100"
                                 src={imageHome}
                                 alt="imageHome"
-                                height ="500"
+                                height ="600"
                             />
                             <Carousel.Caption>
                                 <h3 style={{backgroundColor:'black',width:'50%',margin:'auto'}}>
@@ -42,7 +44,7 @@ function HomePage(){
                                 className="d-block w-100"
                                 src={image2}
                                 alt="e"
-                                height ="500"
+                                height ="600"
                             />
                             <Carousel.Caption>
                                 <h3 style={{backgroundColor:'black',width:'50%',margin:'auto'}}>
@@ -56,7 +58,7 @@ function HomePage(){
                                 className="d-block w-100"
                                 src={Ballet}
                                 alt="e"
-                                height ="500"
+                                height ="600"
                             />
                             <Carousel.Caption>
                                 <h3 style={{backgroundColor:'black',width:'50%',margin:'auto'}}>
