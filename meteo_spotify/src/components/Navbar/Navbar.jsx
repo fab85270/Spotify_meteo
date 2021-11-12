@@ -7,7 +7,7 @@ import { BoutonContext } from '../../Context/BoutonContext';
 import {DarkModeContext} from '../../Context/DarkModeContext';
 import { TraductionContext } from '../../Context/TraductionContext';
 
-import logoSpotiTherMe from '../../Images/SpotiTherMeLogo.jpeg';
+import logoSpotiTherMe from '../../Images/SpotiTherMeLogo.png';
 import './Navbar.css';
 
 const NavBar = () => {

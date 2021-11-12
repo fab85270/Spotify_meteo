@@ -2,7 +2,7 @@
 import LayoutGlobal from '../Layout/LayoutGlobal';
 import React, {useContext} from 'react';
 import { TraductionContext } from '../Context/TraductionContext';
-import SpotiTherMeLogo from '../Images/baniereMusique.jpg';
+import SpotiTherMeLogo from '../Images/baniereMusique.png';
 
 
 const Service = () =>{
