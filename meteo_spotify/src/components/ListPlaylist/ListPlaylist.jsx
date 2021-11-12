@@ -1,11 +1,12 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 import imageMusique from '../../Images/imageMusique.jpg';
+import  { AlbumTracks }  from  'react-spotify-api';
 
 
 const PlayList = ({ playlist }) => {
   return (
-    <div>
+    <div>   
       {Object.keys(playlist).length > 0 && (
         <div className="playlist">
           {playlist.items.map((playlist, index) => {
