@@ -36,25 +36,23 @@ const PageMeteo = () => {
         authenticateCP(cp);
     }
     return (  
-            <LayoutGlobal children ={
+        <LayoutGlobal children ={
             <div className='layout'>  
-            {cpErreur &&
-                <p>
-                    <strong>
-                        {traduction && "Entry error: Please enter a valid postal code"}
-                        {!traduction && " Erreur saisie : Veuillez saisir un code postal valide"}
-                    </strong>
-                </p>
-            }      
+                {cpErreur &&
+                    <p>
+                        <strong>
+                            {traduction && "Entry error: Please enter a valid postal code"}
+                            {!traduction && " Erreur saisie : Veuillez saisir un code postal valide"}
+                        </strong>
+                    </p>
+                }      
                 <Form_CP
                     checkSubmit={recupererMeteo}
                     checkChange={recupererCP}
                 />
-            <DisplayMeteo/>
-
+                <DisplayMeteo/>
             </div>       
-        }>
-        </LayoutGlobal>
+        }></LayoutGlobal>
     )
 
 }

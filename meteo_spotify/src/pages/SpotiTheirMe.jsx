@@ -259,7 +259,6 @@ const SpotiTherLayout = () =>{
                   </td>
                 </tr>
               </tbody>
-
             </Table>
           </div>
           <div className="partieBasse">
