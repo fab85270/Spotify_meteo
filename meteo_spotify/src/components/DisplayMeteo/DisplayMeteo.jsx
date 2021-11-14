@@ -7,8 +7,7 @@ import tempsCouvert from '../../Images/img_meteo/Couvert.png';
 import tempsPluvieux from '../../Images/img_meteo/Pluvieux.png';
 import tempsNeige from '../../Images/img_meteo/Neige.png';
 import tempsBrouillard from '../../Images/img_meteo/brouillard.png'; 
-import tempsOrage from '../../Images/img_meteo/orage.png'
-
+import tempsOrage from '../../Images/img_meteo/orage.png';
 
 import './DisplayMeteo.css';
 const DisplayMeteo = () =>{
