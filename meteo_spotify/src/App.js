@@ -16,7 +16,6 @@ import { MeteoContextProvider } from './Context/MeteoContext';
 import { DarkModeProvider } from './Context/DarkModeContext';
 
 
-
 function App() {
   return (
     <AccessTokenContextProvider>

@@ -1,13 +1,15 @@
-import React,{createContext, useState} from 'react'
+import React,{createContext, useState, useContext} from 'react'
+
 
 /* Definition du format de notre contexte */
  export const AccessTokenContext = createContext({
     accessToken: "",
     isConnected: false,
+    TimeOutSession: false, //Par défaut, lors de son activation, la session ne sera pas TimeOut
     setAccessToken: () => {},
-    setIsConnected: () => {}
-   
-   
+    setIsConnected: () => {},
+    TimeOutSession: () => {}
+    
 })
 
 export const AccessTokenContextProvider = ({children}) => { //Ici le children va représenter tous les composants/fichiers/routes impactées par 
@@ -16,11 +18,7 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
   /* Initialisation du context utilisé par une chaine vide */
    const [accessToken,setAccessToken] = useState("");
    const [isConnected,setIsConnected] = useState(false);
-  /* Rajouter un état booleen avec isConnected pour eviter d'utiliser l'accessToken sans être connecté. Et pour le remettre a false, on peut
-  utiliser de nouveau ce state et le AccessToken sera initialisé à chaine vide 
-
-  Notes : localstorage à utiliser si possible a la place un state pour stocker le AccessToken car c une donnée sensible => voir si g le temps.*/
-
+  
   const sessionTimeOut = () =>{
 
     /* On va donc changer la valeur du contexte associée au timeOut */
