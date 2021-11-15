@@ -33,12 +33,17 @@ const SpotiTherLayout = () =>{
     let history = useHistory();//Pour redirection entre pages de
     const [cp, setCP] = useState(""); 
   
+
+    console.log("affichage : "+isConnected);
+    console.log("timeOutSession : "+timeOutSession);
     if(!isConnected){ //Ne pas acceder a cette page si non connecté
         history.push("/");
     }else {
+      console.log(timeOutSession);
           if(timeOutSession){
             disconect();
             changeContexteBouton()
+            setTimeOutSession(false);
             history.push("/");
           }
         }

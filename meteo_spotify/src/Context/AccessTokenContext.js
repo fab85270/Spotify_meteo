@@ -25,8 +25,6 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
     console.log("coucu");
     /* On va donc changer la valeur du contexte associée au timeOut pour annoncer une deconnexion */
     setTimeOutSession(true);
-
-
   }
     //Récupération du token de l'API spotify  : 
 
