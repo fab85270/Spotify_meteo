@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/Button'
 import { useHistory} from "react-router-dom";
 
 
-
 const DisconnectPage = () => {
 
     const {traduction,traductionApp} = useContext(TraductionContext);
