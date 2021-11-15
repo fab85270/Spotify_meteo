@@ -21,6 +21,9 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
 
   Notes : localstorage à utiliser si possible a la place un state pour stocker le AccessToken car c une donnée sensible => voir si g le temps.*/
 
+  const sessionTimeOut = () =>{
+    console.log("coucou");
+  }
     //Récupération du token de l'API spotify  : 
 
     const authenticate = async(selectedValue) => {
@@ -65,6 +68,10 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
 
             setAccessToken(access_token);
             setIsConnected(true); 
+
+          /* Au bout de 3600 secondes, l'utilisateur sera déconnecté de l'application et devra se connecter de nouveau */
+
+            setTimeout(sessionTimeOut,5000);
 
       } catch(error){
         throw new Error("La connexion à l'API a échoué"); //Déclaration d'une erreur.
