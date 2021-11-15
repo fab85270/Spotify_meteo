@@ -22,7 +22,8 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
   Notes : localstorage à utiliser si possible a la place un state pour stocker le AccessToken car c une donnée sensible => voir si g le temps.*/
 
   const sessionTimeOut = () =>{
-    console.log("coucou");
+
+    /* On va donc changer la valeur du contexte associée au timeOut */
   }
     //Récupération du token de l'API spotify  : 
 
