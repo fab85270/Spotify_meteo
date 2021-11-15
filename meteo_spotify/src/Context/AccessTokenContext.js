@@ -19,13 +19,10 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
    const [accessToken,setAccessToken] = useState("");
    const [isConnected,setIsConnected] = useState(false);
    const [timeOutSession,setTimeOutSession] = useState(false);
+   const [timer,setTimer] = useState(0);
   
-  const sessionTimeOut = () =>{
 
-    console.log("coucu");
-    /* On va donc changer la valeur du contexte associée au timeOut pour annoncer une deconnexion */
-    setTimeOutSession(true);
-  }
+   
     //Récupération du token de l'API spotify  : 
 
     const authenticate = async(selectedValue) => {
@@ -73,7 +70,12 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
 
           /* Au bout de 3600 secondes, l'utilisateur sera déconnecté de l'application et devra se connecter de nouveau */
 
-            setTimeout(sessionTimeOut,5000);
+          const timer = setTimeout(() => setTimeOutSession(true),5000);
+          setTimer(timer);
+          console.log("Au debut le timer est de : "+ timer);
+        
+
+          
 
       } catch(error){
         throw new Error("La connexion à l'API a échoué"); //Déclaration d'une erreur.
@@ -83,6 +85,7 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
    const disconect = () => {
       setAccessToken("");
       setIsConnected(false);
+      clearTimeout(timer);
    }
     return (<AccessTokenContext.Provider value={{accessToken,isConnected,timeOutSession,authenticate,disconect,setTimeOutSession}}> {children} </AccessTokenContext.Provider>)
 };
