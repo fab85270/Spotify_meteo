@@ -1,16 +1,31 @@
 import Alert from 'react-bootstrap/Alert'
+import {TraductionContext } from '../Context/TraductionContext';
+import React, {useContext} from 'react';
+import Button from 'react-bootstrap/Button'
+import { useHistory} from "react-router-dom";
+
 
 
 const DisconnectPage = () => {
 
+    const {traduction,traductionApp} = useContext(TraductionContext);
+    let history = useHistory();
+
     return (
-        <Alert variant="danger"  dismissible>
-          <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+        <Alert variant="warning"  dismissible>
+          <Alert.Heading>WARNING</Alert.Heading>
           <p>
-            Change this and that and try again. Duis mollis, est non commodo
-            luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-            Cras mattis consectetur purus sit amet fermentum.
+            {traduction && "Your session has expired. Please log in again"}
+            {!traduction && "Votre session vient d'être expirée. Veuillez vous enregistrer de nouveau"}
           </p>
+          <Button variant="danger" onClick={() => history.push('/')}>
+              {traduction && "Cancel"}
+              {!traduction && "Quitter"}
+          </Button>
+          <Button variant="success" onClick={() => history.push('/pageConnect')}>
+              {traduction && "Connect"}
+              {!traduction && "Se connecter"}
+          </Button>
         </Alert>
       );
 }
