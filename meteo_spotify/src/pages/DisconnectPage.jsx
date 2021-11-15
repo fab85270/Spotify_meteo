@@ -22,7 +22,7 @@ const DisconnectPage = () => {
               {traduction && "Cancel"}
               {!traduction && "Quitter"}
           </Button>
-          <Button variant="success" onClick={() => history.push('/pageConnect')}>
+          <Button variant="success" onClick={() => history.push('/connectAPI')}>
               {traduction && "Connect"}
               {!traduction && "Se connecter"}
           </Button>
