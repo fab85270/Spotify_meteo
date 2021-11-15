@@ -75,7 +75,6 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
       setAccessToken("");
       setIsConnected(false);
    }
-    console.log(accessToken);
     return (<AccessTokenContext.Provider value={{accessToken,isConnected,authenticate,disconect}}> {children} </AccessTokenContext.Provider>)
 };
 

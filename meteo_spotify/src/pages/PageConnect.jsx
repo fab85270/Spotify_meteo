@@ -22,7 +22,6 @@ const PageConnect = () => {
 
     const recupererPersonne = (event) => {
         setSelectedValue(event.target.value);
-        console.log("essaie recup : "+event.target.value);
 
     }
 
