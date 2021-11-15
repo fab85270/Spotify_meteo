@@ -32,24 +32,17 @@ const SpotiTherLayout = () =>{
     const [display,setDisplay] = useState('Albums'); //Afin de gérer l'affichage entre albums/artistes & playlist
     let history = useHistory();//Pour redirection entre pages de
     const [cp, setCP] = useState(""); 
-    const [cities,setCities] = useState([]);
-    const [meteo,setMeteo] = useState([]);
-
-
   
     if(!isConnected){ //Ne pas acceder a cette page si non connecté
         history.push("/");
-    }
-    console.log(timeOutSession);
-    if(timeOutSession){
-      console.log("coucou");
-      disconect();
-      changeContexteBouton()
-      history.push("/");
-    }
-    
-
-   
+    }else {
+          if(timeOutSession){
+            disconect();
+            changeContexteBouton()
+            history.push("/");
+          }
+        }
+     
     /* Méthode chargée de définir une url selon un mot clé */
 
     const getUrl = (searchTerm) =>{
