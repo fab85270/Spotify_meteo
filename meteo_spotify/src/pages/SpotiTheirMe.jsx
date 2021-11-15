@@ -21,7 +21,7 @@ const SpotiTherLayout = () =>{
 
     /* Utilisation des hooks(états/contexts) */
 
-    const {accessToken,isConnected,timeOutSession,authenticate,disconect,setTimeOutSession} = useContext(AccessTokenContext);
+    const {accessToken,isConnected,timeOutSession,authenticate,disconect,identifierTimeOut,setTimeOutSession} = useContext(AccessTokenContext);
     const {traduction,traductionApp} = useContext(TraductionContext);
     const{codePostal,nomVille,numTemps,intituleMeteo,cpErreur,changeContexte,authenticateCP,setCPErreur} = useContext(MeteoContext);
     const {clicked,changeContexteBouton} = useContext(BoutonContext);
@@ -44,6 +44,7 @@ const SpotiTherLayout = () =>{
             disconect();
             changeContexteBouton()
             setTimeOutSession(false);
+            clearTimeout();
             history.push("/");
           }
         }
