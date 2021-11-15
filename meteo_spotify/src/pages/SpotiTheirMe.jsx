@@ -5,18 +5,17 @@ import 'bootstrap/dist/css/bootstrap.min.css'; // Ajouter le boostrap au sein de
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import './SpotiTheirMe.css';
-
 import {AccessTokenContext} from '../Context/AccessTokenContext';
+import {BoutonContext} from '../Context/BoutonContext';
 import {TraductionContext } from '../Context/TraductionContext';
 import {MeteoContext} from '../Context/MeteoContext';
-
 import Form_research from '../components/Form_research/Form_research';
 import ListAlbums from '../components/ListAlbums/ListAlbums';
 import ListArtistes from '../components/ListArtistes/ListArtistes';
 import ListPlaylist from '../components/ListPlaylist/ListPlaylist';
 import Form_CP from '../components/Form_CP/Form_CP';
 import DisplayMeteo from '../components/DisplayMeteo/DisplayMeteo';
-import { WalletFill } from 'react-bootstrap-icons';
+
 
 const SpotiTherLayout = () =>{
 
@@ -25,6 +24,7 @@ const SpotiTherLayout = () =>{
     const {accessToken,isConnected,timeOutSession,authenticate,disconect,setTimeOutSession} = useContext(AccessTokenContext);
     const {traduction,traductionApp} = useContext(TraductionContext);
     const{codePostal,nomVille,numTemps,intituleMeteo,cpErreur,changeContexte,authenticateCP,setCPErreur} = useContext(MeteoContext);
+    const {clicked,changeContexteBouton} = useContext(BoutonContext);
     const [searchTerm, setSearchTerm] = useState('');
     const [albumsState, setAlbums] = useState({}); //Objet des albums obtenus suite à une requête sur l'API Spotify.
     const [artistesState, setArtistes] = useState(''); //Objet des artistes obtenus suite à une requête sur l'API Spotify.
@@ -44,6 +44,7 @@ const SpotiTherLayout = () =>{
     if(timeOutSession){
       console.log("coucou");
       disconect();
+      changeContexteBouton()
       history.push("/");
     }
     

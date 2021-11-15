@@ -13,7 +13,7 @@ const PageConnect = () => {
     /* Utilisation des hooks */
 
     const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
-    const {clicked,changeContexte} = useContext(BoutonContext);
+    const {clicked,changeContexteBouton} = useContext(BoutonContext);
     const {dark, setDark,darkApp} = useContext(DarkModeContext);
     const[selectedValue,setSelectedValue] = useState("1");
     let history = useHistory();
@@ -33,7 +33,7 @@ const PageConnect = () => {
          /* On récupère le AccessToken de l'API spotify  du compte désiré */
 
             await authenticate(selectedValue); 
-            changeContexte(); //Afin de changer la valeur du contexte
+            changeContexteBouton(); //Afin de changer la valeur du contexte
             history.push("/spotiTherMe");
     }
     return( 

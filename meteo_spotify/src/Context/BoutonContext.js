@@ -14,10 +14,10 @@ export const BoutonContextProvider = ({children}) => { //Ici le children va repr
     /* Initialisation du context utilisé par le bouléen false */
      const [clicked,setClicked] = useState(false);
     
-    const changeContexte = () => {
+    const changeContexteBouton = () => {
         setClicked(!clicked);
     }
-      return (<BoutonContext.Provider value={{clicked,changeContexte}}> {children} </BoutonContext.Provider>)
+      return (<BoutonContext.Provider value={{clicked,changeContexteBouton}}> {children} </BoutonContext.Provider>)
   };
   
  
