@@ -15,8 +15,10 @@ export const TraductionContextProvider = ({children}) => {
     
     const traductionApp = (event) => {
         /* La traduction ne sera possible que si on click sur Anglais ou Français */
+        console.log("La traduction est dorenavant de 1"+traduction);
         if((event.target.value === 1 && !traduction) || (event.target.value === 2 && traduction)){
             setTraduction(!traduction);
+            console.log("La traduction est dorenavant de 2 "+traduction);
         }
     }
       return (<TraductionContext.Provider value={{traduction,traductionApp}}> {children} </TraductionContext.Provider>)
