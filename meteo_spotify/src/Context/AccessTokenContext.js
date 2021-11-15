@@ -68,15 +68,11 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
             setAccessToken(access_token);
             setIsConnected(true); 
 
-          /* Au bout de 3600 secondes, l'utilisateur sera déconnecté de l'application et devra se connecter de nouveau */
+          /* Au bout de 5 minutes, l'utilisateur sera déconnecté de l'application et devra se connecter de nouveau */
 
-          const timer = setTimeout(() => setTimeOutSession(true),5000);
+          const timer = setTimeout(() => setTimeOutSession(true),360000);
           setTimer(timer);
-          console.log("Au debut le timer est de : "+ timer);
         
-
-          
-
       } catch(error){
         throw new Error("La connexion à l'API a échoué"); //Déclaration d'une erreur.
       }
