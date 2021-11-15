@@ -44,7 +44,7 @@ const SpotiTherLayout = () =>{
             disconect();
             changeContexteBouton()
             setTimeOutSession(false);
-            history.push("/");
+            history.push("/disconnectPage");
           }
         }
      

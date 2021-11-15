@@ -7,6 +7,7 @@ import About from './pages/About';
 import Service from './pages/Service'
 import SpotiTherMe from './pages/SpotiTheirMe';
 import PageConnect from './pages/PageConnect';
+import DisconnectPage from './pages/PageConnect';
 
 import {AccessTokenContextProvider} from './Context/AccessTokenContext';
 import {BoutonContextProvider} from './Context/BoutonContext';
@@ -30,6 +31,9 @@ function App() {
                   </Route>
                   <Route path="/about">
                     <About/>
+                  </Route>
+                  <Route exact path="/disconnectPage">
+                    <DisconnectPage/>
                   </Route>
                   <Route path="/spotiTherMe">
                     <SpotiTherMe/>
