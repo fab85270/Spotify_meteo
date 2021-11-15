@@ -48,18 +48,19 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
       }
       
       try{
+          var scope = 'playlist-read-private user-read-private user-read-email';
+
           const { access_token } = await fetch('https://accounts.spotify.com/api/token', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
             'Authorization': 'Basic ' + Buffer.from(clientID + ':' + clientSecret).toString('base64'),
             'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
-  
           },
-          body: `grant_type=client_credentials`,
-          scope: 'playlist-modify-private user-read-private',
+          body: `grant_type=client_credentials`
           }).then(res => res.json())
-
+          /* créer une extention crochet -> àlire intéressant : https://auth0.com/docs/authorization/flows/customize-tokens-using-hooks-with-client-credentials-flow */
+    
            /* Changement de l'état de accessToken et de isConneted par le token récupéré */
 
             setAccessToken(access_token);
