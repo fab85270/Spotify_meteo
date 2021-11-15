@@ -91,8 +91,6 @@ const SpotiTherLayout = () =>{
         setArtistes(artists);
         setPlaylists(playlists);
       } else{
-        console.log("test fafa");
-        console.log(response);
         setPlaylists(response);    
         setAlbums({}); // Afin d'afficher que les playlists associées au temps définis.
         setArtistes({});        
@@ -103,7 +101,6 @@ const SpotiTherLayout = () =>{
     const handleSearch = async (event) => {
         event.preventDefault();
 
-      console.log("Access Token : "+accessToken);
       /* Partie de test Fabien */
       console.log("test fabien");
       const testUrl = 'https://api.spotify.com/v1/me';
@@ -165,7 +162,6 @@ const SpotiTherLayout = () =>{
             
            const numT = await authenticateCP(cp);
         /* Définition d'une URL selon le temps obtenu */
-        console.log(numT);
         switch (numT){
           case 0: 
               //Soleil

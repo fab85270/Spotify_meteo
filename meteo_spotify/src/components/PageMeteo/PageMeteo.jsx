@@ -27,8 +27,6 @@ const PageMeteo = () => {
     
     const recupererCP = (event) => {
         setCP(event.target.value);
-        console.log(event.target.value);
-
     }
  
     const recupererMeteo = async (event) => {
