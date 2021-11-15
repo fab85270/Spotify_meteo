@@ -19,7 +19,7 @@ const NavBar = () => {
     
     const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
     const{dark,setDark} = useContext(DarkModeContext);
-    const {clicked,changeContexte} = useContext(BoutonContext);
+    const {clicked,changeContexteBouton} = useContext(BoutonContext);
     const {traduction,traductionApp} = useContext(TraductionContext);
     let history = useHistory();
 
@@ -36,7 +36,7 @@ const NavBar = () => {
 
         if(clicked){
             /* On redirige vers le home de connexion et on "annule" le token de connexion en le crypant ? modifiant? */
-            changeContexte(); //Afin de changer la valeur du context
+            changeContexteBouton(); //Afin de changer la valeur du context
             disconect(); 
             history.push("/");
         }
