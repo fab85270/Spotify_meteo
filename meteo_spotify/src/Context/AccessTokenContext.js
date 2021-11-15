@@ -70,7 +70,7 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
 
           /* Au bout de 5 minutes, l'utilisateur sera déconnecté de l'application et devra se connecter de nouveau */
 
-          const timer = setTimeout(() => setTimeOutSession(true),360000);
+          const timer = setTimeout(() => setTimeOutSession(true),5000);
           setTimer(timer);
         
       } catch(error){
