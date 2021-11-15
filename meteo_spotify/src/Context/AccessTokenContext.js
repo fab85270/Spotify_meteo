@@ -5,11 +5,11 @@ import React,{createContext, useState, useContext} from 'react'
  export const AccessTokenContext = createContext({
     accessToken: "",
     isConnected: false,
-    TimeOutSession: false, //Par défaut, lors de son activation, la session ne sera pas TimeOut
+    timeOutSession: false, //Par défaut, lors de son activation, la session ne sera pas TimeOut
     setAccessToken: () => {},
     setIsConnected: () => {},
-    TimeOutSession: () => {}
-    
+    setTimeOutSession: () => {}
+   
 })
 
 export const AccessTokenContextProvider = ({children}) => { //Ici le children va représenter tous les composants/fichiers/routes impactées par 
@@ -18,10 +18,15 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
   /* Initialisation du context utilisé par une chaine vide */
    const [accessToken,setAccessToken] = useState("");
    const [isConnected,setIsConnected] = useState(false);
+   const [timeOutSession,setTimeOutSession] = useState(false);
   
   const sessionTimeOut = () =>{
 
-    /* On va donc changer la valeur du contexte associée au timeOut */
+    console.log("coucu");
+    /* On va donc changer la valeur du contexte associée au timeOut pour annoncer une deconnexion */
+    setTimeOutSession(true);
+
+
   }
     //Récupération du token de l'API spotify  : 
 
@@ -81,7 +86,7 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
       setAccessToken("");
       setIsConnected(false);
    }
-    return (<AccessTokenContext.Provider value={{accessToken,isConnected,authenticate,disconect}}> {children} </AccessTokenContext.Provider>)
+    return (<AccessTokenContext.Provider value={{accessToken,isConnected,timeOutSession,authenticate,disconect,setTimeOutSession}}> {children} </AccessTokenContext.Provider>)
 };
 
 

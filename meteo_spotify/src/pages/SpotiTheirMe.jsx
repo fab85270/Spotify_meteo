@@ -22,7 +22,7 @@ const SpotiTherLayout = () =>{
 
     /* Utilisation des hooks(états/contexts) */
 
-    const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
+    const {accessToken,isConnected,timeOutSession,authenticate,disconect,setTimeOutSession} = useContext(AccessTokenContext);
     const {traduction,traductionApp} = useContext(TraductionContext);
     const{codePostal,nomVille,numTemps,intituleMeteo,cpErreur,changeContexte,authenticateCP,setCPErreur} = useContext(MeteoContext);
     const [searchTerm, setSearchTerm] = useState('');
@@ -40,6 +40,13 @@ const SpotiTherLayout = () =>{
     if(!isConnected){ //Ne pas acceder a cette page si non connecté
         history.push("/");
     }
+    console.log(timeOutSession);
+    if(timeOutSession){
+      console.log("coucou");
+      disconect();
+      history.push("/");
+    }
+    
 
    
     /* Méthode chargée de définir une url selon un mot clé */
