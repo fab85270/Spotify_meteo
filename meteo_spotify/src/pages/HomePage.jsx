@@ -12,7 +12,7 @@ import { TraductionContext } from '../Context/TraductionContext';
 
 function HomePage(){ 
     
-     /* Utilisation des hooks */
+    /* Use context utile à la traduction */
      const {traduction,traductionApp} = useContext(TraductionContext);
     
         return (      

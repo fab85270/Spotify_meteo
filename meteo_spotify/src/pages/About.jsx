@@ -6,7 +6,7 @@ import { TraductionContext } from '../Context/TraductionContext';
 
 const About = () =>{
 
-    /* Utilisation des hooks(états/contexts) */
+    /* Use context utile à la traduction */
     const {traduction,traductionApp} = useContext(TraductionContext);
     
 
@@ -43,5 +43,3 @@ const About = () =>{
     );
 }
 export default About;
-
-/* Crée un layout assez global avec une navbar ou autre élément présent sur chaque page qui est toujours présente et modifier  */

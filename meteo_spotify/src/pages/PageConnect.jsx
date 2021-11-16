@@ -10,8 +10,11 @@ import {AccessTokenContext} from '../Context/AccessTokenContext';
 
 const PageConnect = () => {
     
-    /* Utilisation des hooks */
-
+    /* Use context utile pour
+        La connexion
+        Le choix du profil de connexion
+        Le darkMode
+    */
     const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
     const {clicked,changeContexteBouton} = useContext(BoutonContext);
     const {dark, setDark,darkApp} = useContext(DarkModeContext);
@@ -19,21 +22,16 @@ const PageConnect = () => {
     let history = useHistory();
  
     /* Méthode pour récupérer le compte de la personne selectionnée */
-
     const recupererPersonne = (event) => {
         setSelectedValue(event.target.value);
-
     }
 
      /* Méthode pour se connecter au compte choisit */
     const connexionCompte = async (event) =>{
-        
         event.preventDefault();
-
-         /* On récupère le AccessToken de l'API spotify  du compte désiré */
-
+         /* On récupère l AccessToken de l'API spotify pour le compte désiré */
             await authenticate(selectedValue); 
-            changeContexteBouton(); //Afin de changer la valeur du contexte
+            changeContexteBouton(); //Pour changer la valeur du contexte
             history.push("/spotiTherMe");
     }
     return( 
