@@ -12,12 +12,9 @@ import './Navbar.css';
 
 const NavBar = () => {
 
-    /* Rendre le bouton indisponible quuand on a cliqué dessus ou le rendre "deconnecter" pour se deconnecter : comment se deconnecter ? 
-    Retour vers la page principale Avec de nouveau le bouton "seConnecter qui se présente a nous"  */
-
-    /* Utilisation des hooks */
+    /* Utilisation des hooks(contexts,states) */
     
-    const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
+    const {disconect} = useContext(AccessTokenContext);
     const{dark,setDark} = useContext(DarkModeContext);
     const {clicked,changeContexteBouton} = useContext(BoutonContext);
     const {traduction,traductionApp} = useContext(TraductionContext);
@@ -30,18 +27,15 @@ const NavBar = () => {
 
     const click = async() => { //C'est bien de ne mettre que une fonction dans un "OnClick d'un boutton"
 
-        //test:
-            history.push("/connectAPI");
-
+        /* Redirection vers la page du formulaire de connection */
+        history.push("/connectAPI");
 
         if(clicked){
-            /* On redirige vers le home de connexion et on "annule" le token de connexion en le crypant ? modifiant? */
-            changeContexteBouton(); //Afin de changer la valeur du context
+            changeContexteBouton(); //Afin de changer la valeur du context du bouton (se Connecter/Deconnecter)
             disconect(); 
             history.push("/");
         }
     }
-
         return (
             <div className="divNav">
                 <nav>

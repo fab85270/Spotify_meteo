@@ -1,6 +1,6 @@
 import React, {useContext,useState} from 'react';
 import { TraductionContext } from '../../Context/TraductionContext';
-import { useHistory,Link } from "react-router-dom";
+import { useHistory} from "react-router-dom";
 import './style.css';
 
 const Form_Connect = ({value,checkSub,checkChange}) =>{
@@ -16,15 +16,13 @@ const Form_Connect = ({value,checkSub,checkChange}) =>{
     const {traduction,traductionApp} = useContext(TraductionContext);
 
 
-    /* Afin de rediriger vers de nouvelles pages */
+    /* Afin de rediriger vers de nouvelles pages sans la rafraichir */
     let history = useHistory();
 
-    /* Méthode gestion annulation saisie formulaire */
+    /* Méthode gestion annulation saisie formulaire de connexion */
     const annuler = () =>{
       history.push("/");
     }
-
-    /** onChange={e => setSelectedValue(e.target.value) */
 
     return (
         <form class="connect" onSubmit={(event)=> checkSub(event)}>

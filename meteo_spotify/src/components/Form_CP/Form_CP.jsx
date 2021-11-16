@@ -4,12 +4,10 @@ import { TraductionContext } from '../../Context/TraductionContext';
 import './style.css'
 
 
-
-
 const Form_CP = ({checkSubmit,checkChange}) => {
 
   /* Utilisation du context traduction */
-    const {traduction,traductionApp} = useContext(TraductionContext);
+    const {traduction} = useContext(TraductionContext);
 
     return (
       <div className="Form_CP">

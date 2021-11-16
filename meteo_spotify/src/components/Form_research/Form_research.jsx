@@ -5,9 +5,8 @@ import { TraductionContext } from '../../Context/TraductionContext';
 
 const SearchForm = ({value,handleSearch,handleInputChange}) => {
 
-  /* Utilisation du hooks(context) */
-
-  const {traduction,traductionApp} = useContext(TraductionContext);
+  /* Utilisation du context de traduction */
+  const {traduction} = useContext(TraductionContext);
 
   return (
     <div className="Form_research">
