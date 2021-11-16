@@ -3,20 +3,13 @@ import {TraductionContext } from '../Context/TraductionContext';
 import React, {useContext} from 'react';
 import Button from 'react-bootstrap/Button'
 import { useHistory} from "react-router-dom";
-import {AccessTokenContext} from '../Context/AccessTokenContext';
-
 
 
 const DisconnectPage = () => {
 
     /* Use context utile à la traduction et pour la page de deconnexion*/
     const {traduction,traductionApp} = useContext(TraductionContext);
-    const {isConnected} = useContext(AccessTokenContext);
     let history = useHistory();
-
-    if(!isConnected){ 
-      history.push("/");
-    }
 
     return (
         <Alert variant="warning"  dismissible>
