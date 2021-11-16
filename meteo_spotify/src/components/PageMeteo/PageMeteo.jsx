@@ -12,9 +12,9 @@ import { TraductionContext } from '../../Context/TraductionContext';
 const PageMeteo = () => {
 
     /* Utilisation du hook (context,états) */
-    const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
-    const{codePostal,nomVille,numTemps,intituleMeteo,cpErreur,changeContexte,authenticateCP,setCPErreur} = useContext(MeteoContext);
-    const {traduction,traductionApp} = useContext(TraductionContext);
+    const {isConnected} = useContext(AccessTokenContext);
+    const{cpErreur,authenticateCP} = useContext(MeteoContext);
+    const {traduction} = useContext(TraductionContext);
     const [cp, setCP] = useState(""); 
 
     let history = useHistory();
@@ -24,11 +24,12 @@ const PageMeteo = () => {
         history.push("/");
     }
 
-    
+    /* Methode de récupération du CP saisit dans le formulaire */
     const recupererCP = (event) => {
         setCP(event.target.value);
     }
  
+    /* Méthode de récupération de la méteo associée au code postal renseigné dans le formulaire */
     const recupererMeteo = async (event) => {
         event.preventDefault();
         authenticateCP(cp);
