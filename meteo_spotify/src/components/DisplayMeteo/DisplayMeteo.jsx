@@ -26,7 +26,6 @@ const DisplayMeteo = () =>{
     }
 
     const numEnImage = (numero) =>{
-        console.log(numero)
         if((numero >= 20 && numero <= 32 || numero >= 60 && numero <= 78 || numero == 142 || numero >= 220 && numero <= 222)){
             return <img src={tempsNeige}
                         style={{height: 20 + '%', width: 20 + '%',}}                     />;

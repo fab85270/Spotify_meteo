@@ -13,7 +13,6 @@ const LayoutGlobal= ({children}) =>{
 
     /* Definition des hooks(useState/useContext) */
     const {dark, setDark,darkApp} = useContext(DarkModeContext);
-    console.log("Darkmode : "+dark);
 
     return(
         <ThemeProvider theme={dark === 'light' ? lightTheme : darkTheme}>
