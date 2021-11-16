@@ -54,11 +54,9 @@ const NavBar = () => {
                             {traduction && "Home"}
                             {!traduction && "Accueil"}
                         </Link>
-                        {clicked && (
-                            <Link to="/meteo" className="btn">
-                                Meteo
-                            </Link>)
-                        }
+                        <Link to="/meteo" className="btn">
+                            Meteo
+                        </Link>
                         
                         <Link to="/service"  className="btn">
                             Service
