@@ -19,11 +19,6 @@ const PageMeteo = () => {
 
     let history = useHistory();
 
-    /* On doit être connecté pour accéder a la méteo */
-    if(!isConnected){ 
-        history.push("/");
-    }
-
     /* Methode de récupération du CP saisit dans le formulaire */
     const recupererCP = (event) => {
         setCP(event.target.value);
