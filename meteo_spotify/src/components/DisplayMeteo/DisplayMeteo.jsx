@@ -1,6 +1,5 @@
 import React, {useContext, useState } from 'react';
 import {MeteoContext} from '../../Context/MeteoContext';
-
 import tempsNuageux from '../../Images/img_meteo/nuageux.png';
 import tempsSoleil from '../../Images/img_meteo/Soleil.png';
 import tempsCouvert from '../../Images/img_meteo/Couvert.png';
@@ -11,7 +10,7 @@ import tempsOrage from '../../Images/img_meteo/orage.png';
 import './DisplayMeteo.css';
 const DisplayMeteo = () =>{
 
-    /* Utilisation du context de météo (codePostal/nomVille/numTemps) */
+    /* Utilisation du context de météo (codePostal/nomVille/numTemps..) */
     const{codePostal,nomVille,numTemps,intituleMeteo, valTemp, numTempsH3,valTempH3, numTempsH6,valTempH6 ,numTempsH9,valTempH9,changeContexte} = useContext(MeteoContext);
 
     var d = new Date();
@@ -25,7 +24,6 @@ const DisplayMeteo = () =>{
             return heure+ecart + "H";
         }
     }
-
 
     const numEnImage = (numero) =>{
         console.log(numero)
@@ -84,14 +82,8 @@ const DisplayMeteo = () =>{
                             <td>{valTempH3}°C</td>
                             <td>{valTempH6}°C</td>
                             <td>{valTempH9}°C</td>
-                        </tr>
-                        
-                        
-                        
-                    </table>
-                            
-                        
-                        
+                        </tr>                      
+                    </table>                      
                 </div>
             )}
             <br/>
