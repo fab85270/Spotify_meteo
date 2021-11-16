@@ -7,9 +7,9 @@ import { useHistory} from "react-router-dom";
 
 const DisconnectPage = () => {
 
+    /* Use context utile à la traduction et pour la page de deconnexion*/
     const {traduction,traductionApp} = useContext(TraductionContext);
     let history = useHistory();
-    console.log("La traduction est de : "+traduction);
 
     return (
         <Alert variant="warning"  dismissible>

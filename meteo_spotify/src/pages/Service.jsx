@@ -52,5 +52,3 @@ const Service = () =>{
     );
 }
 export default Service;
-
-/* Crée un layout assez global avec une navbar ou autre élément présent sur chaque page qui est toujours présente et modifier  */

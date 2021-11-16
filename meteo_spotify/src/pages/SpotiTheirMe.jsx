@@ -5,10 +5,12 @@ import 'bootstrap/dist/css/bootstrap.min.css'; // Ajouter le boostrap au sein de
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import './SpotiTheirMe.css';
+
 import {AccessTokenContext} from '../Context/AccessTokenContext';
 import {BoutonContext} from '../Context/BoutonContext';
 import {TraductionContext } from '../Context/TraductionContext';
 import {MeteoContext} from '../Context/MeteoContext';
+
 import Form_research from '../components/Form_research/Form_research';
 import ListAlbums from '../components/ListAlbums/ListAlbums';
 import ListArtistes from '../components/ListArtistes/ListArtistes';
@@ -19,7 +21,12 @@ import DisplayMeteo from '../components/DisplayMeteo/DisplayMeteo';
 
 const SpotiTherLayout = () =>{
 
-    /* Utilisation des hooks(états/contexts) */
+    /* Utilisation des hooks pour
+      La duree de connexion
+      La traduction
+      L application meteo
+      la recherche de Playlist/Album/Auteur
+    */
 
     const {accessToken,isConnected,timeOutSession,authenticate,disconect,setTimeOutSession} = useContext(AccessTokenContext);
     const {traduction,traductionApp} = useContext(TraductionContext);
@@ -30,30 +37,36 @@ const SpotiTherLayout = () =>{
     const [artistesState, setArtistes] = useState(''); //Objet des artistes obtenus suite à une requête sur l'API Spotify.
     const [playlistsState, setPlaylists] = useState(''); //Objet des artistes obtenus suite à une requête sur l'API Spotify.
     const [display,setDisplay] = useState('Albums'); //Afin de gérer l'affichage entre albums/artistes & playlist
-    let history = useHistory();//Pour redirection entre pages de
+    let history = useHistory();
     const [cp, setCP] = useState(""); 
   
-    
-    if(!isConnected){ //Ne pas acceder a cette page si non connecté
+    //Empeche l'acces a la page si non connecte
+    //(Si l utilisateur essaye de se connecter via URL)
+    if(!isConnected){ 
         history.push("/");
     }else {
-      console.log(timeOutSession);
-          if(timeOutSession){
-            disconect();
-            changeContexteBouton()
-            setTimeOutSession(false);
-            history.push("/disconnectPage");
-          }
-        }
+      //Si la session de l utilisateur est finie il est renvoye
+      //Vers la page de deconnexion
+      if(timeOutSession){
+        disconect();
+        changeContexteBouton()
+        setTimeOutSession(false);
+        history.push("/disconnectPage");
+      }
+    }
      
-    /* Méthode chargée de définir une url selon un mot clé */
-
+    /*  Méthode chargée de définir une url selon un mot clé 
+        pour la recherche d'album/playlist/artiste
+    */
     const getUrl = (searchTerm) =>{
       return `https://api.spotify.com/v1/search?query="${encodeURIComponent(
           searchTerm
         )}"&type=album,playlist,artist`;
     }
 
+    /*  Méthode chargée de définir une url selon un mot clé 
+        pour la recherche de playlist en fonction de la meteo
+    */
     const getUrlMusiqueMeteo = (searchTerm) =>{
       return `https://api.spotify.com/v1/search?query="${encodeURIComponent(
         searchTerm
@@ -61,14 +74,12 @@ const SpotiTherLayout = () =>{
     }
 
     /* Méthode chargée de la saisie dans la barre texte */
-
     const handleInputChange = (event) => {
         const searchTerm = event.target.value;
         setSearchTerm(searchTerm);
     };
 
   /* Méthode chargée de l'obtention de données de l'API spotify selon l'URL/requête et l'accessToken généré*/
-
     const get = async (url) => {
       try {
         const response = await fetch(url,{
@@ -90,13 +101,12 @@ const SpotiTherLayout = () =>{
 
       if(!isPlaylistMeteo){
         const { albums, artists, playlists } = response;
-          /* Ici mettre un filter pour faire en sorte qu'on affiche les choses seulement qu'on veut */
         setAlbums(albums);
         setArtistes(artists);
         setPlaylists(playlists);
       } else{
         setPlaylists(response);    
-        setAlbums({}); // Afin d'afficher que les playlists associées au temps définis.
+        setAlbums({}); 
         setArtistes({});        
       }
     }
@@ -105,8 +115,6 @@ const SpotiTherLayout = () =>{
     const handleSearch = async (event) => {
         event.preventDefault();
 
-      /* Partie de test Fabien */
-      console.log("test fabien");
       const testUrl = 'https://api.spotify.com/v1/me';
       const testFabien = await fetch(testUrl,{
         method:'GET',
@@ -115,28 +123,19 @@ const SpotiTherLayout = () =>{
           'Authorization': 'Bearer '+accessToken
         }
       });
-    
-
-      console.log(await testFabien.json());
-      console.log("fin test fabien");
-      
-      /* Fin partie de test Fabien */
         
       /* Définition de l'url auquelle on désire accéder */
       const API_URL = getUrl(searchTerm);
 
       /* Récupération sous forme d'objet d'objet des données obtenues suite à notre requête */
-      
       const response = await get(API_URL);
 
       /* Les données des objets associés (albums/artistes/playlist) sont placés au sein de hook pour pouvoir être manipulés */
-      console.log(response);
       affichage(response,false);
   };
 
 
     /* Méthode chargée de l'obtention des playlists selon le codePostal saisit et le temps associé */
-
     const getPlaylistMeteo = async (keyword) =>{
 
       /* Définition de l'URL selon le mot clé associé au temps météo du CP renseigné */
@@ -145,26 +144,21 @@ const SpotiTherLayout = () =>{
       const response = await get(API_URL);
       const {playlists} = response; //Obtention de toutes les playlists associées à ce mot clé
 
-      /* On filtre l'ensemble des playlists obtenues pour n'avoir que celles qui matchent avec notre mot clé */
       return playlists;
      
     }
 
 
-
+    /*Chargé de recuperer le code postal*/
     const recupererCPSpoti = (event) =>{
       setCP(event.target.value);
     }
 
-    /* Méthode chargée d'obtenir les playlists selon le codePostal affiché
-
     /* Méthode chargée de récupérer la musique associée à la méteo du code postal saisit */
     const recupererMusiqueMeteo = async (event) =>{
-
             event.preventDefault();
-    try {
-            
-           const numT = await authenticateCP(cp);
+    try {      
+        const numT = await authenticateCP(cp);
         /* Définition d'une URL selon le temps obtenu */
         switch (numT){
           case 0: 
