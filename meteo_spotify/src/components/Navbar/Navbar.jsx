@@ -7,11 +7,7 @@ import { BoutonContext } from '../../Context/BoutonContext';
 import {DarkModeContext} from '../../Context/DarkModeContext';
 import { TraductionContext } from '../../Context/TraductionContext';
 
-import {ThemeProvider} from "styled-components";
-import { GlobalStyles } from "../../components/GlobalStyle/GlobalStyle";
-import { lightTheme, darkTheme } from "../../components/Theme"
-
-import logoSpotiTherMe from '../../Images/SpotiTherMeLogo.jpeg';
+import logoSpotiTherMe from '../../Images/SpotiTherMeLogo.png';
 import './Navbar.css';
 
 const NavBar = () => {
@@ -23,7 +19,7 @@ const NavBar = () => {
     
     const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
     const{dark,setDark} = useContext(DarkModeContext);
-    const {clicked,changeContexte} = useContext(BoutonContext);
+    const {clicked,changeContexteBouton} = useContext(BoutonContext);
     const {traduction,traductionApp} = useContext(TraductionContext);
     let history = useHistory();
 
@@ -40,7 +36,7 @@ const NavBar = () => {
 
         if(clicked){
             /* On redirige vers le home de connexion et on "annule" le token de connexion en le crypant ? modifiant? */
-            changeContexte(); //Afin de changer la valeur du context
+            changeContexteBouton(); //Afin de changer la valeur du context
             disconect(); 
             history.push("/");
         }
@@ -64,9 +60,12 @@ const NavBar = () => {
                             {traduction && "Home"}
                             {!traduction && "Accueil"}
                         </Link>
-                        <Link to="/meteo" className="btn">
-                            Meteo
-                        </Link>
+                        {clicked && (
+                            <Link to="/meteo" className="btn">
+                                Meteo
+                            </Link>)
+                        }
+                        
                         <Link to="/service"  className="btn">
                             Service
                         </Link> 
@@ -90,8 +89,7 @@ const NavBar = () => {
                             <Button variant="outline-secondary" onClick={themeToggler} className="ApiSpotify">
                                 Theme
                             </Button>
-                        </li> 
-                        
+                        </li>    
                         <li>
                             <Form.Select arial-label="Default select example" onChange={(event)=>traductionApp(event)}>
                                 <option>

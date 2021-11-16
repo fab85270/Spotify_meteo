@@ -9,7 +9,8 @@ const ListArtistes = ({ artists }) => {
     <React.Fragment>
       {Object.keys(artists).length > 0 && (
         <div className="artists">
-          {artists.items.map((artist, index) => {
+          {artists.items.map((artist, index)  => {
+            if(index < 10){
             return (
               <React.Fragment key={index}>
                 <Card style={{ width: '18rem' }}>
@@ -35,6 +36,7 @@ const ListArtistes = ({ artists }) => {
                 </Card>
               </React.Fragment>
             );
+          }
           })}
         </div>
       )}

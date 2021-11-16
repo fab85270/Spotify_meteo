@@ -1,20 +1,37 @@
-.test{
+.divMeteo{
     text-align: center;
     padding: 10px;
 
 }
 .tempsMeteo {
 
-    border: thick double #32a1ce;;
+    border: thick double #32a1ce;
     text-align: center;
     display: inline-block;
-}
+    width: 50% ;
 
+}
+table {
+    width : 100%;
+}
 .tempsMeteo div{
     margin: 2px 10px;
     display: flex;
 }
+td {
+    width : 200px;
+}
 
+#lignePrincipale {
+    height: 50px;
+}
+
+#cellulePrincipale {
+    border-bottom-width: 2px;
+    border-bottom-style: thick double ;
+    border-bottom-color: #32a1ce;
+
+}
 .nomVille{
     flex-basis: 10%;
 }

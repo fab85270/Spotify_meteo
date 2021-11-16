@@ -5,11 +5,10 @@ import 'bootstrap/dist/css/bootstrap.min.css'; // Ajouter le boostrap au sein de
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import './SpotiTheirMe.css';
-
 import {AccessTokenContext} from '../Context/AccessTokenContext';
+import {BoutonContext} from '../Context/BoutonContext';
 import {TraductionContext } from '../Context/TraductionContext';
 import {MeteoContext} from '../Context/MeteoContext';
-
 import Form_research from '../components/Form_research/Form_research';
 import ListAlbums from '../components/ListAlbums/ListAlbums';
 import ListArtistes from '../components/ListArtistes/ListArtistes';
@@ -17,13 +16,15 @@ import ListPlaylist from '../components/ListPlaylist/ListPlaylist';
 import Form_CP from '../components/Form_CP/Form_CP';
 import DisplayMeteo from '../components/DisplayMeteo/DisplayMeteo';
 
+
 const SpotiTherLayout = () =>{
 
     /* Utilisation des hooks(états/contexts) */
 
-    const {accessToken,isConnected,authenticate,disconect} = useContext(AccessTokenContext);
+    const {accessToken,isConnected,timeOutSession,authenticate,disconect,setTimeOutSession} = useContext(AccessTokenContext);
     const {traduction,traductionApp} = useContext(TraductionContext);
     const{codePostal,nomVille,numTemps,intituleMeteo,cpErreur,changeContexte,authenticateCP,setCPErreur} = useContext(MeteoContext);
+    const {clicked,changeContexteBouton} = useContext(BoutonContext);
     const [searchTerm, setSearchTerm] = useState('');
     const [albumsState, setAlbums] = useState({}); //Objet des albums obtenus suite à une requête sur l'API Spotify.
     const [artistesState, setArtistes] = useState(''); //Objet des artistes obtenus suite à une requête sur l'API Spotify.
@@ -31,16 +32,20 @@ const SpotiTherLayout = () =>{
     const [display,setDisplay] = useState('Albums'); //Afin de gérer l'affichage entre albums/artistes & playlist
     let history = useHistory();//Pour redirection entre pages de
     const [cp, setCP] = useState(""); 
-    const [cities,setCities] = useState([]);
-    const [meteo,setMeteo] = useState([]);
-
-
   
+    
     if(!isConnected){ //Ne pas acceder a cette page si non connecté
         history.push("/");
-    }
-
-   
+    }else {
+      console.log(timeOutSession);
+          if(timeOutSession){
+            disconect();
+            changeContexteBouton()
+            setTimeOutSession(false);
+            history.push("/disconnectPage");
+          }
+        }
+     
     /* Méthode chargée de définir une url selon un mot clé */
 
     const getUrl = (searchTerm) =>{
@@ -100,6 +105,22 @@ const SpotiTherLayout = () =>{
     const handleSearch = async (event) => {
         event.preventDefault();
 
+      /* Partie de test Fabien */
+      console.log("test fabien");
+      const testUrl = 'https://api.spotify.com/v1/me';
+      const testFabien = await fetch(testUrl,{
+        method:'GET',
+        headers:{
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer '+accessToken
+        }
+      });
+    
+
+      console.log(await testFabien.json());
+      console.log("fin test fabien");
+      
+      /* Fin partie de test Fabien */
         
       /* Définition de l'url auquelle on désire accéder */
       const API_URL = getUrl(searchTerm);
@@ -142,11 +163,10 @@ const SpotiTherLayout = () =>{
 
             event.preventDefault();
     try {
-          authenticateCP(cp);
-              
+            
+           const numT = await authenticateCP(cp);
         /* Définition d'une URL selon le temps obtenu */
-
-        switch (numTemps){
+        switch (numT){
           case 0: 
               //Soleil
               const playlistsSoleil = await getPlaylistMeteo("Sunny Day");
@@ -202,6 +222,7 @@ const SpotiTherLayout = () =>{
     return(
     <LayoutGlobal children={
         <div className="testTrucMachin">
+          <div className="partieHaute">
             <strong>
                 <h1>
                     {!traduction && "Bienvenue dans l'application SpotiTheirMe"}
@@ -221,6 +242,14 @@ const SpotiTherLayout = () =>{
                     </Form_research>
                   </td>
                   <td>
+                  {cpErreur &&
+                    <p>
+                      <strong>
+                        {traduction && "Entry error: Please enter a valid postal code"}
+                        {!traduction && " Erreur saisie : Veuillez saisir un code postal valide"}
+                      </strong>
+                    </p>
+                  } 
                     <Form_CP
                      checkSubmit={recupererMusiqueMeteo}
                      checkChange={recupererCPSpoti}
@@ -230,11 +259,13 @@ const SpotiTherLayout = () =>{
                   </td>
                 </tr>
               </tbody>
-
             </Table>
-            <div className="showPlaylist">
-              <table >
+          </div>
+          <div className="partieBasse">
+              <table className="showTableau">
+                <thead>
                   <tr className="showPlaylist">
+                    <th colspan="3">
                     <div className ="boutonChoixDisplay">
             
                       {Object.keys(albumsState).length > 0 && (
@@ -269,20 +300,22 @@ const SpotiTherLayout = () =>{
                       </Button>
                       )}
                     </div>
+                    </th>
                   </tr>
-                  <td>
+                </thead>
+                  <td className="showList">
                     <div className="displayAlbums">
-                    {display == "Albums" && <ListAlbums albums={albumsState}/>} 
+                      {display == "Albums" && <ListAlbums albums={albumsState}/>} 
                     </div>
                   </td>
-                  <td>
+                  <td className="showList">
                     <div className="displayArtistes">
-                    {display == "Artists" && <ListArtistes artists={artistesState}/>}
+                      {display == "Artists" && <ListArtistes artists={artistesState}/>}
                     </div>
                   </td>
-                  <td>
+                  <td className="showList">
                     <div className="displayPlaylist">
-                    {display == "Playlists" && <ListPlaylist playlist={playlistsState}/>}
+                      {display == "Playlists" && <ListPlaylist playlist={playlistsState}/>}
                     </div>
                   </td>
               </table>

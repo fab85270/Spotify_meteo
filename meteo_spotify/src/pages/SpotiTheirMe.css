@@ -1,7 +1,12 @@
-.boutonChoixDisplay {
-    padding: 30px;
-    display: inline-block;
+
+
+.partieBasse{
+    padding-top: 2%;
+    text-align: center;
+    padding-left: 30%;
+    padding-right: 30%;
 }
+
 
 strong{
     text-align: center;
@@ -9,4 +14,8 @@ strong{
 
 strong h1{
     padding-top: 2%;
+}
+
+.displayAlbums{
+    color:black
 }

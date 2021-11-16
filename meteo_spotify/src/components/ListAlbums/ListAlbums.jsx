@@ -11,6 +11,7 @@ const ListAlbums = ({ albums }) => {
       {Object.keys(albums).length > 0 && (
         <div className="albums">
           {albums.items.map((album, index) => {
+            if(index < 10){
             return (
               <React.Fragment key={index}>
                 <Card style={{ width: '18rem' }}>
@@ -41,6 +42,7 @@ const ListAlbums = ({ albums }) => {
                 </Card>
               </React.Fragment>
             );
+            }
           })}
         </div>
       )}

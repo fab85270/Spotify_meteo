@@ -7,6 +7,7 @@ import About from './pages/About';
 import Service from './pages/Service'
 import SpotiTherMe from './pages/SpotiTheirMe';
 import PageConnect from './pages/PageConnect';
+import DisconnectPage from './pages/DisconnectPage';
 
 import {AccessTokenContextProvider} from './Context/AccessTokenContext';
 import {BoutonContextProvider} from './Context/BoutonContext';
@@ -14,7 +15,6 @@ import { TraductionContextProvider } from './Context/TraductionContext';
 import PageMeteo from './components/PageMeteo/PageMeteo';
 import { MeteoContextProvider } from './Context/MeteoContext';
 import { DarkModeProvider } from './Context/DarkModeContext';
-
 
 
 function App() {
@@ -43,6 +43,9 @@ function App() {
                   </Route>
                   <Route path="/service">
                     <Service/>
+                  </Route>
+                  <Route path="/disconnectPage">
+                    <DisconnectPage/>
                   </Route>
                 </Switch>
               </Router>

@@ -10,12 +10,34 @@ import React,{createContext, useState} from 'react'
     codePostal: "",
     nomVille:"",
     numTemps: 0,
+    valTemp: 0,
+    intituleMeteo: "",
+    numTempsH3: 0,
+    valTempH3: 0,
+    intituleMeteoH3: "",
+    numTempsH6: 0,
+    valTempH6: 0,
+    intituleMeteoH6: "",
+    numTempsH9: 0,
+    valTempH9: 0,
+    intituleMeteoH9: "",
     intituleMeteo: "",
     cpErreur:"",
     setNomVille: () =>{},
     setCodePostal: () =>{},
     setNumTemps: () =>{},
+    setValTemp: () =>{},
     setIntituleMeteo: () =>{},
+    setImage: () =>{},
+    setNumTempsH3: () =>{},
+    setValTempH3: () =>{},
+    setImageMeteoH3: () =>{},
+    setNumTempsH6: () =>{},
+    setValTempH6: () =>{},
+    setImageMeteoH6: () =>{},
+    setNumTempsH9: () =>{},
+    setValTempH9: () =>{},
+    setImageMeteoH9: () =>{},
     authenticateCP: () =>{},
     setCPErreur: () =>{}
    
@@ -27,12 +49,28 @@ export const MeteoContextProvider = ({children}) => { //Ici le children va repr�
     /* Utilisation du hook (context,états) */
     const [codePostal,setCodePostal] = useState("");
     const [nomVille,setNomVille] = useState("");
+
     const [numTemps,setNumTemps] = useState(-1);
+    const [valTemp,setValTemp] = useState(-1);
     const [intituleMeteo,setIntituleMeteo] = useState("");
+
+    
+
+    const [numTempsH3,setNumTempsH3] = useState(-1);
+    const [valTempH3,setValTempH3] = useState(-1);
+
+    
+    const [numTempsH6,setNumTempsH6] = useState(-1);
+    const [valTempH6,setValTempH6] = useState(-1);
+
+    
+    const [numTempsH9,setNumTempsH9] = useState(-1);
+    const [valTempH9,setValTempH9] = useState(-1);
+
     const [cpErreur,setCPErreur] = useState(false);
 
     const WEATHER = {
-        0 : "Soleil",
+        0 : "Temps ensoleillé",
         1 : "Peu nuageux",
         2 : "Ciel voilé",
         3 : "Nuageux",
@@ -122,11 +160,27 @@ export const MeteoContextProvider = ({children}) => { //Ici le children va repr�
         235 : "Averses de grêle",
     }
      
-    const changeContexte = (codePostal,nomVille,numTemps,intituleMeteo) => {
+    const changeContexte = (codePostal,nomVille,numTemps,intituleMeteo,valTemp,numTempsH3,valTempH3,numTempsH6,valTempH6,numTempsH9,valTempH9) => {
         setCodePostal(codePostal);
         setNomVille(nomVille);
+
         setNumTemps(numTemps);
         setIntituleMeteo(intituleMeteo);
+        setValTemp(valTemp);
+
+
+
+        setNumTempsH3(numTempsH3);
+        setValTempH3(valTempH3);
+
+
+        setNumTempsH6(numTempsH6);
+        setValTempH6(valTempH6);
+
+
+        setNumTempsH9(numTempsH9);
+        setValTempH9(valTempH9);
+
     }
 
     const authenticateCP = async (cp) =>{
@@ -145,11 +199,15 @@ export const MeteoContextProvider = ({children}) => { //Ici le children va repr�
         const response = await fetch('https://api.meteo-concept.com/api/forecast/nextHours?token='+token+'&insee='+ CP.cities[0].insee);
         const donneesMeteo = await response.json();
 
-        /* Changement du contexte avec les informations obtenues sur la météo suite à la requête selon le code postal saisit (codePostal/nomVille/donnéesMétéo) */
-            changeContexte(cp,CP.cities[0].name,donneesMeteo.forecast[0].weather,WEATHER[donneesMeteo.forecast[0].weather]);    
+        /* Changement du contexte avec les informations obtenues sur la météo suite à la requête selon le code postal saisit (codePostal/nomVille/donnéesMétéo/donnéesTemp) */
+        changeContexte(cp,CP.cities[0].name, donneesMeteo.forecast[0].weather,WEATHER[donneesMeteo.forecast[0].weather],donneesMeteo.forecast[0].temp2m, donneesMeteo.forecast[1].weather,donneesMeteo.forecast[1].temp2m, donneesMeteo.forecast[2].weather, donneesMeteo.forecast[2].temp2m,  donneesMeteo.forecast[3].weather, donneesMeteo.forecast[3].temp2m);    
+        return  donneesMeteo.forecast[0].weather;
+
 
     }
-      return (<MeteoContext.Provider value={{codePostal,nomVille,numTemps,intituleMeteo,cpErreur,changeContexte,authenticateCP,setCPErreur}}> {children} </MeteoContext.Provider>)
+    
+
+      return (<MeteoContext.Provider value={{codePostal,nomVille,numTemps,intituleMeteo,valTemp, numTempsH3,valTempH3, numTempsH6,valTempH6, numTempsH9,valTempH9, cpErreur,changeContexte,authenticateCP,setCPErreur}}> {children} </MeteoContext.Provider>)
   };
   
  

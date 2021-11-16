@@ -1,12 +1,14 @@
-import React,{createContext, useState} from 'react'
+import React,{createContext, useState, useContext} from 'react'
+
 
 /* Definition du format de notre contexte */
  export const AccessTokenContext = createContext({
     accessToken: "",
     isConnected: false,
+    timeOutSession: false, //Par défaut, lors de son activation, la session ne sera pas TimeOut
     setAccessToken: () => {},
-    setIsConnected: () => {}
-   
+    setIsConnected: () => {},
+    setTimeOutSession: () => {}
    
 })
 
@@ -16,11 +18,11 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
   /* Initialisation du context utilisé par une chaine vide */
    const [accessToken,setAccessToken] = useState("");
    const [isConnected,setIsConnected] = useState(false);
-  /* Rajouter un état booleen avec isConnected pour eviter d'utiliser l'accessToken sans être connecté. Et pour le remettre a false, on peut
-  utiliser de nouveau ce state et le AccessToken sera initialisé à chaine vide 
+   const [timeOutSession,setTimeOutSession] = useState(false);
+   const [timer,setTimer] = useState(0);
+  
 
-  Notes : localstorage à utiliser si possible a la place un state pour stocker le AccessToken car c une donnée sensible => voir si g le temps.*/
-
+   
     //Récupération du token de l'API spotify  : 
 
     const authenticate = async(selectedValue) => {
@@ -48,6 +50,8 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
       }
       
       try{
+          var scope = 'playlist-read-private user-read-private user-read-email';
+
           const { access_token } = await fetch('https://accounts.spotify.com/api/token', {
           method: 'POST',
           headers: {
@@ -55,14 +59,20 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
             'Authorization': 'Basic ' + Buffer.from(clientID + ':' + clientSecret).toString('base64'),
             'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
           },
-          body: `grant_type=client_credentials`,
+          body: `grant_type=client_credentials`
           }).then(res => res.json())
-
+          /* créer une extention crochet -> àlire intéressant : https://auth0.com/docs/authorization/flows/customize-tokens-using-hooks-with-client-credentials-flow */
+    
            /* Changement de l'état de accessToken et de isConneted par le token récupéré */
 
             setAccessToken(access_token);
             setIsConnected(true); 
 
+          /* Au bout de 5 minutes, l'utilisateur sera déconnecté de l'application et devra se connecter de nouveau */
+
+          const timer = setTimeout(() => setTimeOutSession(true),300000);
+          setTimer(timer);
+        
       } catch(error){
         throw new Error("La connexion à l'API a échoué"); //Déclaration d'une erreur.
       }
@@ -71,9 +81,9 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
    const disconect = () => {
       setAccessToken("");
       setIsConnected(false);
+      clearTimeout(timer);
    }
-    console.log(accessToken);
-    return (<AccessTokenContext.Provider value={{accessToken,isConnected,authenticate,disconect}}> {children} </AccessTokenContext.Provider>)
+    return (<AccessTokenContext.Provider value={{accessToken,isConnected,timeOutSession,authenticate,disconect,setTimeOutSession}}> {children} </AccessTokenContext.Provider>)
 };
 
 
