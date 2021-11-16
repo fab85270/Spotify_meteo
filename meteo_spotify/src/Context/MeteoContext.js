@@ -46,7 +46,7 @@ import React,{createContext, useState} from 'react'
 export const MeteoContextProvider = ({children}) => { //Ici le children va représenter tous les composants/fichiers/routes impactées par 
     //Ce context => il correspond a tous les enfants, ce qu'il y a entre les balises de AccessTokenContextProvider de App.js
   
-    /* Utilisation du hook (context,états) */
+    /* Utilisation des hooks (context,états) */
     const [codePostal,setCodePostal] = useState("");
     const [nomVille,setNomVille] = useState("");
 
@@ -69,6 +69,7 @@ export const MeteoContextProvider = ({children}) => { //Ici le children va repr�
 
     const [cpErreur,setCPErreur] = useState(false);
 
+    /* Définition des temps associés au numéroTemps obtenu suite à une requête à l'API Meteo */
     const WEATHER = {
         0 : "Temps ensoleillé",
         1 : "Peu nuageux",
@@ -168,15 +169,11 @@ export const MeteoContextProvider = ({children}) => { //Ici le children va repr�
         setIntituleMeteo(intituleMeteo);
         setValTemp(valTemp);
 
-
-
         setNumTempsH3(numTempsH3);
         setValTempH3(valTempH3);
 
-
         setNumTempsH6(numTempsH6);
         setValTempH6(valTempH6);
-
 
         setNumTempsH9(numTempsH9);
         setValTempH9(valTempH9);
@@ -185,7 +182,7 @@ export const MeteoContextProvider = ({children}) => { //Ici le children va repr�
 
     const authenticateCP = async (cp) =>{
         setCPErreur(false); 
-        const token=process.env.REACT_APP_TOKEN; //Récupération du token
+        const token=process.env.REACT_APP_TOKEN; //Récupération du token de l'API météo afin d'y établir une connexion
         const responseCP = await fetch('https://api.meteo-concept.com/api/location/cities?token='+token+'&search='+ cp);
         const CP = await responseCP.json();
  
@@ -202,11 +199,7 @@ export const MeteoContextProvider = ({children}) => { //Ici le children va repr�
         /* Changement du contexte avec les informations obtenues sur la météo suite à la requête selon le code postal saisit (codePostal/nomVille/donnéesMétéo/donnéesTemp) */
         changeContexte(cp,CP.cities[0].name, donneesMeteo.forecast[0].weather,WEATHER[donneesMeteo.forecast[0].weather],donneesMeteo.forecast[0].temp2m, donneesMeteo.forecast[1].weather,donneesMeteo.forecast[1].temp2m, donneesMeteo.forecast[2].weather, donneesMeteo.forecast[2].temp2m,  donneesMeteo.forecast[3].weather, donneesMeteo.forecast[3].temp2m);    
         return  donneesMeteo.forecast[0].weather;
-
-
     }
-    
-
       return (<MeteoContext.Provider value={{codePostal,nomVille,numTemps,intituleMeteo,valTemp, numTempsH3,valTempH3, numTempsH6,valTempH6, numTempsH9,valTempH9, cpErreur,changeContexte,authenticateCP,setCPErreur}}> {children} </MeteoContext.Provider>)
   };
   

@@ -1,4 +1,4 @@
-import React,{createContext, useState, useContext} from 'react'
+import React,{createContext, useState} from 'react'
 
 
 /* Definition du format de notre contexte */
@@ -15,19 +15,18 @@ import React,{createContext, useState, useContext} from 'react'
 export const AccessTokenContextProvider = ({children}) => { //Ici le children va représenter tous les composants/fichiers/routes impactées par 
   //Ce context => il correspond a tous les enfants, ce qu'il y a entre les balises de AccessTokenContextProvider de App.js
 
-  /* Initialisation du context utilisé par une chaine vide */
+  /* Initialisation des états utilisés au sein du context */
    const [accessToken,setAccessToken] = useState("");
    const [isConnected,setIsConnected] = useState(false);
    const [timeOutSession,setTimeOutSession] = useState(false);
    const [timer,setTimer] = useState(0);
   
-
    
-    //Récupération du token de l'API spotify  : 
+  /* Récupération de l'AccessToken de l'API spotify selo le clientID et clientSecret associé  */
 
     const authenticate = async(selectedValue) => {
       
-      /* Obtention des informations de connexion selon le compte choisit */
+      /* Obtention des informations de connexion personnelles selon le compte auxquel nous voulons nous connecter */
 
       var clientID="";
       var clientSecret="";
@@ -50,7 +49,6 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
       }
       
       try{
-          var scope = 'playlist-read-private user-read-private user-read-email';
 
           const { access_token } = await fetch('https://accounts.spotify.com/api/token', {
           method: 'POST',
@@ -63,7 +61,7 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
           }).then(res => res.json())
           /* créer une extention crochet -> àlire intéressant : https://auth0.com/docs/authorization/flows/customize-tokens-using-hooks-with-client-credentials-flow */
     
-           /* Changement de l'état de accessToken et de isConneted par le token récupéré */
+           /* Changement de l'état de accessToken et de isConneted(=true => connecté) par le token récupéré */
 
             setAccessToken(access_token);
             setIsConnected(true); 
@@ -78,10 +76,12 @@ export const AccessTokenContextProvider = ({children}) => { //Ici le children va
       }
    }
 
+   /* Méthode chargée d'assurer la deconnexion du compte associé lors de l'expiration de la session ou une deconnexion manuelle */
+
    const disconect = () => {
       setAccessToken("");
       setIsConnected(false);
-      clearTimeout(timer);
+      clearTimeout(timer); //Le timer d'expiration de session crée dans la méthode Authenticate() par setTimeOut() sera supprimé 
    }
     return (<AccessTokenContext.Provider value={{accessToken,isConnected,timeOutSession,authenticate,disconect,setTimeOutSession}}> {children} </AccessTokenContext.Provider>)
 };

@@ -11,6 +11,7 @@ import React,{createContext, useState} from 'react'
 export const TraductionContextProvider = ({children}) => { 
     
     /* Initialisation du context utilisé par le bouléen false */
+    
      const [traduction,setTraduction] = useState(false); //L'application n'est pas traduit par défault
     
     const traductionApp = (event) => {
