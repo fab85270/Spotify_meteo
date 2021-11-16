@@ -2,7 +2,7 @@ import React, {useContext, useState } from 'react';
 import {MeteoContext} from '../../Context/MeteoContext';
 import tempsNuageux from '../../Images/img_meteo/nuageux.png';
 import tempsSoleil from '../../Images/img_meteo/Soleil.png';
-import tempsCouvert from '../../Images/img_meteo/couvert.png';
+import tempsCouvert from '../../Images/img_meteo/Couvert.png';
 import tempsPluvieux from '../../Images/img_meteo/Pluvieux.png';
 import tempsNeige from '../../Images/img_meteo/Neige.png';
 import tempsBrouillard from '../../Images/img_meteo/brouillard.png'; 
