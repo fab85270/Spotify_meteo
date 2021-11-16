@@ -8,6 +8,7 @@ import { useState } from 'react';
 import DisplayMeteo from '../DisplayMeteo/DisplayMeteo';
 import { TraductionContext } from '../../Context/TraductionContext';
 
+import './PageMeteo.css'
 
 const PageMeteo = () => {
 
@@ -39,11 +40,13 @@ const PageMeteo = () => {
                             {!traduction && " Erreur saisie : Veuillez saisir un code postal valide"}
                         </strong>
                     </p>
-                }      
-                <Form_CP
-                    checkSubmit={recupererMeteo}
-                    checkChange={recupererCP}
-                />
+                }
+                <div className="formulaire">
+                    <Form_CP
+                        checkSubmit={recupererMeteo}
+                        checkChange={recupererCP}
+                    />
+                </div>      
                 <DisplayMeteo/>
             </div>       
         }></LayoutGlobal>
