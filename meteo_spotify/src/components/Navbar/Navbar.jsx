@@ -1,14 +1,18 @@
 
 import React, {useContext, useState } from 'react';
 import { useHistory,Link } from "react-router-dom";
-import { Form, Button } from 'react-bootstrap';
+import { Form} from 'react-bootstrap';
 import {AccessTokenContext} from '../../Context/AccessTokenContext';
 import { BoutonContext } from '../../Context/BoutonContext';
 import {DarkModeContext} from '../../Context/DarkModeContext';
 import { TraductionContext } from '../../Context/TraductionContext';
+import ButtonC from '../Button/ButtonC';
+import {Button} from 'react-bootstrap';
+
 
 import logoSpotiTherMe from '../../Images/SpotiTherMeLogo.png';
 import './Navbar.css';
+import ButtonCStories from '../Button/ButtonC.stories';
 
 const NavBar = () => {
 
@@ -19,6 +23,18 @@ const NavBar = () => {
     const {clicked,changeContexteBouton} = useContext(BoutonContext);
     const {traduction,traductionApp} = useContext(TraductionContext);
     let history = useHistory();
+
+    /* Definition du mot clé de recherche */
+    let search ="";
+    if(traduction && clicked){
+        search = "Disconnect";
+    }else if (traduction && !clicked){
+        search = "Connect";
+    }else if(!traduction && clicked){
+        search = "Se deconnecter";
+    }else{
+        search = "Se connecter";
+    }
 
     const themeToggler = () => {
         dark === 'light' ? setDark('dark') : setDark('light')
@@ -70,15 +86,11 @@ const NavBar = () => {
                                 SpotiTheirMe
                         </Link>
                         )}
-                        <li><Button variant="outline-secondary" onClick={() => click()} className="ApiSpotify">
-                                {!traduction && clicked && "Se deconnecter"}  
-                                {traduction && clicked && "Disconnect"} 
-                                {!traduction && !clicked && "Se connecter"}  
-                                {traduction && !clicked && "Connect"} 
-                            </Button>
+                        <li><ButtonC clicked={clicked} traduction={traduction} text={search} clickChange={() => {click()}} className="connexion/decoButton">
+                            </ButtonC>
                         </li>
                         <li>
-                            <Button variant="outline-secondary" onClick={() => themeToggler()} className="ApiSpotify">
+                            <Button variant="outline-secondary" onClick={() => themeToggler()} className="themeButton">
                                 Theme
                             </Button>
                         </li>    
