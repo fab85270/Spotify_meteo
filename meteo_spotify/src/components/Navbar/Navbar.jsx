@@ -78,7 +78,7 @@ const NavBar = () => {
                             </Button>
                         </li>
                         <li>
-                            <Button variant="outline-secondary" onClick={themeToggler} className="ApiSpotify">
+                            <Button variant="outline-secondary" onClick={() => themeToggler()} className="ApiSpotify">
                                 Theme
                             </Button>
                         </li>    
