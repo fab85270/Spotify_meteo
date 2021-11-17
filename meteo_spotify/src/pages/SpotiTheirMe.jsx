@@ -115,14 +115,7 @@ const SpotiTherLayout = () =>{
     const handleSearch = async (event) => {
         event.preventDefault();
 
-      const testUrl = 'https://api.spotify.com/v1/me';
-      const testFabien = await fetch(testUrl,{
-        method:'GET',
-        headers:{
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer '+accessToken
-        }
-      });
+
         
       /* Définition de l'url auquelle on désire accéder */
       const API_URL = getUrl(searchTerm);
