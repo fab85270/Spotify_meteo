@@ -24,6 +24,8 @@ const NavBar = () => {
     const {traduction,traductionApp} = useContext(TraductionContext);
     let history = useHistory();
 
+    
+
     /* Definition du mot clé de recherche */
     let search ="";
     if(traduction && clicked){
@@ -35,6 +37,8 @@ const NavBar = () => {
     }else{
         search = "Se connecter";
     }
+
+    
 
     const themeToggler = () => {
         dark === 'light' ? setDark('dark') : setDark('light')
